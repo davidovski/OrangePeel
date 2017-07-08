@@ -1,0 +1,23 @@
+{
+ "stats": {
+  "rps-wins": 3,
+  "xox-losses": 4,
+  "upvotes": 1,
+  "rps-plays": 18,
+  "votes": 1,
+  "xox-plays": 6,
+  "helps": 7,
+  "xox-wins": 0,
+  "rps-losses": 2,
+  "downvotes": 0,
+  "rps-draws": 1
+ },
+ "votes": {"306115875784622080": 1},
+ "playing": "idk",
+ "admins": {"253275397444206594": 5},
+ "commands": [{
+  "description": "A custom added Command",
+  "text": "gg",
+  "command": "gg"
+ }]
+}

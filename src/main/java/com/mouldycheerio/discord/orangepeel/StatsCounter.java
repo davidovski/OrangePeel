@@ -33,12 +33,51 @@ public class StatsCounter {
         }
     }
 
+    public int getAdmins() {
+        return op.getAdmins().length();
+    }
+
     public int getDownVotes() {
         if (stats.has("downvotes")) {
             return stats.getInt("downvotes");
         } else {
             stats.put("downvotes", 0);
             return stats.getInt("downvotes");
+        }
+    }
+
+    public int getRPSplays() {
+        if (stats.has("rps-plays")) {
+            return stats.getInt("rps-plays");
+        } else {
+            stats.put("rps-plays", 0);
+            return stats.getInt("rps-plays");
+        }
+    }
+
+    public int getRPSwins() {
+        if (stats.has("rps-wins")) {
+            return stats.getInt("rps-wins");
+        } else {
+            stats.put("rps-wins", 0);
+            return stats.getInt("rps-wins");
+        }
+    }
+    public int getRPSdraws() {
+        if (stats.has("rps-draws")) {
+            return stats.getInt("rps-draws");
+        } else {
+            stats.put("rps-draws", 0);
+            return stats.getInt("rps-draws");
+        }
+    }
+
+    public int getRPSlosses() {
+        if (stats.has("rps-losses")) {
+            return stats.getInt("rps-losses");
+        } else {
+            stats.put("rps-losses", 0);
+            return stats.getInt("rps-losses");
         }
     }
 
@@ -59,6 +98,8 @@ public class StatsCounter {
             return stats.getInt("xox-losses");
         }
     }
+
+
     public int getXOXwins() {
         if (stats.has("xox-wins")) {
             return stats.getInt("xox-wins");

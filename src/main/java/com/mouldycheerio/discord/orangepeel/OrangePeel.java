@@ -5,24 +5,36 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import com.google.code.chatterbotapi.ChatterBot;
+import com.google.code.chatterbotapi.ChatterBotFactory;
+import com.google.code.chatterbotapi.ChatterBotSession;
+import com.google.code.chatterbotapi.ChatterBotType;
+import com.mouldycheerio.discord.orangepeel.commands.Command;
+import com.mouldycheerio.discord.orangepeel.commands.CommandDescription;
+import com.mouldycheerio.discord.orangepeel.commands.SimpleCustomCmd;
 import com.vdurmont.emoji.Emoji;
 import com.vdurmont.emoji.EmojiManager;
 
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.api.events.EventDispatcher;
-import sx.blah.discord.handle.obj.IGuild;
+import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IReaction;
 
 public class OrangePeel {
-    public EventListener eventListener;
+    private EventListener eventListener;
     private IDiscordClient client;
     public EventDispatcher dispatcher;
 
@@ -30,27 +42,53 @@ public class OrangePeel {
     private long creation;
     private JSONObject votes;
 
-    private List<String> voted;
+    private Map<String, Long> voted;
     private List<XOXgame> xox;
+    private List<RPSgame> rps;
+
     private Random random;
     private StatsCounter statsCounter;
 
-    public OrangePeel(String token) {
+    private IChannel bugReports;
+    private IChannel suggestions;
+
+    private JSONObject admins;
+    private String playingText = "a game";
+
+    private BotStatus status = BotStatus.INACTIVE;
+    private ChatterBot chatterBot;
+    private ChatterBotSession chatsession;
+
+    private int playingtextindex = 0;
+    private String prefix;
+
+    public OrangePeel(String token, String prefix) throws Exception {
+        this.prefix = prefix;
+        ChatterBotFactory chatterBotFactory = new ChatterBotFactory();
+        chatterBot = chatterBotFactory.create(ChatterBotType.CLEVERBOT);
+        chatsession = chatterBot.createSession(Locale.ENGLISH);
+
+
+
         random = new Random();
 
         client = ClientFactory.createClient(token, true);
         dispatcher = client.getDispatcher();
-        client.streaming("=help", "https://goo.gl/HkrWLH");
-        eventListener = new EventListener("=", this);
+
+        eventListener = new EventListener(prefix, this);
         dispatcher.registerListener(eventListener);
         creation = System.currentTimeMillis();
 
         votes = new JSONObject();
-        voted = new ArrayList<String>();
-        loadAll();
+        admins = new JSONObject();
+        voted = new HashMap<String, Long>();
+
         xox = new ArrayList<XOXgame>();
+        rps = new ArrayList<RPSgame>();
 
         statsCounter = new StatsCounter(new JSONObject(), this);
+        status = BotStatus.ACTIVE;
+        loadAll();
 
     }
 
@@ -84,38 +122,115 @@ public class OrangePeel {
         }
     }
 
+    public void loadAll() {
+
+        try {
+            JSONTokener parser = new JSONTokener(new FileReader("OrangePeel.opf"));
+
+            JSONObject obj = (JSONObject) parser.nextValue();
+            if (obj.has("stats")) {
+                statsCounter.setStats(obj.getJSONObject("stats"));
+            }
+            if (obj.has("votes")) {
+                votes = obj.getJSONObject("votes");
+            }
+            if (obj.has("admins")) {
+                admins = obj.getJSONObject("admins");
+            }
+
+            if (obj.has("playing")) {
+                playingText = obj.getString("playing");
+            }
+
+            if (obj.has("bug_reports")) {
+                bugReports = client.getChannelByID(obj.getLong("bug_reports"));
+            }
+
+            if (obj.has("suggestions")) {
+                suggestions = client.getChannelByID(obj.getLong("suggestions"));
+            }
+
+            if (obj.has("commands")) {
+                JSONArray b = obj.getJSONArray("commands");
+
+                for (int i = 0; i < b.length(); i++) {
+                    JSONObject cmd = b.getJSONObject(i);
+                    String cmdname = cmd.getString("command");
+                    String cmddesc = cmd.getString("description");
+                    String cmdtext = cmd.getString("text");
+
+                    boolean doit = true;
+                    CommandDescription desc = new CommandDescription(cmdname, cmddesc, cmdname);
+                    for (Command command : eventListener.getCommandController().getCommands()) {
+                        if (command.getName().equals(cmdname)) {
+                            doit = false;
+                        }
+                    }
+                    if (doit) {
+                        eventListener.getCommandController().getCommands().add(new SimpleCustomCmd(cmdname, desc, cmdtext));
+                    }
+                }
+
+            }
+
+        } catch (FileNotFoundException e) {
+            System.out.println("No file found! Creating new one!");
+            try {
+                FileWriter file = new FileWriter("OrangePeel.opf");
+                file.flush();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void saveAll() {
-        votes.toString();
+        JSONObject obj = new JSONObject();
+        obj.put("votes", votes);
+        obj.put("admins", admins);
+        obj.put("stats", statsCounter.getStats());
+        obj.put("playing", playingText);
+
+        JSONArray array = new JSONArray();
+        for (Command command : getEventListener().getCommandController().getCommands()) {
+            if (command instanceof SimpleCustomCmd) {
+                JSONObject cmd = new JSONObject();
+                cmd.put("command", command.getName());
+                cmd.put("description", command.getDescription().getText());
+                cmd.put("text", ((SimpleCustomCmd) command).getText());
+                array.put(cmd);
+            }
+        }
+        obj.put("commands", array);
+        if (bugReports != null) {
+            obj.put("bug_reports", bugReports.getLongID());
+        }
+        if (suggestions != null) {
+            obj.put("suggestions", suggestions.getLongID());
+        }
+
         try {
-            FileWriter file = new FileWriter("votes.json");
-            file.write(votes.toString(1));
+            FileWriter file = new FileWriter("OrangePeel.opf");
+            file.write(obj.toString(1));
             file.flush();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.print(votes);
-
-        statsCounter.getStats().toString();
-        try {
-            FileWriter file = new FileWriter("stats.json");
-            file.write(statsCounter.getStats().toString(1));
-            file.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.print(statsCounter.getStats());
     }
 
     public void justVoted(String whoid) {
-        voted.add(whoid);
+        voted.put(whoid, System.currentTimeMillis());
     }
 
     public boolean canVote(String whoid) {
-        return !voted.contains(whoid);
+        return !voted.containsKey(whoid);
     }
 
     public void addVote(String id) {
@@ -134,51 +249,59 @@ public class OrangePeel {
             if (votes.has(id)) {
                 votes.put(id, votes.getInt(id) - 1);
             } else {
-                votes.put(id, 1);
+                votes.put(id, -1);
             }
             saveAll();
-        }
-    }
-
-    public void loadAll() {
-
-        try {
-            JSONTokener parser = new JSONTokener(new FileReader("votes.json"));
-
-            JSONObject obj = (JSONObject) parser.nextValue();
-
-            votes = obj;
-            System.out.println(votes);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            JSONTokener parser = new JSONTokener(new FileReader("stats.json"));
-
-            JSONObject obj = (JSONObject) parser.nextValue();
-
-            statsCounter.setStats(obj);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NullPointerException e) {
-            e.printStackTrace();
         }
     }
 
     public void loop(long alpha) throws InterruptedException {
         uptime = alpha;
 
-        if (alpha % 20 == 0) {
+        if (alpha % 400 == 0) {
+            playingtextindex++;
+            if (playingtextindex == 1) {
+                client.changePlayingText(playingText);
+            } else  if (playingtextindex == 2) {
+                client.changePlayingText(prefix + "help");
+            } else  if (playingtextindex == 3) {
+                client.changePlayingText("on " + statsCounter.getServers() + " servers!");
+            } else {
+                playingtextindex = 0;
+            }
 
+        }
+
+        if (alpha % 10 == 0) {
+
+            Iterator<RPSgame> itrps = rps.iterator();
+            while (itrps.hasNext()) {
+                RPSgame g = itrps.next();
+                if (g.isEnded()) {
+                    itrps.remove();
+                }
+                if (alpha % 30 == 0) {
+                    g.getMessage().addReaction(RPSitem.PAPER.getEmoji());
+                }
+                if (alpha % 30 == 10) {
+                    g.getMessage().addReaction(RPSitem.SCISSORS.getEmoji());
+                }
+                if (alpha % 30 == 20) {
+                    g.getMessage().addReaction(RPSitem.ROCK.getEmoji());
+                }
+
+            }
+            if (suggestions != null) {
+                for (IMessage iMessage : suggestions.getMessages()) {
+                    if (!iMessage.getReactionByUnicode("thumbsup").getClientReacted()) {
+                        iMessage.addReaction("thumbsup");
+                    }
+
+                    if (!iMessage.getReactionByUnicode("thumbsdown").getClientReacted()) {
+                        iMessage.addReaction("thumbsdown");
+                    }
+                }
+            }
             Iterator<XOXgame> it = xox.iterator();
             while (it.hasNext()) {
 
@@ -255,15 +378,13 @@ public class OrangePeel {
                 }
             }
         }
+        Iterator<Entry<String, Long>> iterator = voted.entrySet().iterator();
 
-        long l = getUptime() % (1000 * 60 * 60 * 3);
-        if (l > 0 && l < 1000) {
-            voted.clear();
-
-            for (IGuild g : client.getGuilds()) {
-                //g.getGeneralChannel().sendMessage(TopCommand.createBoard(this));
+        while (iterator.hasNext()) {
+            Entry<String, Long> entry = iterator.next();
+            if (System.currentTimeMillis() - entry.getValue() > (1000 * 60 * 60 * 3)) {
+                voted.remove(entry.getKey());
             }
-
         }
     }
 
@@ -302,6 +423,71 @@ public class OrangePeel {
 
     public void setStatsCounter(StatsCounter statsCounter) {
         this.statsCounter = statsCounter;
+    }
+
+    public JSONObject getAdmins() {
+        return admins;
+    }
+
+    public void setAdmins(JSONObject admins) {
+        this.admins = admins;
+    }
+
+    public String getPlayingText() {
+        return playingText;
+    }
+
+    public void setPlayingText(String playingText) {
+        client.changePlayingText(playingText);
+        this.playingText = playingText;
+    }
+
+    public BotStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(BotStatus status) {
+        this.status = status;
+    }
+
+    public List<RPSgame> getRps() {
+        return rps;
+    }
+
+    public void setRps(List<RPSgame> rps) {
+        this.rps = rps;
+    }
+
+    public EventListener getEventListener() {
+        return eventListener;
+    }
+
+    public void setEventListener(EventListener eventListener) {
+        this.eventListener = eventListener;
+    }
+
+    public IChannel getSuggestions() {
+        return suggestions;
+    }
+
+    public void setSuggestions(IChannel suggestions) {
+        this.suggestions = suggestions;
+    }
+
+    public IChannel getBugReports() {
+        return bugReports;
+    }
+
+    public void setBugReports(IChannel bugReports) {
+        this.bugReports = bugReports;
+    }
+
+    public ChatterBotSession getChatsession() {
+        return chatsession;
+    }
+
+    public void setChatsession(ChatterBotSession chatsession) {
+        this.chatsession = chatsession;
     }
 
 }

@@ -16,20 +16,21 @@ public class UpTimeCommand extends OrangePeelCommand {
         long minutes = seconds / 60;
         long hours =  minutes / 60;
         long days = hours / 24;
+        long weeks = days / 7;
 
         String time = "";
         if (days > 0) {
-            time = days + " Days";
+            time = days + " days and " + (hours - (days * 24)) + " hours";
         } else if (hours > 0) {
-            time = hours + " Hours";
+            time = hours + " hours and " + (minutes - (hours * 60)) + " minutes";
         } else if (minutes > 0) {
-            time = minutes + " Minutes";
+            time = minutes + " minutes and " + (seconds - (minutes * 60)) + " seconds";
         } else if (seconds > 0) {
-            time = seconds + " Seconds";
+            time = seconds + " seconds";
         } else {
             time = orangepeel.getUptime() + " millis";
         }
-        commandMessage.getChannel().sendMessage("I've been awake for " + time);
+        commandMessage.getChannel().sendMessage("Hmm, let's see... I've been awake for about " + time);
 
     }
 }

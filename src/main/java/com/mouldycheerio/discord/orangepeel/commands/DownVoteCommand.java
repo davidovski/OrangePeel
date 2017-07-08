@@ -16,18 +16,18 @@ public class DownVoteCommand extends OrangePeelCommand {
         if (orangepeel.canVote(commandMessage.getAuthor().getStringID())) {
             String id = mentionToId(args[1]);
             if (id.equals(commandMessage.getAuthor().getStringID())) {
-                commandMessage.getChannel().sendMessage("You can't vote for yourself mate!");
+                commandMessage.getChannel().sendMessage("Why would you down vote yourself?!");
                 return;
             }
             orangepeel.removeVote(id);
             orangepeel.justVoted(commandMessage.getAuthor().getStringID());
-            commandMessage.reply("You down voted  " + args[1] + "! They now have " + orangepeel.getVotes().getInt(id) + " votes!");
+            commandMessage.reply("You down voted  " + args[1] + "! They now have " + orangepeel.getVotes().getInt(id) + " votes! They must be loosing popularity by the minute.");
             orangepeel.getStatsCounter().incrementStat("votes");
             orangepeel.getStatsCounter().incrementStat("downvotes");
 
 
         } else {
-            commandMessage.reply("You've already voted recently!");
+            commandMessage.reply("You can only do a voting command every 3 hours, come back later, though!");
         }
     }
 

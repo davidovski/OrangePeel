@@ -12,6 +12,6 @@ public class HeyCommand extends OrangePeelCommand {
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
-        commandMessage.getChannel().sendMessage("Hey!");
+        commandMessage.getChannel().sendMessage("**NO!** Go away!");
     }
 }

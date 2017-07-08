@@ -10,11 +10,14 @@ public class EventListener {
     private String prefix;
     private OrangePeel orangePeel;
     private CommandController commandController;
+    private String ourmention;
+    private String ourmention2;
 
     public EventListener(String prefix, OrangePeel orangePeel) {
         this.prefix = prefix;
         this.orangePeel = orangePeel;
         commandController = new CommandController(orangePeel);
+
     }
 
     @EventSubscriber
@@ -24,6 +27,11 @@ public class EventListener {
         Logger.raw(user.getName() + "#" + user.getDiscriminator());
         Logger.raw(user.getStringID());
         Logger.raw("==========");
+
+        orangePeel.getClient().changePlayingText(orangePeel.getPlayingText());
+        ourmention = "<@" + orangePeel.getClient().getOurUser().getStringID() + ">";
+        ourmention2 = "<@!" + orangePeel.getClient().getOurUser().getStringID() + ">";
+
 
     }
 
@@ -54,13 +62,41 @@ public class EventListener {
             if (number != 0) {
                 orangePeel.xoxYourTurn(event.getMessage(), emoji, event.getReaction());
             }
+            for (RPSgame g : orangePeel.getRps()) {
+                if (g.onReaction(event)) {
+                    break;
+                }
+
+            }
     }
 
     @EventSubscriber
-    public void onMessageReceivedEvent(MessageReceivedEvent event) {
-        Logger.info(event.getAuthor().getName() + ": " + event.getMessage().getContent());
-        if (event.getMessage().getContent().startsWith(prefix)) {
-            commandController.onMessageReceivedEvent(event);
+    public void onMessageReceivedEvent(MessageReceivedEvent event) throws Exception {
+
+
+        if (event.getMessage().getContent().startsWith(ourmention) || event.getMessage().getContent().startsWith(ourmention2)) {
+            System.out.println("x");
+            event.getChannel().sendMessage(orangePeel.getChatsession().think(event.getMessage().getContent().replace(ourmention, "").replace(ourmention2, "")));
         }
+
+
+//        String g;
+//        if (event.getGuild() == null) {
+//            g = "DIRECTMESSAGE";
+//        } else {
+//            g = event.getGuild().getName();
+//        }
+//        System.out.println("[" + g + "] [" + event.getChannel().getName() + "] <" + event.getAuthor().getName() + "> " + event.getMessage().getContent() );
+        if (event.getMessage().getContent().startsWith(prefix)) {
+            commandController.onMessageReceivedEvent(event, prefix);
+        }
+    }
+
+    public CommandController getCommandController() {
+        return commandController;
+    }
+
+    public void setCommandController(CommandController commandController) {
+        this.commandController = commandController;
     }
 }

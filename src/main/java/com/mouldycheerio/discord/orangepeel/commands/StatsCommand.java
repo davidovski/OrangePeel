@@ -19,14 +19,21 @@ public class StatsCommand extends OrangePeelCommand {
                         + "```java\n"
                         + "Servers = " + statsCounter.getServers() + "\n"
                         + "Users = " + statsCounter.getUsers() + "\n"
-                        + "Channels = " + statsCounter.getChannels() + "```\n"
+                        + "Channels = " + statsCounter.getChannels() + "\n"
+                        + "Admins = " + statsCounter.getAdmins() + "```\n"
+
                         + "```java\n"
                         + "Tic Tac Toe Games played = " + statsCounter.getXoxGamesPlayed() + "\n"
-                        + "     Wins = " + statsCounter.getXOXwins() + "\n"
-                        + "     Losses = " + statsCounter.getXOXlosses() + "\n"
+                        + "     Bot Wins = " + statsCounter.getXOXwins() + "\n"
+                        + "     Bot Losses = " + statsCounter.getXOXlosses() + "\n"
+                        + "Rock Paper Scissors Games played = " + statsCounter.getRPSplays() + "\n"
+                        + "     Bot Wins = " + statsCounter.getRPSwins() + "\n"
+                        + "     Bot Losses = " + statsCounter.getRPSlosses() + "\n"
+                        + "     Draws = " + statsCounter.getRPSdraws() + "\n"
                         + "Votes = " + statsCounter.getVotes() + "\n"
                         + "     Positive = " + statsCounter.getUpVotes() + "\n"
                         + "     Negative = " + statsCounter.getDownVotes() + "\n"
                         + "```");
+        commandMessage.getChannel().sendMessage("Wow, check that out ^");
     }
 }

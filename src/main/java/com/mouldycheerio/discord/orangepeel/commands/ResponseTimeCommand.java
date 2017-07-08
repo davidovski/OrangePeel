@@ -12,7 +12,7 @@ public class ResponseTimeCommand extends OrangePeelCommand {
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
-        commandMessage.getChannel().sendMessage("Pong! " + (commandMessage.getTimestamp().getNano() / 1000000) + "ms");
+        commandMessage.getChannel().sendMessage("Why are we playing ping pong now? (" + (commandMessage.getTimestamp().getNano() / 1000000) + "ms)");
         orangepeel.getStatsCounter().incrementStat("pings");
 
     }
