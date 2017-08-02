@@ -24,6 +24,15 @@ public class StatsCounter {
         }
     }
 
+    public int getStories() {
+        if (stats.has("stories")) {
+            return stats.getInt("stories");
+        } else {
+            stats.put("stories", 0);
+            return stats.getInt("stories");
+        }
+    }
+
     public int getUpVotes() {
         if (stats.has("upvotes")) {
             return stats.getInt("upvotes");
@@ -133,7 +142,16 @@ public class StatsCounter {
         } else {
             stats.put(stat, 1);
         }
-        op.saveAll();
+
+    }
+
+    public int getStat(String stat) {
+        if (stats.has(stat)) {
+            return stats.getInt(stat);
+        } else {
+            stats.put(stat, 0);
+            return stats.getInt(stat);
+        }
     }
 
     public int getChannels() {

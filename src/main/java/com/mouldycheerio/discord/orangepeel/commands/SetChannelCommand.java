@@ -9,7 +9,7 @@ import sx.blah.discord.handle.obj.IMessage;
 public class SetChannelCommand extends OrangePeelAdminCommand {
     public SetChannelCommand() {
         setName("setChannel");
-        setDescription(new CommandDescription("setChannel", "set the channel for: \n•Suggestions\n•Bug Reports", "setChannel <suggestions, bugs> <#channel>"));
+        setDescription(new CommandDescription("setChannel", "set the channel for: \n•Suggestions\n•Bug Reports\n•Logs", "setChannel <suggestions, bug, logs> <#channel>"));
         setCommandlvl(3);
     }
 
@@ -26,6 +26,9 @@ public class SetChannelCommand extends OrangePeelAdminCommand {
             } else if (args[1].contains("bug")) {
                 orangepeel.setBugReports(channel);
                 commandMessage.reply("Ok, if anyone has a bug, I'll post it in <#" + channelMention + "> for developers to look at (and fix?).");
+            } else if (args[1].contains("log")) {
+                orangepeel.setLogChannel(channel);
+                commandMessage.reply("Ok, I'll post all messages that you may need to know in <#" + channelMention + ">");
             }
 
             orangepeel.saveAll();

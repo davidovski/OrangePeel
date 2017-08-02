@@ -22,6 +22,7 @@ public class SendFileCommand extends OrangePeelAdminCommand {
             commandMessage.getChannel().sendFile("IDK why you want this, but here:", new File("OrangePeel.opf"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            orangepeel.logError(e,commandMessage);
         }
 
     }

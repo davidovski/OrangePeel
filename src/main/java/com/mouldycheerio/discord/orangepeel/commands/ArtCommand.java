@@ -31,7 +31,7 @@ public class ArtCommand extends OrangePeelCommand {
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
-
+        IMessage m = commandMessage.getChannel().sendMessage("Drawing...");
         try {
             int typen = random.nextInt(15);
             ArtType type = ArtType.SQUARES;
@@ -79,6 +79,8 @@ public class ArtCommand extends OrangePeelCommand {
                         options.add("");
 
                         commandMessage.getChannel().sendFile(options.get(random.nextInt(options.size())) + " **" + name + "**", output);
+
+                        orangepeel.getStatsCounter().incrementStat("art");
                     }
 
                 } catch (IOException e) {
@@ -88,7 +90,10 @@ public class ArtCommand extends OrangePeelCommand {
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
+            m.edit("i couldn't do that for some reason...");
+            orangepeel.logError(e1,commandMessage);
         }
+        m.delete();
 
     }
 

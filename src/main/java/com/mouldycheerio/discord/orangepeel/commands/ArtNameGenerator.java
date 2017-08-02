@@ -23,6 +23,11 @@ public class ArtNameGenerator {
             options2.add("a field");
             options2.add("greenland");
             options2.add("sunriseland");
+            options2.add("dipshit");
+            options2.add("green");
+            options2.add("Suqarey");
+            options2.add("the greeness");
+
             options1.add("the world");
             options1.add("planet earth");
             return options1.get(random.nextInt(options1.size())) + " " + options2.get(random.nextInt(options2.size()));
@@ -32,6 +37,21 @@ public class ArtNameGenerator {
         if (type == ArtType.SQUARES || type == ArtType.CIRCLES || type == ArtType.PHOTO) {
             ArrayList<String> options1 = new ArrayList<String>();
             options1.add("an excited");
+            options1.add("random");
+            options1.add("Big");
+            options1.add("Large");
+            options1.add("Grand");
+            options1.add("Enormous");
+            options1.add("Huge");
+            options1.add("Ogarly");
+            options1.add("Medium");
+            options1.add("Lame");
+            options1.add("Small");
+            options1.add("Tiny");
+            options1.add("Petit");
+            options1.add("Miniscule");
+            options1.add("Mini");
+            options1.add("Very");
             options1.add("a happy");
             options1.add("a sad");
             options1.add("The");
@@ -41,6 +61,9 @@ public class ArtNameGenerator {
             options1.add("sneezing");
             options1.add("Cat");
             options1.add("Dog");
+            options1.add("Colourfull");
+            options1.add("unknown");
+            options1.add("memely");
             options1.add("Yellow");
             options1.add("Green");
             options1.add("Cyan");
@@ -56,8 +79,14 @@ public class ArtNameGenerator {
             options1.add("The adpoted");
             options1.add("Irrelavent");
             options1.add("Random");
-
-
+            options1.add("bork");
+            options1.add("Snoop");
+            options1.add("Mr");
+            options1.add("Mrs");
+            options1.add("Sir");
+            options1.add("Lady");
+            options1.add("Lord");
+            options1.add("king");
             options1.add("a piece of");
             options1.add("a small");
             options1.add("a very large");
@@ -80,7 +109,24 @@ public class ArtNameGenerator {
             options2.add("Flower");
             options2.add("Mr Mofrad");
             options2.add("png file");
-
+            options2.add("Teacher");
+            options2.add("Dice");
+            options2.add("Plane");
+            options2.add("Car");
+            options2.add("Bike");
+            options2.add("bork");
+            options2.add("Dogg");
+            options2.add("Authur");
+            options2.add("David");
+            options2.add("Kai");
+            options2.add("Kai");
+            options2.add("Kelwing");
+            options2.add("Orange");
+            options2.add("Peel");
+            options2.add("Robbie");
+            options2.add("Art");
+            options2.add("Painting");
+            options2.add("pixels");
             options2.add("image");
             options2.add("abstract");
             options2.add("art");
@@ -88,6 +134,17 @@ public class ArtNameGenerator {
             options2.add("Magic");
             options2.add("Mythicality");
             options2.add("Flower pot");
+            options2.add(">art");
+            options2.add("memes");
+            options2.add("apples");
+            options2.add("pears");
+            options2.add("computers");
+            options2.add("A");
+            options2.add("B");
+            options2.add("C");
+            options2.add("number");
+            options2.add("Writings");
+            options2.add("Crap");
             return options1.get(random.nextInt(options1.size())) + " " + options2.get(random.nextInt(options2.size()));
 
         }

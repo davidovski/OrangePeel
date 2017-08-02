@@ -1,4 +1,6 @@
 {
+ "connected": [],
+ "logchannel": 328117502527668234,
  "stats": {
   "rps-wins": 3,
   "xox-losses": 4,
@@ -6,6 +8,7 @@
   "rps-plays": 18,
   "votes": 1,
   "xox-plays": 6,
+  "pings": 3,
   "helps": 7,
   "xox-wins": 0,
   "rps-losses": 2,

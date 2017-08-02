@@ -1,9 +1,12 @@
 package com.mouldycheerio.discord.orangepeel;
 
+import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,14 +27,19 @@ import com.google.code.chatterbotapi.ChatterBotType;
 import com.mouldycheerio.discord.orangepeel.commands.Command;
 import com.mouldycheerio.discord.orangepeel.commands.CommandDescription;
 import com.mouldycheerio.discord.orangepeel.commands.SimpleCustomCmd;
+import com.mouldycheerio.discord.orangepeel.commands.SummonCommand;
 import com.vdurmont.emoji.Emoji;
 import com.vdurmont.emoji.EmojiManager;
 
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.api.events.EventDispatcher;
 import sx.blah.discord.handle.obj.IChannel;
+import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IReaction;
+import sx.blah.discord.handle.obj.IVoiceChannel;
+import sx.blah.discord.util.EmbedBuilder;
+import sx.blah.discord.util.RateLimitException;
 
 public class OrangePeel {
     private EventListener eventListener;
@@ -51,6 +59,7 @@ public class OrangePeel {
 
     private IChannel bugReports;
     private IChannel suggestions;
+    private IChannel logChannel;
 
     private JSONObject admins;
     private String playingText = "a game";
@@ -68,16 +77,7 @@ public class OrangePeel {
         chatterBot = chatterBotFactory.create(ChatterBotType.CLEVERBOT);
         chatsession = chatterBot.createSession(Locale.ENGLISH);
 
-
-
         random = new Random();
-
-        client = ClientFactory.createClient(token, true);
-        dispatcher = client.getDispatcher();
-
-        eventListener = new EventListener(prefix, this);
-        dispatcher.registerListener(eventListener);
-        creation = System.currentTimeMillis();
 
         votes = new JSONObject();
         admins = new JSONObject();
@@ -88,7 +88,13 @@ public class OrangePeel {
 
         statsCounter = new StatsCounter(new JSONObject(), this);
         status = BotStatus.ACTIVE;
-        loadAll();
+
+        eventListener = new EventListener(prefix, this);
+
+        creation = System.currentTimeMillis();
+        client = ClientFactory.createClient(token, true);
+        dispatcher = client.getDispatcher();
+        dispatcher.registerListener(eventListener);
 
     }
 
@@ -122,6 +128,48 @@ public class OrangePeel {
         }
     }
 
+    public void logError(Exception e, IMessage commandMessage) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.withTitle(e.getMessage() + " (" + e.getClass().getName() + ")");
+        embedBuilder.withDescription(sw.toString());
+        embedBuilder.withAuthorName("OrangePeel Logger");
+        embedBuilder.withColor(new Color(54, 57, 62));
+
+        embedBuilder.appendField("command message", commandMessage.getContent(), true);
+        embedBuilder.appendField("user executing", commandMessage.getAuthor().getName() + "#" + commandMessage.getAuthor().getDiscriminator(), true);
+        embedBuilder.appendField("host server", commandMessage.getGuild().getName(), true);
+        embedBuilder.appendField("channel", commandMessage.getChannel().getName(), true);
+
+        getLogChannel().sendMessage(embedBuilder.build());
+    }
+
+    public void logError(Exception e) {
+        if (e instanceof RateLimitException) return;
+        try {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+
+            EmbedBuilder embedBuilder = new EmbedBuilder();
+            embedBuilder.withTitle(e.getMessage() + " (" + e.getClass().getName() + ")");
+            embedBuilder.withDescription(sw.toString());
+            embedBuilder.withAuthorName("OrangePeel Logger");
+            embedBuilder.withColor(new Color(54, 57, 62));
+            getLogChannel().sendMessage(embedBuilder.build());
+        } catch (RateLimitException ex) {
+            try {
+                Thread.sleep(3000);
+
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
     public void loadAll() {
 
         try {
@@ -143,11 +191,36 @@ public class OrangePeel {
             }
 
             if (obj.has("bug_reports")) {
-                bugReports = client.getChannelByID(obj.getLong("bug_reports"));
+                for (IChannel c : client.getChannels()) {
+                    if (c.getLongID() == obj.getLong("bug_reports")) {
+                        bugReports = c;
+                    }
+                }
             }
 
             if (obj.has("suggestions")) {
-                suggestions = client.getChannelByID(obj.getLong("suggestions"));
+                for (IChannel c : client.getChannels()) {
+                    if (c.getLongID() == obj.getLong("suggestions")) {
+                        suggestions = c;
+                    }
+                }
+            }
+
+            if (obj.has("logchannel")) {
+                for (IGuild g : client.getGuilds()) {
+                    for (IChannel c : g.getChannels()) {
+
+                        if (c.getLongID() == obj.getLong("logchannel")) {
+
+                            logChannel = c;
+                            Logger.info("found logger channel");
+                        }
+                    }
+                }
+
+                if (logChannel == null) {
+                    Logger.warn("NO LOGGER CHANNEL!");
+                }
             }
 
             if (obj.has("commands")) {
@@ -173,6 +246,14 @@ public class OrangePeel {
 
             }
 
+            if (obj.has("connected")) {
+                Logger.info("reconnecting to lost channels");
+                JSONArray jsonArray = obj.getJSONArray("connected");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    SummonCommand.joinandplay(client.getVoiceChannelByID(jsonArray.getLong(i)), this);
+                }
+            }
+
         } catch (FileNotFoundException e) {
             System.out.println("No file found! Creating new one!");
             try {
@@ -187,6 +268,7 @@ public class OrangePeel {
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
+        getStatsCounter().incrementStat("loads");
     }
 
     public void saveAll() {
@@ -194,6 +276,7 @@ public class OrangePeel {
         obj.put("votes", votes);
         obj.put("admins", admins);
         obj.put("stats", statsCounter.getStats());
+        getStatsCounter().incrementStat("saves");
         obj.put("playing", playingText);
 
         JSONArray array = new JSONArray();
@@ -213,6 +296,16 @@ public class OrangePeel {
         if (suggestions != null) {
             obj.put("suggestions", suggestions.getLongID());
         }
+        if (logChannel != null) {
+            obj.put("logchannel", logChannel.getLongID());
+        }
+
+        List<IVoiceChannel> voices = client.getConnectedVoiceChannels();
+        JSONArray jsonArray = new JSONArray();
+        for (IVoiceChannel iVoiceChannel : voices) {
+            jsonArray.put(iVoiceChannel.getLongID());
+        }
+        obj.put("connected", jsonArray);
 
         try {
             FileWriter file = new FileWriter("OrangePeel.opf");
@@ -258,13 +351,13 @@ public class OrangePeel {
     public void loop(long alpha) throws InterruptedException {
         uptime = alpha;
 
-        if (alpha % 400 == 0) {
+        if (alpha % 400 == 0 && client.isReady()) {
             playingtextindex++;
             if (playingtextindex == 1) {
                 client.changePlayingText(playingText);
-            } else  if (playingtextindex == 2) {
+            } else if (playingtextindex == 2) {
                 client.changePlayingText(prefix + "help");
-            } else  if (playingtextindex == 3) {
+            } else if (playingtextindex == 3) {
                 client.changePlayingText("on " + statsCounter.getServers() + " servers!");
             } else {
                 playingtextindex = 0;
@@ -277,19 +370,24 @@ public class OrangePeel {
             Iterator<RPSgame> itrps = rps.iterator();
             while (itrps.hasNext()) {
                 RPSgame g = itrps.next();
-                if (g.isEnded()) {
-                    itrps.remove();
-                }
-                if (alpha % 30 == 0) {
-                    g.getMessage().addReaction(RPSitem.PAPER.getEmoji());
-                }
-                if (alpha % 30 == 10) {
-                    g.getMessage().addReaction(RPSitem.SCISSORS.getEmoji());
-                }
-                if (alpha % 30 == 20) {
-                    g.getMessage().addReaction(RPSitem.ROCK.getEmoji());
-                }
 
+                try {
+                    if (g.isEnded()) {
+                        itrps.remove();
+                    }
+                    if (alpha % 30 == 0) {
+                        g.getMessage().addReaction(RPSitem.PAPER.getEmoji());
+                    }
+                    if (alpha % 30 == 10) {
+                        g.getMessage().addReaction(RPSitem.SCISSORS.getEmoji());
+                    }
+                    if (alpha % 30 == 20) {
+                        g.getMessage().addReaction(RPSitem.ROCK.getEmoji());
+                    }
+                } catch (RateLimitException ex) {
+                    ex.printStackTrace();
+                    Thread.sleep(3000);
+                }
             }
             if (suggestions != null) {
                 for (IMessage iMessage : suggestions.getMessages()) {
@@ -382,7 +480,7 @@ public class OrangePeel {
 
         while (iterator.hasNext()) {
             Entry<String, Long> entry = iterator.next();
-            if (System.currentTimeMillis() - entry.getValue() > (1000 * 60 * 60 * 3)) {
+            if (System.currentTimeMillis() - entry.getValue() > (1000 * 60 * 60)) {
                 voted.remove(entry.getKey());
             }
         }
@@ -488,6 +586,14 @@ public class OrangePeel {
 
     public void setChatsession(ChatterBotSession chatsession) {
         this.chatsession = chatsession;
+    }
+
+    public IChannel getLogChannel() {
+        return logChannel;
+    }
+
+    public void setLogChannel(IChannel logChannel) {
+        this.logChannel = logChannel;
     }
 
 }

@@ -34,12 +34,12 @@ public class HelpCommand extends OrangePeelCommand {
                     OrangePeelAdminCommand cmd = (OrangePeelAdminCommand) c;
                     if (orangepeel.getAdmins().getInt(stringID) >= cmd.getCommandlvl()) {
 
-                        message2 = message2 + "`[admin command lvl = " + cmd.getCommandlvl() + "]` \n" + c.getDescription().toString() + "\n";
+                        message2 = message2 + "`[lvl " + cmd.getCommandlvl() + "]` " + c.getDescription().toString() + " ";
                         message2 = message2 + "`" + commandMessage.getContent().charAt(0) + c.getDescription().getUsage() + "`\n\n";
                     }
                 }
             } else {
-                message = message + c.getDescription().toString() + "\n";
+                message = message + c.getDescription().toString() + " ";
                 message = message + "`" + commandMessage.getContent().charAt(0) + c.getDescription().getUsage() + "`\n\n";
             }
 
@@ -51,8 +51,8 @@ public class HelpCommand extends OrangePeelCommand {
             pm.sendMessage(message2);
 
         }
-        pm.sendMessage("**Add me to your server: ** https://goo.gl/ZcLxNJ\n" + "Join the help server: https://discord.gg/KzHHRFg");
-
+        pm.sendMessage("**Add me to your server: ** https://goo.gl/ZcLxNJ\n" + "Join the help server: https://discord.me/OrangePeel");
+        orangepeel.getStatsCounter().incrementStat("helped");
         // https://discordapp.com/oauth2/authorize?client_id=306115875784622080&scope=bot
     }
 }

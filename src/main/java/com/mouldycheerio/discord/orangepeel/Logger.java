@@ -1,14 +1,16 @@
 package com.mouldycheerio.discord.orangepeel;
 
+import sx.blah.discord.Discord4J;
+
 public class Logger {
     public static void info(String s) {
-        System.out.println("[INFO]" + s);
+        Discord4J.LOGGER.info(s);
     }
     public static void error(String s) {
-        System.out.println("[ERROR]" + s);
-    }
+        Discord4J.LOGGER.error(s);
+        }
     public static void warn(String s) {
-        System.out.println("[WARN]" + s);
+        Discord4J.LOGGER.warn(s);
     }
     public static void raw(String s) {
         System.out.println(s);

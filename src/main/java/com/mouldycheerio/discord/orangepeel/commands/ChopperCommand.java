@@ -18,5 +18,6 @@ public class ChopperCommand extends OrangePeelCommand {
 "\nLOL===__         \\"+
 "\n L      \\________]"+
 "\n        _I___I_____/```");
+        orangepeel.getStatsCounter().incrementStat("choppers");
     }
 }

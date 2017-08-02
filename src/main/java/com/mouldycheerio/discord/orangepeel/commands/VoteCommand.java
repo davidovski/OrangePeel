@@ -27,7 +27,7 @@ public class VoteCommand extends OrangePeelCommand {
             orangepeel.getStatsCounter().incrementStat("upvotes");
 
         } else {
-            commandMessage.reply("You've already voted in the last 3 hours!");
+            commandMessage.reply("You've already voted in the past hour!");
         }
     }
 

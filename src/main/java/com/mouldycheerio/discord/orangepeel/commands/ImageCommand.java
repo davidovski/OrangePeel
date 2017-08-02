@@ -31,6 +31,7 @@ public class ImageCommand extends OrangePeelCommand {
         g2.fill(new Rectangle(100, 160, 260, 80));
 
         try {
+
             File output = new File("images/output_image.png");
             output.mkdirs();
             boolean write = ImageIO.write(bufferedImage, "PNG", output);
@@ -40,6 +41,7 @@ public class ImageCommand extends OrangePeelCommand {
 
         } catch (IOException e) {
             e.printStackTrace();
+            orangepeel.logError(e,commandMessage);
         }
 
     }

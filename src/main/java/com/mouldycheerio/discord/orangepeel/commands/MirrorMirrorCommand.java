@@ -20,6 +20,7 @@ public class MirrorMirrorCommand extends OrangePeelCommand {
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            orangepeel.logError(e,commandMessage);
         }
 
         if (Math.random() > 0.9) {
