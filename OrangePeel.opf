@@ -1,26 +1,91 @@
 {
  "connected": [],
- "logchannel": 328117502527668234,
  "stats": {
-  "rps-wins": 3,
-  "xox-losses": 4,
-  "upvotes": 1,
-  "rps-plays": 18,
-  "votes": 1,
-  "xox-plays": 6,
-  "pings": 3,
-  "helps": 7,
-  "xox-wins": 0,
-  "rps-losses": 2,
-  "downvotes": 0,
-  "rps-draws": 1
+  "rps-wins": 18,
+  "xox-losses": 19,
+  "art": 0,
+  "stories": 0,
+  "upvotes": 30,
+  "rates": 13,
+  "loads": 15,
+  "rps-losses": 17,
+  "downvotes": 9,
+  "saves": 27,
+  "rps-plays": 73,
+  "boots": 13,
+  "messages": 25284,
+  "choppers": 1,
+  "xox-plays": 52,
+  "votes": 39,
+  "pings": 111,
+  "helped": 7,
+  "xox-wins": 2,
+  "helps": 123,
+  "rps-draws": 21,
+  "ascii": 0,
+  "commands": 76,
+  "coords": 0
  },
- "votes": {"306115875784622080": 1},
- "playing": "idk",
- "admins": {"253275397444206594": 5},
- "commands": [{
-  "description": "A custom added Command",
-  "text": "gg",
-  "command": "gg"
- }]
+ "votes": {
+  "": -1,
+  "339753177824100352": 1,
+  "236002091120721930": 1,
+  "312354464679854092": 1,
+  "218613903653863427": 1,
+  "306115875784622080": -1,
+  "327071207604355074": 3,
+  "333541825908310016": -1,
+  "287657819740569601": 3,
+  "280406069518532609": 2,
+  "274230789699403776": 3,
+  "322805795030958080": 5,
+  "290381914551091202": 3,
+  "202621027971235840": 2,
+  "253275397444206594": 12,
+  "250632091555987459": 1,
+  "284069152459587584": 5,
+  "184920260472864768": 3,
+  "229232856063410176": 3,
+  "300306008616599553": 1,
+  "205953986107277312": -1,
+  "252086008902975488": -1,
+  "175722199393632256": 6,
+  "261915228785082381": 3
+ },
+ "playing": "with tangerienes",
+ "banned": [],
+ "admins": {
+  "202621027971235840": 1,
+  "253275397444206594": 5,
+  "300306008616599553": 1,
+  "280406069518532609": 2,
+  "274230789699403776": 2
+ },
+ "commands": [
+  {
+   "description": "<<<--->>>",
+   "text": "<<<",
+   "command": ">>"
+  },
+  {
+   "description": "Call in the developer bot!",
+   "text": ">dev>dev",
+   "command": "devBot"
+  },
+  {
+   "description": "Returns my invite link",
+   "text": "Add me to your server: https://goo.gl/ZcLxNJ",
+   "command": "invite"
+  },
+  {
+   "description": "A custom added Command",
+   "text": "Not Today",
+   "command": "kys"
+  },
+  {
+   "description": "A custom added Command",
+   "text": "**no!**",
+   "command": "die"
+  }
+ ]
 }

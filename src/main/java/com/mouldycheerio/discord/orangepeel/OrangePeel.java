@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
@@ -21,9 +20,8 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import com.google.code.chatterbotapi.ChatterBot;
-import com.google.code.chatterbotapi.ChatterBotFactory;
 import com.google.code.chatterbotapi.ChatterBotSession;
-import com.google.code.chatterbotapi.ChatterBotType;
+import com.mouldycheerio.discord.orangepeel.challenges.ChallengeController;
 import com.mouldycheerio.discord.orangepeel.commands.Command;
 import com.mouldycheerio.discord.orangepeel.commands.CommandDescription;
 import com.mouldycheerio.discord.orangepeel.commands.SimpleCustomCmd;
@@ -70,18 +68,22 @@ public class OrangePeel {
 
     private int playingtextindex = 0;
     private String prefix;
+    private ChallengeController challengeController;
+
+    private List<Long> banned;
 
     public OrangePeel(String token, String prefix) throws Exception {
         this.prefix = prefix;
-        ChatterBotFactory chatterBotFactory = new ChatterBotFactory();
-        chatterBot = chatterBotFactory.create(ChatterBotType.CLEVERBOT);
-        chatsession = chatterBot.createSession(Locale.ENGLISH);
+        // ChatterBotFactory chatterBotFactory = new ChatterBotFactory();
+        // chatterBot = chatterBotFactory.create(ChatterBotType.CLEVERBOT);
+        // chatsession = chatterBot.createSession(Locale.ENGLISH);
 
         random = new Random();
 
         votes = new JSONObject();
         admins = new JSONObject();
         voted = new HashMap<String, Long>();
+        banned = new ArrayList<Long>();
 
         xox = new ArrayList<XOXgame>();
         rps = new ArrayList<RPSgame>();
@@ -90,6 +92,7 @@ public class OrangePeel {
         status = BotStatus.ACTIVE;
 
         eventListener = new EventListener(prefix, this);
+        challengeController = new ChallengeController(this);
 
         creation = System.currentTimeMillis();
         client = ClientFactory.createClient(token, true);
@@ -148,7 +151,8 @@ public class OrangePeel {
     }
 
     public void logError(Exception e) {
-        if (e instanceof RateLimitException) return;
+        if (e instanceof RateLimitException)
+            return;
         try {
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
@@ -171,8 +175,8 @@ public class OrangePeel {
     }
 
     public void loadAll() {
-
         try {
+
             JSONTokener parser = new JSONTokener(new FileReader("OrangePeel.opf"));
 
             JSONObject obj = (JSONObject) parser.nextValue();
@@ -222,7 +226,14 @@ public class OrangePeel {
                     Logger.warn("NO LOGGER CHANNEL!");
                 }
             }
-
+            try {
+                JSONArray ban = obj.getJSONArray("banned");
+                for (int i = 0; i < ban.length(); i++) {
+                    banned.add(ban.getLong(i));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             if (obj.has("commands")) {
                 JSONArray b = obj.getJSONArray("commands");
 
@@ -269,9 +280,16 @@ public class OrangePeel {
             e.printStackTrace();
         }
         getStatsCounter().incrementStat("loads");
+
+        try {
+            challengeController.loadAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void saveAll() {
+        challengeController.saveAll();
         JSONObject obj = new JSONObject();
         obj.put("votes", votes);
         obj.put("admins", admins);
@@ -289,6 +307,12 @@ public class OrangePeel {
                 array.put(cmd);
             }
         }
+
+        JSONArray array2 = new JSONArray();
+        for (Long l : banned) {
+            array2.put(l.longValue());
+        }
+        obj.put("banned", array2);
         obj.put("commands", array);
         if (bugReports != null) {
             obj.put("bug_reports", bugReports.getLongID());
@@ -350,8 +374,9 @@ public class OrangePeel {
 
     public void loop(long alpha) throws InterruptedException {
         uptime = alpha;
-
+        challengeController.update();
         if (alpha % 400 == 0 && client.isReady()) {
+
             playingtextindex++;
             if (playingtextindex == 1) {
                 client.changePlayingText(playingText);
@@ -594,6 +619,22 @@ public class OrangePeel {
 
     public void setLogChannel(IChannel logChannel) {
         this.logChannel = logChannel;
+    }
+
+    public ChallengeController getChallengeController() {
+        return challengeController;
+    }
+
+    public void setChallengeController(ChallengeController challengeController) {
+        this.challengeController = challengeController;
+    }
+
+    public List<Long> getBanned() {
+        return banned;
+    }
+
+    public void setBanned(List<Long> banned) {
+        this.banned = banned;
     }
 
 }

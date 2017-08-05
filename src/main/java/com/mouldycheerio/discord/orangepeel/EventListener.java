@@ -3,6 +3,10 @@ package com.mouldycheerio.discord.orangepeel;
 import java.awt.Color;
 import java.time.LocalDateTime;
 
+import com.mouldycheerio.discord.orangepeel.challenges.Challenge;
+import com.mouldycheerio.discord.orangepeel.challenges.ChallengeStatus;
+import com.mouldycheerio.discord.orangepeel.challenges.OrangePeelChallenge;
+
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
 import sx.blah.discord.handle.impl.events.guild.GuildCreateEvent;
@@ -126,6 +130,11 @@ public class EventListener {
 
     @EventSubscriber
     public void onMessageReceivedEvent(MessageReceivedEvent event) throws Exception {
+        for (Challenge challenge : orangePeel.getChallengeController().getChallanges()) {
+            if (challenge instanceof OrangePeelChallenge && challenge.getStatus() == ChallengeStatus.ACTIVE) {
+                ((OrangePeelChallenge) challenge).onMessage(event);
+            }
+        }
         orangePeel.getStatsCounter().incrementStat("messages");
         if (event.getMessage().getContent().startsWith(ourmention) || event.getMessage().getContent().startsWith(ourmention2)) {
             System.out.println("x");

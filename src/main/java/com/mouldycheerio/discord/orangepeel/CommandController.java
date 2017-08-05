@@ -7,6 +7,8 @@ import com.mouldycheerio.discord.orangepeel.commands.AddCustomCommand;
 import com.mouldycheerio.discord.orangepeel.commands.AnnounceCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ArtCommand;
 import com.mouldycheerio.discord.orangepeel.commands.AsciiCommand;
+import com.mouldycheerio.discord.orangepeel.commands.BotBanCommand;
+import com.mouldycheerio.discord.orangepeel.commands.ChallengesCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ChopperCommand;
 import com.mouldycheerio.discord.orangepeel.commands.Command;
 import com.mouldycheerio.discord.orangepeel.commands.CpuCommand;
@@ -76,6 +78,7 @@ public class CommandController {
         commands.add(new MirrorMirrorCommand());
         commands.add(new StoryCommand());
         commands.add(new RateCommand());
+        commands.add(new ChallengesCommand());
 
         commands.add(new SummonCommand());
 
@@ -97,7 +100,7 @@ public class CommandController {
         commands.add(new SetVotesCommand());
         commands.add(new SetPlayingTextCommand());
         commands.add(new SetMusicCommand());
-
+        commands.add(new BotBanCommand());
         commands.add(new AnnounceCommand());
         commands.add(new EndGamesCommand());
         commands.add(new LoadAllCommand());
@@ -114,33 +117,34 @@ public class CommandController {
     }
 
     public void onMessageReceivedEvent(MessageReceivedEvent event, String prefix) {
-
-        String msg = event.getMessage().getContent();
-        String[] parts = msg.split(" ");
-        String commandname = parts[0].substring(prefix.length());
-        for (Command c : commands) {
-            if (commandname.equalsIgnoreCase(c.getName())) {
-                if (c instanceof OrangePeelAdminCommand) {
-                    if (orangePeel.getAdmins().has(event.getAuthor().getStringID())) {
-                        if (((OrangePeelAdminCommand) c).getCommandlvl() <= orangePeel.getAdmins().getInt(event.getAuthor().getStringID())) {
-                            c.onCommand(orangePeel, orangePeel.getClient(), event.getMessage(), parts);
-                            orangePeel.getStatsCounter().incrementStat("commands");
+        if (!orangePeel.getBanned().contains(event.getAuthor().getLongID())) {
+            String msg = event.getMessage().getContent();
+            String[] parts = msg.split(" ");
+            String commandname = parts[0].substring(prefix.length());
+            for (Command c : commands) {
+                if (commandname.equalsIgnoreCase(c.getName())) {
+                    if (c instanceof OrangePeelAdminCommand) {
+                        if (orangePeel.getAdmins().has(event.getAuthor().getStringID())) {
+                            if (((OrangePeelAdminCommand) c).getCommandlvl() <= orangePeel.getAdmins().getInt(event.getAuthor().getStringID())) {
+                                c.onCommand(orangePeel, orangePeel.getClient(), event.getMessage(), parts);
+                                orangePeel.getStatsCounter().incrementStat("commands");
+                            } else {
+                                event.getMessage().reply(((OrangePeelAdminCommand) c).getNoPermText());
+                            }
                         } else {
                             event.getMessage().reply(((OrangePeelAdminCommand) c).getNoPermText());
+
                         }
                     } else {
-                        event.getMessage().reply(((OrangePeelAdminCommand) c).getNoPermText());
-
+                        c.onCommand(orangePeel, orangePeel.getClient(), event.getMessage(), parts);
+                        orangePeel.getStatsCounter().incrementStat("commands");
                     }
-                } else {
-                    c.onCommand(orangePeel, orangePeel.getClient(), event.getMessage(), parts);
-                    orangePeel.getStatsCounter().incrementStat("commands");
                 }
             }
-        }
-        if (toadd != null) {
-            commands.add(toadd);
-            toadd = null;
+            if (toadd != null) {
+                commands.add(toadd);
+                toadd = null;
+            }
         }
     }
 

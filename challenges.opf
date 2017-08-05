@@ -1,0 +1,11 @@
+{"challenges": [{
+ "maxProgress": 500,
+ "progress": 501,
+ "typeID": 1,
+ "user": {"id": 253275397444206594},
+ "desc": {
+  "name": "Timed",
+  "description": "wait one second"
+ },
+ "status": 2
+}]}
