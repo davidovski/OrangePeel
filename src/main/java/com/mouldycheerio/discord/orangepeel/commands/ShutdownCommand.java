@@ -11,6 +11,7 @@ public class ShutdownCommand extends OrangePeelAdminCommand {
         setName("shutdown");
         setDescription(new CommandDescription("shutdown", "shutdown the bot", "shutdown "));
         setCommandlvl(5);
+        addAlias("term");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

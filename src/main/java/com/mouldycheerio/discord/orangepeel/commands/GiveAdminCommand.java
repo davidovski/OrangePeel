@@ -17,6 +17,10 @@ public class GiveAdminCommand extends OrangePeelAdminCommand {
                 + "4 - System Admin [reload, loadAll, saveAll]  \n"
                 + "5 - Sytem Owner [Reboot, shutdown]", "givePermLvl <@user> <0-5>"));
         setCommandlvl(4);
+        addAlias("givePermLevel");
+        addAlias("setPermLevel");
+        addAlias("setpermlvl");
+        addAlias("setLvl");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

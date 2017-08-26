@@ -24,6 +24,7 @@ import com.mouldycheerio.discord.orangepeel.commands.ImageCommand;
 import com.mouldycheerio.discord.orangepeel.commands.LoadAllCommand;
 import com.mouldycheerio.discord.orangepeel.commands.LogCommand;
 import com.mouldycheerio.discord.orangepeel.commands.MirrorMirrorCommand;
+import com.mouldycheerio.discord.orangepeel.commands.NicknameCommand;
 import com.mouldycheerio.discord.orangepeel.commands.OrangePeelAdminCommand;
 import com.mouldycheerio.discord.orangepeel.commands.RPScommand;
 import com.mouldycheerio.discord.orangepeel.commands.RateCommand;
@@ -95,6 +96,7 @@ public class CommandController {
 
         commands.add(new AddCustomCommand());
         commands.add(new SetChannelCommand());
+        commands.add(new NicknameCommand());
         commands.add(new LogCommand());
 
         commands.add(new SetVotesCommand());
@@ -111,7 +113,8 @@ public class CommandController {
 
         commands.add(new ShutdownCommand());
         commands.add(new RebootCommand());
-
+        commands.add(new SimpleCustomCmd(">>", "<<-->>", "<<<"));
+        commands.add(new SimpleCustomCmd("invite", "Invite me!!", "Add me to your own server! https://goo.gl/ZcLxNJ"));
         commands.add(new HelpCommand(commands));
 
     }
@@ -122,7 +125,14 @@ public class CommandController {
             String[] parts = msg.split(" ");
             String commandname = parts[0].substring(prefix.length());
             for (Command c : commands) {
-                if (commandname.equalsIgnoreCase(c.getName())) {
+                boolean isCommand = commandname.equalsIgnoreCase(c.getName());
+                for (String string : c.getAlias()) {
+                    if (commandname.equalsIgnoreCase(string)) {
+                        isCommand = true;
+                        break;
+                    }
+                }
+                if (isCommand) {
                     if (c instanceof OrangePeelAdminCommand) {
                         if (orangePeel.getAdmins().has(event.getAuthor().getStringID())) {
                             if (((OrangePeelAdminCommand) c).getCommandlvl() <= orangePeel.getAdmins().getInt(event.getAuthor().getStringID())) {

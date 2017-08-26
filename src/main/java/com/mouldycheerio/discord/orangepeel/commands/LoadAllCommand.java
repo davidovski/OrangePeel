@@ -10,6 +10,7 @@ public class LoadAllCommand extends OrangePeelAdminCommand {
         setName("loadAll");
         setDescription(new CommandDescription("loadAll", "Load all files", "loadAll"));
         setCommandlvl(4);
+        addAlias("load");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -11,6 +11,7 @@ public class SetVotesCommand extends OrangePeelAdminCommand {
         setName("setVotes");
         setDescription(new CommandDescription("setVotes", "Set the amount of votes a user has (Please don't abuse)", "setVotes <@user> <value>"));
         setCommandlvl(3);
+        addAlias("setV");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

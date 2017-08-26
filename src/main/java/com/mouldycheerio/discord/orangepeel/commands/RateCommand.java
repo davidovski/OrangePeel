@@ -28,7 +28,7 @@ public class RateCommand extends OrangePeelCommand {
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         IUser u = commandMessage.getAuthor();
-        if (args.length > 1) {
+        if (args.length >= 2) {
             u = commandMessage.getGuild().getUserByID(Long.parseLong(PeelingUtils.mentionToId(args[1], commandMessage.getGuild())));
         }
 
@@ -82,21 +82,47 @@ public class RateCommand extends OrangePeelCommand {
                 }
                 namePoints -= 1;
             }
-
-
             double maxNamePoints = u.getName().length() * 10.0;
             double nameRating = namePoints / maxNamePoints;
+
+            boolean hasnick = false;
+            double nickRating = 0.0;
+            if (u.getNicknameForGuild(commandMessage.getGuild()) != null) {
+                hasnick = true;
+                int nickPoints = 0;
+                for (char c : u.getNicknameForGuild(commandMessage.getGuild()).toCharArray()) {
+                    if (Character.isDigit(c)) {
+                        nickPoints += 8;
+                    } else if (Character.isLetter(c)) {
+                        if (Character.isLowerCase(c)) {
+                            nickPoints += 4;
+                        } else {
+                            nickPoints += 5;
+
+                        }
+                    } else {
+                        nickPoints += 10;
+                    }
+
+                }
+                double maxnickPoints = u.getNicknameForGuild(commandMessage.getGuild()).length() * 10.0;
+                nickRating = nickPoints / maxnickPoints;
+            } else {
+
+            }
+
             int c1 = ammountOfTimes(u.getDiscriminator(), u.getDiscriminator().charAt(0));
             int c2 = ammountOfTimes(u.getDiscriminator(), u.getDiscriminator().charAt(1));
             int c3 = ammountOfTimes(u.getDiscriminator(), u.getDiscriminator().charAt(2));
             int c4 = ammountOfTimes(u.getDiscriminator(), u.getDiscriminator().charAt(3));
 
-
             double discrimRating = ((c1 + c2 + c3 + c4) / 4.0) / 4.0;
-            double overall = (imageRating + discrimRating + nameRating) / 3.0;
-            m.edit("__" + u.getName() +"'s Ratings__\n" + "`Username:` " + numbertoGrading(nameRating) + "\n" + "`Discriminator:` " + numbertoGrading(discrimRating) + "\n" + "`Avatar:` "
-                    + numbertoGrading(urlRating) + "\n" + "**OVERALL GRADE:**: " + numbertoGrading(overall) + "!");
-            orangepeel.getStatsCounter().incrementStat("rates");
+
+                double overall = (urlRating + discrimRating + nameRating + nickRating) / 4.0;
+                m.edit("__" + u.getName() + "'s Ratings__\n" + "`Username:` " + numbertoGrading(nameRating) + "\n" + "`Discriminator:` " + numbertoGrading(discrimRating) + "\n"
+                        + "`Avatar:` " + numbertoGrading(urlRating) + "\n" + "`Nickname:` " + numbertoGrading(nickRating) + "\n" + "**OVERALL GRADE:**: " + numbertoGrading(overall)
+                        + "!");
+                orangepeel.getStatsCounter().incrementStat("rates");
         } catch (Exception e) {
             e.printStackTrace();
             StringWriter sw = new StringWriter();
@@ -104,7 +130,7 @@ public class RateCommand extends OrangePeelCommand {
             e.printStackTrace(pw);
             sw.toString();
             m.edit("Oppsy, something went wrong!\n```" + sw + "```");
-            orangepeel.logError(e,commandMessage);
+            orangepeel.logError(e, commandMessage);
         }
         m.getChannel().setTypingStatus(false);
     }
@@ -121,41 +147,42 @@ public class RateCommand extends OrangePeelCommand {
 
     public String numbertoGrading(double n) {
         String grade = "";
-
-        if (n < 0.1) {
+        int percent = (int) Math.ceil(n * 100);
+        if (percent < 10) {
             grade = "F-";
-        } else if (n < 0.2) {
+        } else if (percent < 20) {
             grade = "F";
-        } else if (n < 0.25) {
+        } else if (percent < 25) {
             grade = "F+";
-        } else if (n < 0.3) {
+        } else if (percent < 30) {
             grade = "E-";
-        } else if (n < 0.35) {
+        } else if (percent < 35) {
             grade = "E";
-        } else if (n < 0.40) {
+        } else if (percent < 40) {
             grade = "E+";
-        } else if (n < 0.45) {
+        } else if (percent < 45) {
             grade = "C-";
-        } else if (n < 0.5) {
+        } else if (percent < 50) {
             grade = "C";
-        } else if (n < 0.55) {
+        } else if (percent < 55) {
             grade = "C+";
-        } else if (n < 0.6) {
+        } else if (percent < 60) {
             grade = "B-";
-        } else if (n < 0.65) {
+        } else if (percent < 65) {
             grade = "B";
-        } else if (n < 0.7) {
+        } else if (percent < 70) {
             grade = "B+";
-        } else if (n < 0.85) {
+        } else if (percent < 85) {
             grade = "A-";
-        } else if (n < 0.9) {
+        } else if (percent < 9) {
             grade = "A";
-        } else if (n < 0.95) {
+        } else if (percent < 99) {
             grade = "A+";
         } else {
             grade = "★";
         }
-        return "**" + grade + "** *(" + Math.round(n * 100) + "%)*";
+
+        return "**" + grade + "** *(" + percent + "%)*";
     }
 
     private static void download(File file, String urlString) throws MalformedURLException, IOException, ProtocolException, FileNotFoundException {

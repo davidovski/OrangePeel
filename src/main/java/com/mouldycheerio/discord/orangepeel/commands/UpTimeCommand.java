@@ -9,6 +9,8 @@ public class UpTimeCommand extends OrangePeelCommand {
     public UpTimeCommand() {
         setName("uptime");
         setDescription(new CommandDescription("uptime", "Show the bot's uptime.", "uptime"));
+        addAlias("ontime");
+        addAlias("ut");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

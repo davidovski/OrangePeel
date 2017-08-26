@@ -37,6 +37,6 @@ public class CommandDescription {
 
     @Override
     public String toString() {
-        return "**" + title + "**\n" + text;
+        return "**" + title + ":** " + text;
     }
 }

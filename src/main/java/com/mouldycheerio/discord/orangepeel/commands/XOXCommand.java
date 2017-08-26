@@ -10,6 +10,9 @@ public class XOXCommand extends OrangePeelCommand {
     public XOXCommand() {
         setName("xox");
         setDescription(new CommandDescription("XOX", "Play Tic Tac Toe", "xox"));
+        addAlias("NaughtsAndCrosses");
+        addAlias("tictactoe");
+        addAlias("nac");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

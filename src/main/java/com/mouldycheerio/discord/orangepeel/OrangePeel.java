@@ -251,7 +251,9 @@ public class OrangePeel {
                         }
                     }
                     if (doit) {
-                        eventListener.getCommandController().getCommands().add(new SimpleCustomCmd(cmdname, desc, cmdtext));
+                        SimpleCustomCmd scc = new SimpleCustomCmd(cmdname, desc, cmdtext);
+                        scc.setShowInHelp(false);
+                        eventListener.getCommandController().getCommands().add(scc);
                     }
                 }
 

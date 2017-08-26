@@ -19,6 +19,7 @@ public class BotBanCommand extends OrangePeelAdminCommand {
         setCommandlvl(3);
         vars = new HashMap<String, String>();
         vars.put("pi", "" + Math.PI);
+        addAlias("bb");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

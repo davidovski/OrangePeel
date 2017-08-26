@@ -31,6 +31,7 @@ public class FakeUserCommand extends OrangePeelAdminCommand {
         setDescription(new CommandDescription("Generate User", "Generates a random user.", "generateUser"));
         setCommandlvl(1);
         setNoPermText("You can't do this! (but yours friend might be able to...");
+        addAlias("fakePerson");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

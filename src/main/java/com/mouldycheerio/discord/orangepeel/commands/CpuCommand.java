@@ -28,6 +28,8 @@ public class CpuCommand extends OrangePeelAdminCommand {
         setName("cpu");
         setDescription(new CommandDescription("CPU", "Prints the stats regarding the cpu and memory usage of the bot.", "cpu"));
         setCommandlvl(1);
+        addAlias("nerdstats");
+        addAlias("nerd");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -16,6 +16,7 @@ public class StoryCommand extends OrangePeelCommand {
     public StoryCommand() {
         setName("story");
         setDescription(new CommandDescription("story", "story!", "story"));
+        addAlias("bedtimestory");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -10,6 +10,9 @@ public class DownVoteCommand extends OrangePeelCommand {
     public DownVoteCommand() {
         setName("downvote");
         setDescription(new CommandDescription("Downvote", "Show some hate by taking a vote from a person", "downvote <mention user>"));
+        addAlias("dv");
+        addAlias("downv");
+        addAlias("dislike");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

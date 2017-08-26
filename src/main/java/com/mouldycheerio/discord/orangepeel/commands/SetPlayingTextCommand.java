@@ -10,6 +10,9 @@ public class SetPlayingTextCommand extends OrangePeelAdminCommand {
         setName("setPlayingText");
         setDescription(new CommandDescription("Set Playing Text", "Set what the bot is playing", "setPlayingText <text>"));
         setCommandlvl(3);
+        addAlias("playing");
+        addAlias("setPlaying");
+        addAlias("setPlayingtxt");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

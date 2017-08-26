@@ -10,6 +10,7 @@ public class RPScommand extends OrangePeelCommand {
     public RPScommand() {
         setName("rps");
         setDescription(new CommandDescription("Rock Paper Scissors", "Play rock-paper-scissors", "rps"));
+        addAlias("RockPaperScissors");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

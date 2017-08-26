@@ -10,6 +10,7 @@ public class SaveAllCommand extends OrangePeelAdminCommand {
         setName("saveAll");
         setDescription(new CommandDescription("saveAll", "Save all files", "saveAll"));
         setCommandlvl(4);
+        addAlias("save");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

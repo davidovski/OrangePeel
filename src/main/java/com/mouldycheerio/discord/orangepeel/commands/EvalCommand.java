@@ -20,6 +20,7 @@ public class EvalCommand extends OrangePeelAdminCommand {
         setCommandlvl(1);
         vars = new HashMap<String, String>();
         vars.put("pi", "" + Math.PI);
+        addAlias("maths");
     }
 
     public static double eval(final String str) {

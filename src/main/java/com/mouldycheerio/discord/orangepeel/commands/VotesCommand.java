@@ -13,6 +13,7 @@ public class VotesCommand extends OrangePeelCommand {
     public VotesCommand() {
         setName("votes");
         setDescription(new CommandDescription("votes", "How popular are they?", "votes <@mention>"));
+        addAlias("howpopular");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
@@ -22,7 +23,7 @@ public class VotesCommand extends OrangePeelCommand {
         if (orangepeel.getVotes().has(id))  {
             commandMessage.getChannel().sendMessage("That person has "  + orangepeel.getVotes().getInt(id) + " votes!");
         } else {
-            commandMessage.getChannel().sendMessage("Erm, who is that? They must either be so unpopular!");
+            commandMessage.getChannel().sendMessage("Erm, who is that? They must be so unpopular!");
         } return;
         }
 

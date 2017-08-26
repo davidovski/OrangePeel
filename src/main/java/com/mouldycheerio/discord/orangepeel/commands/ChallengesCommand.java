@@ -17,7 +17,9 @@ import sx.blah.discord.handle.obj.IUser;
 public class ChallengesCommand extends OrangePeelCommand {
     public ChallengesCommand() {
         setName("challenges");
-        setDescription(new CommandDescription("Challenges", "Hey!", "challenges"));
+        setDescription(new CommandDescription("Challenges", "lists your challenges and goals", "challenges"));
+        addAlias("challenge");
+        addAlias("ch");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -15,6 +15,7 @@ public class SummonCommand extends OrangePeelCommand {
     public SummonCommand() {
         setName("summon");
         setDescription(new CommandDescription("summon", "Add the bot to your current voice channel.", "summon"));
+        addAlias("setVoice");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

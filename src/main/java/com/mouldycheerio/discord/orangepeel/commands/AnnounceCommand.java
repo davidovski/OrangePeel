@@ -15,6 +15,7 @@ public class AnnounceCommand extends OrangePeelAdminCommand {
         setDescription(new CommandDescription("announce", "Announce something\n" + "`-e` mention everyone\n" + "`-p` Private Messages (Default)\n"
                 + "`-a` announcements channel for each server \n" + "`-m` main channel \n" + "`-h` current channel \n", "announce -[p, a, m, h, e] <message>"));
         setCommandlvl(3);
+        addAlias("say");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

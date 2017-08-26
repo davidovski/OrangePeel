@@ -11,6 +11,8 @@ public class AddCustomCommand extends OrangePeelAdminCommand {
         setName("newCmd");
         setDescription(new CommandDescription("newCmd", "create a new command ", "newCmd <command> <text>"));
         setCommandlvl(2);
+        addAlias("newCommand");
+        addAlias("addCommand");
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -11,7 +11,7 @@ import sx.blah.discord.handle.obj.IMessage;
 public class SendFileCommand extends OrangePeelAdminCommand {
     public SendFileCommand() {
         setName("opf");
-        setDescription(new CommandDescription("opf", "Send ~~nudes~~ the data file", "reopfboot "));
+        setDescription(new CommandDescription("opf", "Send the data file", "reopfboot "));
         setCommandlvl(4);
     }
 
