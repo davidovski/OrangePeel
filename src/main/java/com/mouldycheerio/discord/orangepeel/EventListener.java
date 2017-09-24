@@ -25,6 +25,7 @@ public class EventListener {
 
     public EventListener(String prefix, OrangePeel orangePeel) {
         this.prefix = prefix;
+
         this.orangePeel = orangePeel;
         commandController = new CommandController(orangePeel);
 

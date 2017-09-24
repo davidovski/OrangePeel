@@ -116,7 +116,9 @@ public class OrangePeel {
         }
         if (equals && !m.getContent().equals("Game Loading...")) {
             if (game.isUserTurn()) {
-                m.edit(m.getContent().replaceAll(number, "negative_squared_cross_mark"));
+                // TODO make peel play here
+                m.edit(m.getContent().replace(number, "negative_squared_cross_mark").replace(playXOXturn(game, null, false), "o2"));
+
                 Thread.sleep(200);
                 m.removeReaction(reaction);
 
@@ -217,7 +219,6 @@ public class OrangePeel {
                         if (c.getLongID() == obj.getLong("logchannel")) {
 
                             logChannel = c;
-                            Logger.info("found logger channel");
                         }
                     }
                 }
@@ -374,6 +375,47 @@ public class OrangePeel {
         }
     }
 
+    public String playXOXturn(XOXgame g, Iterator<XOXgame> it, boolean edit) throws InterruptedException {
+
+        IMessage m = g.getMessage();
+        List<IReaction> mine = new ArrayList<IReaction>();
+        for (IReaction iReaction : m.getReactions()) {
+            if (iReaction.getUsers().size() > 0 && iReaction.getUsers().contains(client.getOurUser())) {
+                mine.add(iReaction);
+            }
+        }
+        // if (mine.size() == 0) {
+        // xox.remove(id);
+        // m.edit("DRAW!");
+        // return;
+        // }
+        Logger.warn("chosing out of:" + mine.size());
+        String nextMove = g.getNextMove();
+        if (nextMove != "") {
+            Emoji e = EmojiManager.getForAlias(nextMove);
+            IReaction myturn = m.getReactionByUnicode(e);
+            Logger.info("I choose " + myturn.getUnicodeEmoji().getUnicode());
+            Thread.sleep(200);
+
+            m.removeReaction(myturn);
+            Thread.sleep(200);
+
+            if (edit) {
+                m.edit(m.getContent().replaceAll(myturn.getUnicodeEmoji().getAliases().get(0), "o2"));
+            }
+
+            g.toggleUserTurn();
+            g.nextTurn();
+            return myturn.getUnicodeEmoji().getAliases().get(0);
+        } else {
+            if (it != null) {
+                it.remove();
+            }
+        }
+        return "";
+
+    }
+
     public void loop(long alpha) throws InterruptedException {
         uptime = alpha;
         challengeController.update();
@@ -433,38 +475,7 @@ public class OrangePeel {
                 XOXgame g = it.next();
 
                 if (!g.isUserTurn()) {
-                    IMessage m = g.getMessage();
-                    List<IReaction> mine = new ArrayList<IReaction>();
-                    for (IReaction iReaction : m.getReactions()) {
-                        if (iReaction.getClientReacted()) {
-                            mine.add(iReaction);
-                        }
-                    }
-                    // if (mine.size() == 0) {
-                    // xox.remove(id);
-                    // m.edit("DRAW!");
-                    // return;
-                    // }
-                    Logger.warn("chosing out of:" + mine.size());
-                    String nextMove = g.getNextMove();
-                    if (nextMove != "") {
-                        Emoji e = EmojiManager.getForAlias(nextMove);
-                        IReaction myturn = m.getReactionByUnicode(e);
-                        Logger.info("I choose " + myturn.getUnicodeEmoji().getUnicode());
-                        Thread.sleep(200);
-
-                        m.removeReaction(myturn);
-                        Thread.sleep(200);
-
-                        m.edit(m.getContent().replaceAll(myturn.getUnicodeEmoji().getAliases().get(0), "o2"));
-
-                        g.toggleUserTurn();
-                        g.nextTurn();
-                    } else {
-                        it.remove();
-                        return;
-                    }
-
+                    playXOXturn(g, it, true);
                 }
 
                 if (g.getMessage().getContent().equals("Game Loading...")) {

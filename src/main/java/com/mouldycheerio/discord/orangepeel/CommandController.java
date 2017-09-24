@@ -26,6 +26,7 @@ import com.mouldycheerio.discord.orangepeel.commands.LogCommand;
 import com.mouldycheerio.discord.orangepeel.commands.MirrorMirrorCommand;
 import com.mouldycheerio.discord.orangepeel.commands.NicknameCommand;
 import com.mouldycheerio.discord.orangepeel.commands.OrangePeelAdminCommand;
+import com.mouldycheerio.discord.orangepeel.commands.QuickPlayCommand;
 import com.mouldycheerio.discord.orangepeel.commands.RPScommand;
 import com.mouldycheerio.discord.orangepeel.commands.RateCommand;
 import com.mouldycheerio.discord.orangepeel.commands.RebootCommand;
@@ -82,6 +83,7 @@ public class CommandController {
         commands.add(new ChallengesCommand());
 
         commands.add(new SummonCommand());
+        commands.add(new QuickPlayCommand());
 
         commands.add(new ImageCommand());
         commands.add(new ArtCommand());

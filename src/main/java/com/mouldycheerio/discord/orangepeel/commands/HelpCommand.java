@@ -108,7 +108,7 @@ public class HelpCommand extends OrangePeelCommand {
 
             }
             pm.sendMessage(three.build());
-//            pm.sendMessage("**Add me to your server: ** https://goo.gl/ZcLxNJ\n" + "Join the help server: https://discord.me/OrangePeel");
+            pm.sendMessage("https://discord.gg/W7EATbm");
             orangepeel.getStatsCounter().incrementStat("helped");
             // https://discordapp.com/oauth2/authorize?client_id=306115875784622080&scope=bot
         }
