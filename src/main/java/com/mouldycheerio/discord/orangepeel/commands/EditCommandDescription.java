@@ -13,6 +13,7 @@ public class EditCommandDescription extends OrangePeelAdminCommand {
                 "edit a custom command\n" + "`-d` edit the description\n" + "`-n` edit the name\n" + "`-t` edit the text\n" + "`-r` remove whole command (perm required `3`)",
                 "editCmd -[d, n, t, r] <command> <new>"));
         setCommandlvl(2);
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

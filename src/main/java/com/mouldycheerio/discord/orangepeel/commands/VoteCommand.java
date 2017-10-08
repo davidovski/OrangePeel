@@ -13,6 +13,7 @@ public class VoteCommand extends OrangePeelCommand {
         setDescription(new CommandDescription("Vote", "Vote for your favourite person!", "vote <mentionuser>"));
         addAlias("v");
         addAlias("like");
+        setCatagory(CommandCatagory.VOTING);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -13,6 +13,7 @@ public class XOXCommand extends OrangePeelCommand {
         addAlias("NaughtsAndCrosses");
         addAlias("tictactoe");
         addAlias("nac");
+        setCatagory(CommandCatagory.GAMES);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

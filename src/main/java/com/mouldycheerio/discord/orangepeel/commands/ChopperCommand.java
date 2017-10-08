@@ -10,6 +10,7 @@ public class ChopperCommand extends OrangePeelCommand {
         setName("chopper");
         setDescription(new CommandDescription("Chopper", "Get the chopper!", "chopper"));
         addAlias("helicopter");
+        setCatagory(CommandCatagory.FUN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

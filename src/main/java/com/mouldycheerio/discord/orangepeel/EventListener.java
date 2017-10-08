@@ -2,18 +2,24 @@ package com.mouldycheerio.discord.orangepeel;
 
 import java.awt.Color;
 import java.time.LocalDateTime;
+import java.util.EnumSet;
 
 import com.mouldycheerio.discord.orangepeel.challenges.Challenge;
 import com.mouldycheerio.discord.orangepeel.challenges.ChallengeStatus;
 import com.mouldycheerio.discord.orangepeel.challenges.OrangePeelChallenge;
+import com.mouldycheerio.discord.orangepeel.commands.HangManCommand;
 
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
 import sx.blah.discord.handle.impl.events.guild.GuildCreateEvent;
+import sx.blah.discord.handle.impl.events.guild.channel.ChannelCreateEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.message.reaction.ReactionAddEvent;
+import sx.blah.discord.handle.impl.events.guild.member.UserJoinEvent;
+import sx.blah.discord.handle.impl.events.guild.member.UserLeaveEvent;
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IUser;
+import sx.blah.discord.handle.obj.Permissions;
 import sx.blah.discord.util.EmbedBuilder;
 
 public class EventListener {
@@ -31,6 +37,15 @@ public class EventListener {
 
     }
 
+
+    @EventSubscriber
+    public void onChannelCreateEvent(ChannelCreateEvent event) {
+        if (orangePeel.getMuted().containsKey(event.getGuild().getStringID())) {
+            EnumSet<Permissions> toremove = EnumSet.of(Permissions.SEND_MESSAGES);
+            EnumSet<Permissions> toadd = EnumSet.noneOf(Permissions.class);
+            event.getChannel().overrideRolePermissions(event.getGuild().getRoleByID(Long.parseLong(orangePeel.getMuted().get(event.getGuild().getStringID()))), toadd, toremove);
+        }
+    }
 
     @EventSubscriber
     public void onInviteEvent(GuildCreateEvent event) throws InterruptedException {
@@ -70,6 +85,8 @@ public class EventListener {
         Logger.raw(user.getStringID());
         Logger.raw("==========");
 
+
+        commandController.getCommands().add(new HangManCommand(orangePeel.getClient()));
         orangePeel.getClient().changePlayingText(orangePeel.getPlayingText());
         ourmention = "<@" + orangePeel.getClient().getOurUser().getStringID() + ">";
         ourmention2 = "<@!" + orangePeel.getClient().getOurUser().getStringID() + ">";
@@ -90,6 +107,26 @@ public class EventListener {
             logChannel.sendMessage(embedBuilder.build());
         }
 
+    }
+
+    @EventSubscriber
+    public void onUserLeaveEvent(UserLeaveEvent event) {
+        if (orangePeel.getGreet().containsKey(event.getGuild().getStringID())) {
+            event.getGuild().getChannelByID(Long.parseLong(orangePeel.getGreet().get(event.getGuild().getStringID())))
+                    .sendMessage("Aww, " + event.getUser().getName() + "#" + event.getUser().getDiscriminator() + "  has just left! :cry:");
+        }
+    }
+
+    @EventSubscriber
+    public void onUserJoinEvent(UserJoinEvent event) {
+        if (orangePeel.getGreet().containsKey(event.getGuild().getStringID())) {
+            event.getGuild().getChannelByID(Long.parseLong(orangePeel.getGreet().get(event.getGuild().getStringID())))
+                    .sendMessage("Welcome, <@" + event.getUser().getStringID() + ">  to " + event.getGuild().getName() + "! :joy:");
+        }
+
+        if (orangePeel.getAutoRole().containsKey(event.getGuild().getStringID())) {
+            event.getUser().addRole(event.getGuild().getRoleByID(Long.parseLong(orangePeel.getAutoRole().get(event.getGuild().getStringID()))));
+        }
     }
 
     @EventSubscriber

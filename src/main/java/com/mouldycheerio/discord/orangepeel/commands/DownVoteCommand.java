@@ -13,6 +13,7 @@ public class DownVoteCommand extends OrangePeelCommand {
         addAlias("dv");
         addAlias("downv");
         addAlias("dislike");
+        setCatagory(CommandCatagory.VOTING);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

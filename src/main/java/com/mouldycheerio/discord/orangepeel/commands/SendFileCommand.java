@@ -13,6 +13,7 @@ public class SendFileCommand extends OrangePeelAdminCommand {
         setName("opf");
         setDescription(new CommandDescription("opf", "Send the data file", "reopfboot "));
         setCommandlvl(4);
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

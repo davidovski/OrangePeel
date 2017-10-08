@@ -12,6 +12,7 @@ public class RebootCommand extends OrangePeelAdminCommand {
         setDescription(new CommandDescription("reboot", "reboot the bot", "reboot "));
         setCommandlvl(5);
         addAlias("restart");
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

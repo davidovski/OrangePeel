@@ -10,6 +10,7 @@ public class NicknameCommand extends OrangePeelAdminCommand {
         setName("nickname");
         setDescription(new CommandDescription("nickname", "changes my nickname for the current Guild!", "nickname <name>"));
         setCommandlvl(3);
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

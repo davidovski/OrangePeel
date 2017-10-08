@@ -11,6 +11,7 @@ public class ReloadCommand extends OrangePeelAdminCommand {
         setDescription(new CommandDescription("reload", "reload all ", "reload"));
         setCommandlvl(4);
         addAlias("rl");
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -5,6 +5,7 @@ import java.util.List;
 
 public abstract class OrangePeelCommand implements Command {
 
+    private CommandCatagory catagory = CommandCatagory.OTHER;
     private String name;
     private CommandDescription description;
     private List<String> alias;
@@ -38,5 +39,13 @@ public abstract class OrangePeelCommand implements Command {
 
     public void setAlias(List<String> aliases) {
         this.alias = alias;
+    }
+
+    public CommandCatagory getCatagory() {
+        return catagory;
+    }
+
+    public void setCatagory(CommandCatagory catagory) {
+        this.catagory = catagory;
     }
 }

@@ -13,6 +13,7 @@ public class SetPlayingTextCommand extends OrangePeelAdminCommand {
         addAlias("playing");
         addAlias("setPlaying");
         addAlias("setPlayingtxt");
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -16,6 +16,7 @@ public class EndGamesCommand extends OrangePeelAdminCommand {
         setDescription(new CommandDescription("endGames", "kills all currently running games", "endGames"));
         setCommandlvl(3);
         addAlias("killfun");
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

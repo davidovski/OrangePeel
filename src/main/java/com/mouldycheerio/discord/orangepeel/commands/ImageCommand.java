@@ -17,6 +17,7 @@ import sx.blah.discord.handle.obj.IMessage;
 public class ImageCommand extends OrangePeelCommand {
     public ImageCommand() {
         setName("image");
+        setCatagory(CommandCatagory.DEBUG);
         setDescription(new CommandDescription("image", "image", "image"));
     }
 

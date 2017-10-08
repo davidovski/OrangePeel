@@ -20,6 +20,7 @@ public class HeyCommand extends OrangePeelCommand {
     public HeyCommand() {
         setName("hey");
         setDescription(new CommandDescription("Hey", "Hey!", "hey"));
+        setCatagory(CommandCatagory.DEBUG);
 
     }
 

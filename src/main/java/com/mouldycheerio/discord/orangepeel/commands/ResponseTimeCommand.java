@@ -11,6 +11,7 @@ public class ResponseTimeCommand extends OrangePeelCommand {
         setDescription(new CommandDescription("Ping", "Find out how fast the bots running", "ping"));
         addAlias("pi");
         addAlias("pong");
+        setCatagory(CommandCatagory.ABOUT);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

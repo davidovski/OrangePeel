@@ -26,6 +26,7 @@ public class AsciiCommand extends OrangePeelAdminCommand {
         setDescription(new CommandDescription("ascii", "creates a text art from your message", "ascii <txt>"));
         setCommandlvl(1);
         setNoPermText("You can't do this! (but yours friend might be able to...");
+        setCatagory(CommandCatagory.UTIL);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

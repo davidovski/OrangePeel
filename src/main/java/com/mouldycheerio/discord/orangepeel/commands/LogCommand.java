@@ -13,6 +13,7 @@ public class LogCommand extends OrangePeelAdminCommand {
         setName("log");
         setDescription(new CommandDescription("log", "Append something to the bot's log.", "log <message>"));
         setCommandlvl(2);
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

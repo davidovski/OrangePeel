@@ -14,6 +14,7 @@ public class VotesCommand extends OrangePeelCommand {
         setName("votes");
         setDescription(new CommandDescription("votes", "How popular are they?", "votes <@mention>"));
         addAlias("howpopular");
+        setCatagory(CommandCatagory.VOTING);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

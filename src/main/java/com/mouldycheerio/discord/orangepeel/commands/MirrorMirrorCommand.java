@@ -9,6 +9,7 @@ public class MirrorMirrorCommand extends OrangePeelCommand {
     public MirrorMirrorCommand() {
         setName("mirror");
         setDescription(new CommandDescription("Mirror Mirror on the wall...", "who is the fairest of them all?", "mirror"));
+        setCatagory(CommandCatagory.FUN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -25,13 +25,12 @@ import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.EmbedBuilder;
 
-public class FakeUserCommand extends OrangePeelAdminCommand {
+public class FakeUserCommand extends OrangePeelCommand {
     public FakeUserCommand() {
         setName("generateUser");
         setDescription(new CommandDescription("Generate User", "Generates a random user.", "generateUser"));
-        setCommandlvl(1);
-        setNoPermText("You can't do this! (but yours friend might be able to...");
         addAlias("fakePerson");
+        setCatagory(CommandCatagory.FUN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

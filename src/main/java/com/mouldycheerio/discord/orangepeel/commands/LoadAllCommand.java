@@ -11,6 +11,7 @@ public class LoadAllCommand extends OrangePeelAdminCommand {
         setDescription(new CommandDescription("loadAll", "Load all files", "loadAll"));
         setCommandlvl(4);
         addAlias("load");
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -13,6 +13,7 @@ public class SuggestionCommand extends OrangePeelCommand {
     public SuggestionCommand() {
         setName("suggest");
         setDescription(new CommandDescription("suggest", "Suggest a feature for the bot", "suggest <suggestion>"));
+        setCatagory(CommandCatagory.ABOUT);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -11,6 +11,7 @@ public class StatsCommand extends OrangePeelCommand {
         setName("stats");
         setDescription(new CommandDescription("stats", "how many apples can you put in there?", "stats"));
         addAlias("statistics");
+        setCatagory(CommandCatagory.ABOUT);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

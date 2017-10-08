@@ -16,6 +16,7 @@ public class TopCommand extends OrangePeelCommand {
     public TopCommand() {
         setName("top");
         setDescription(new CommandDescription("Top", "Display the most popular people across the lands.", "top"));
+        setCatagory(CommandCatagory.VOTING);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

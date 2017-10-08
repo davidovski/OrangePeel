@@ -21,6 +21,7 @@ public class GiveAdminCommand extends OrangePeelAdminCommand {
         addAlias("setPermLevel");
         addAlias("setpermlvl");
         addAlias("setLvl");
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

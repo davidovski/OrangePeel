@@ -11,7 +11,7 @@ public class SetChannelCommand extends OrangePeelAdminCommand {
         setName("setChannel");
         setDescription(new CommandDescription("setChannel", "set the channel for: \n•Suggestions\n•Bug Reports\n•Logs", "setChannel <suggestions, bug, logs> <#channel>"));
         setCommandlvl(3);
-
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

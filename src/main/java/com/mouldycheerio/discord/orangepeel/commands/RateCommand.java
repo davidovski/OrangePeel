@@ -24,6 +24,7 @@ public class RateCommand extends OrangePeelCommand {
     public RateCommand() {
         setName("rate");
         setDescription(new CommandDescription("rate", "rate you on certain stuff...", "rate"));
+        setCatagory(CommandCatagory.GAMES);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

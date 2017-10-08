@@ -21,6 +21,7 @@ public class EvalCommand extends OrangePeelAdminCommand {
         vars = new HashMap<String, String>();
         vars.put("pi", "" + Math.PI);
         addAlias("maths");
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public static double eval(final String str) {

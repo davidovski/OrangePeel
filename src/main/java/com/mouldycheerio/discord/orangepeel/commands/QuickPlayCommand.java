@@ -23,6 +23,7 @@ public class QuickPlayCommand extends OrangePeelCommand {
         setDescription(new CommandDescription("Start Quick Think Act", "Start a game of quick! Think! Act!.\nAn admin must run this command to avoid spam.", "qta"));
         addAlias("startQTA");
         addAlias("startQuickGame");
+        setCatagory(CommandCatagory.GAMES);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

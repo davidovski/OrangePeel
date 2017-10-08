@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mouldycheerio.discord.orangepeel.commands.AddCustomCommand;
+import com.mouldycheerio.discord.orangepeel.commands.AddPerServerCustomCommand;
 import com.mouldycheerio.discord.orangepeel.commands.AnnounceCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ArtCommand;
 import com.mouldycheerio.discord.orangepeel.commands.AsciiCommand;
@@ -11,6 +12,7 @@ import com.mouldycheerio.discord.orangepeel.commands.BotBanCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ChallengesCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ChopperCommand;
 import com.mouldycheerio.discord.orangepeel.commands.Command;
+import com.mouldycheerio.discord.orangepeel.commands.CommandCatagory;
 import com.mouldycheerio.discord.orangepeel.commands.CpuCommand;
 import com.mouldycheerio.discord.orangepeel.commands.DownVoteCommand;
 import com.mouldycheerio.discord.orangepeel.commands.EndGamesCommand;
@@ -26,6 +28,7 @@ import com.mouldycheerio.discord.orangepeel.commands.LogCommand;
 import com.mouldycheerio.discord.orangepeel.commands.MirrorMirrorCommand;
 import com.mouldycheerio.discord.orangepeel.commands.NicknameCommand;
 import com.mouldycheerio.discord.orangepeel.commands.OrangePeelAdminCommand;
+import com.mouldycheerio.discord.orangepeel.commands.PerServerCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.QuickPlayCommand;
 import com.mouldycheerio.discord.orangepeel.commands.RPScommand;
 import com.mouldycheerio.discord.orangepeel.commands.RateCommand;
@@ -51,6 +54,13 @@ import com.mouldycheerio.discord.orangepeel.commands.UpTimeCommand;
 import com.mouldycheerio.discord.orangepeel.commands.VoteCommand;
 import com.mouldycheerio.discord.orangepeel.commands.VotesCommand;
 import com.mouldycheerio.discord.orangepeel.commands.XOXCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.BanCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.KickCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.MuteCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.PurgeCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.SetupCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.UnBanCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.UnMuteCommand;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 
@@ -66,8 +76,17 @@ public class CommandController {
         commands.add(new HeyCommand());
         commands.add(new UpTimeCommand());
         commands.add(new VoteCommand());
+        commands.add(new MuteCommand());
+        commands.add(new UnMuteCommand());
+
+        commands.add(new KickCommand());
+        commands.add(new BanCommand());
+        commands.add(new UnBanCommand());
+        commands.add(new PurgeCommand());
+
         commands.add(new DownVoteCommand());
         commands.add(new ChopperCommand());
+        commands.add(new SetupCommand());
         commands.add(new ResponseTimeCommand());
         commands.add(new XOXCommand());
         commands.add(new RPScommand());
@@ -82,8 +101,11 @@ public class CommandController {
         commands.add(new RateCommand());
         commands.add(new ChallengesCommand());
 
+        commands.add(new AddPerServerCustomCommand());
+
         commands.add(new SummonCommand());
         commands.add(new QuickPlayCommand());
+
 
         commands.add(new ImageCommand());
         commands.add(new ArtCommand());
@@ -116,7 +138,9 @@ public class CommandController {
         commands.add(new ShutdownCommand());
         commands.add(new RebootCommand());
         commands.add(new SimpleCustomCmd(">>", "<<-->>", "<<<"));
-        commands.add(new SimpleCustomCmd("invite", "Invite me!!", "Add me to your own server! https://goo.gl/ZcLxNJ"));
+        SimpleCustomCmd e = new SimpleCustomCmd("invite", "Invite me!!", "Add me to your own server! https://goo.gl/ZcLxNJ");
+        e.setCatagory(CommandCatagory.ABOUT);
+        commands.add(e);
         commands.add(new HelpCommand(commands));
 
     }
@@ -154,7 +178,19 @@ public class CommandController {
                 }
             }
             if (toadd != null) {
-                commands.add(toadd);
+                boolean match = false;
+                for (Command command : commands) {
+                    if (command.getName().equals(toadd.getName())) {
+                        if (command instanceof PerServerCustomCmd) {
+                            ((PerServerCustomCmd) command).setText(toadd.getText());
+                            match = true;
+                            break;
+                        }
+                    }
+                }
+                if(match == false) {
+                    commands.add(toadd);
+                }
                 toadd = null;
             }
         }

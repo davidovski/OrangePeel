@@ -14,6 +14,7 @@ public class ReportBugCommand extends OrangePeelCommand {
         setName("report");
         setDescription(new CommandDescription("report", "report a bug with the bot", "report <bug report>"));
         addAlias("bug");
+        setCatagory(CommandCatagory.ABOUT);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

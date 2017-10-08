@@ -13,6 +13,7 @@ public class AddCustomCommand extends OrangePeelAdminCommand {
         setCommandlvl(2);
         addAlias("newCommand");
         addAlias("addCommand");
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

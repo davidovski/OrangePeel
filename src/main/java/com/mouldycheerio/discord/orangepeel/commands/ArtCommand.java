@@ -28,6 +28,7 @@ public class ArtCommand extends OrangePeelCommand {
         setName("art");
         setDescription(new CommandDescription("art", "create some modern art", "art [type]"));
         random = new Random();
+        setCatagory(CommandCatagory.FUN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

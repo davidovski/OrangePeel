@@ -24,6 +24,7 @@ import com.google.code.chatterbotapi.ChatterBotSession;
 import com.mouldycheerio.discord.orangepeel.challenges.ChallengeController;
 import com.mouldycheerio.discord.orangepeel.commands.Command;
 import com.mouldycheerio.discord.orangepeel.commands.CommandDescription;
+import com.mouldycheerio.discord.orangepeel.commands.PerServerCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.SimpleCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.SummonCommand;
 import com.vdurmont.emoji.Emoji;
@@ -69,7 +70,9 @@ public class OrangePeel {
     private int playingtextindex = 0;
     private String prefix;
     private ChallengeController challengeController;
-
+    private HashMap<String, String> autoRole = new HashMap<String, String>();
+    private HashMap<String, String> greet = new HashMap<String, String>();
+    private HashMap<String, String> muted = new HashMap<String, String>();
     private List<Long> banned;
 
     public OrangePeel(String token, String prefix) throws Exception {
@@ -185,6 +188,36 @@ public class OrangePeel {
             if (obj.has("stats")) {
                 statsCounter.setStats(obj.getJSONObject("stats"));
             }
+
+            if (obj.has("autoroles")) {
+                JSONObject jo = obj.getJSONObject("autoroles");
+                Iterator<String> keys = jo.keys();
+                while (keys.hasNext()) {
+                    String next = keys.next();
+                    autoRole.put(next, jo.getString(next));
+
+                }
+            }
+
+            if (obj.has("greetings")) {
+                JSONObject jo = obj.getJSONObject("greetings");
+                Iterator<String> keys = jo.keys();
+                while (keys.hasNext()) {
+                    String next = keys.next();
+                    greet.put(next, jo.getString(next));
+
+                }
+            }
+
+            if (obj.has("muted")) {
+                JSONObject jo = obj.getJSONObject("muted");
+                Iterator<String> keys = jo.keys();
+                while (keys.hasNext()) {
+                    String next = keys.next();
+                    muted.put(next, jo.getString(next));
+
+                }
+            }
             if (obj.has("votes")) {
                 votes = obj.getJSONObject("votes");
             }
@@ -243,6 +276,11 @@ public class OrangePeel {
                     String cmdname = cmd.getString("command");
                     String cmddesc = cmd.getString("description");
                     String cmdtext = cmd.getString("text");
+                    String cmdServer = null;
+                    try {
+                        cmdServer = cmd.getString("server");
+                    } catch (Exception e) {
+                    }
 
                     boolean doit = true;
                     CommandDescription desc = new CommandDescription(cmdname, cmddesc, cmdname);
@@ -252,9 +290,15 @@ public class OrangePeel {
                         }
                     }
                     if (doit) {
-                        SimpleCustomCmd scc = new SimpleCustomCmd(cmdname, desc, cmdtext);
-                        scc.setShowInHelp(false);
-                        eventListener.getCommandController().getCommands().add(scc);
+                        if (cmdServer != null) {
+                            PerServerCustomCmd scc = new PerServerCustomCmd(cmdname, desc, cmdtext, client.getGuildByID(Long.parseLong(cmdServer)));
+                            scc.setShowInHelp(false);
+                            eventListener.getCommandController().getCommands().add(scc);
+                        } else {
+                            SimpleCustomCmd scc = new SimpleCustomCmd(cmdname, desc, cmdtext);
+                            scc.setShowInHelp(false);
+                            eventListener.getCommandController().getCommands().add(scc);
+                        }
                     }
                 }
 
@@ -300,6 +344,24 @@ public class OrangePeel {
         getStatsCounter().incrementStat("saves");
         obj.put("playing", playingText);
 
+        JSONObject objauto = new JSONObject();
+        for (Entry<String, String> entry : autoRole.entrySet()) {
+            objauto.put(entry.getKey(), entry.getValue());
+        }
+        obj.put("autoroles", objauto);
+
+        JSONObject objgreet = new JSONObject();
+        for (Entry<String, String> entry : greet.entrySet()) {
+            objgreet.put(entry.getKey(), entry.getValue());
+        }
+        obj.put("greetings", objgreet);
+
+        JSONObject objmute = new JSONObject();
+        for (Entry<String, String> entry : muted.entrySet()) {
+            objmute.put(entry.getKey(), entry.getValue());
+        }
+        obj.put("muted", objmute);
+
         JSONArray array = new JSONArray();
         for (Command command : getEventListener().getCommandController().getCommands()) {
             if (command instanceof SimpleCustomCmd) {
@@ -307,6 +369,10 @@ public class OrangePeel {
                 cmd.put("command", command.getName());
                 cmd.put("description", command.getDescription().getText());
                 cmd.put("text", ((SimpleCustomCmd) command).getText());
+
+                if (command instanceof PerServerCustomCmd) {
+                    cmd.put("server", ((PerServerCustomCmd) command).getServer().getStringID());
+                }
                 array.put(cmd);
             }
         }
@@ -648,6 +714,30 @@ public class OrangePeel {
 
     public void setBanned(List<Long> banned) {
         this.banned = banned;
+    }
+
+    public HashMap<String, String> getAutoRole() {
+        return autoRole;
+    }
+
+    public void setAutoRole(HashMap<String, String> autoRole) {
+        this.autoRole = autoRole;
+    }
+
+    public HashMap<String, String> getGreet() {
+        return greet;
+    }
+
+    public void setGreet(HashMap<String, String> greet) {
+        this.greet = greet;
+    }
+
+    public HashMap<String, String> getMuted() {
+        return muted;
+    }
+
+    public void setMuted(HashMap<String, String> muted) {
+        this.muted = muted;
     }
 
 }

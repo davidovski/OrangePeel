@@ -1,4 +1,5 @@
 {
+ "autoroles": {"313761583291695104": "366162556873605123"},
  "connected": [],
  "stats": {
   "rps-wins": 18,
@@ -7,85 +8,41 @@
   "stories": 0,
   "upvotes": 30,
   "rates": 13,
-  "loads": 15,
+  "loads": 32,
   "rps-losses": 17,
   "downvotes": 9,
-  "saves": 27,
+  "saves": 70,
   "rps-plays": 73,
-  "boots": 13,
-  "messages": 25284,
+  "boots": 30,
+  "messages": 25370,
   "choppers": 1,
   "xox-plays": 52,
   "votes": 39,
   "pings": 111,
-  "helped": 7,
+  "helped": 10,
   "xox-wins": 2,
-  "helps": 123,
+  "helps": 126,
   "rps-draws": 21,
   "ascii": 0,
-  "commands": 76,
+  "commands": 109,
   "coords": 0
  },
- "votes": {
-  "": -1,
-  "339753177824100352": 1,
-  "236002091120721930": 1,
-  "312354464679854092": 1,
-  "218613903653863427": 1,
-  "306115875784622080": -1,
-  "327071207604355074": 3,
-  "333541825908310016": -1,
-  "287657819740569601": 3,
-  "280406069518532609": 2,
-  "274230789699403776": 3,
-  "322805795030958080": 5,
-  "290381914551091202": 3,
-  "202621027971235840": 2,
-  "253275397444206594": 12,
-  "250632091555987459": 1,
-  "284069152459587584": 5,
-  "184920260472864768": 3,
-  "229232856063410176": 3,
-  "300306008616599553": 1,
-  "205953986107277312": -1,
-  "252086008902975488": -1,
-  "175722199393632256": 6,
-  "261915228785082381": 3
- },
- "playing": "with tangerienes",
+ "votes": {},
+ "playing": "a game",
+ "greetings": {"313761583291695104": "366203090598363138"},
  "banned": [],
- "admins": {
-  "202621027971235840": 1,
-  "253275397444206594": 5,
-  "300306008616599553": 1,
-  "280406069518532609": 2,
-  "274230789699403776": 2
- },
+ "muted": {"313761583291695104": "366351329121271808"},
+ "admins": {},
  "commands": [
   {
-   "description": "<<<--->>>",
+   "description": "<<-->>",
    "text": "<<<",
    "command": ">>"
   },
   {
-   "description": "Call in the developer bot!",
-   "text": ">dev>dev",
-   "command": "devBot"
-  },
-  {
-   "description": "Returns my invite link",
-   "text": "Add me to your server: https://goo.gl/ZcLxNJ",
+   "description": "Invite me!!",
+   "text": "Add me to your own server! https://goo.gl/ZcLxNJ",
    "command": "invite"
-  },
-  {
-   "description": "A custom added Command",
-   "text": "Not Today",
-   "command": "kys"
-  },
-  {
-   "description": "A custom added Command",
-   "text": "**no!**",
-   "command": "die"
   }
  ]
 }

@@ -23,12 +23,11 @@ import com.mouldycheerio.discord.orangepeel.OrangePeel;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IMessage;
 
-public class GeoLocateCommand extends OrangePeelAdminCommand {
+public class GeoLocateCommand extends OrangePeelCommand {
     public GeoLocateCommand() {
         setName("coords");
         setDescription(new CommandDescription("coords", "Finds the geographical coordinates of any given adress", "coords <adrss>"));
-        setCommandlvl(1);
-        setNoPermText("You can't do this! (but yours friend might be able to...");
+        setCatagory(CommandCatagory.UTIL);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

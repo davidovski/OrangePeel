@@ -16,6 +16,7 @@ public class AnnounceCommand extends OrangePeelAdminCommand {
                 + "`-a` announcements channel for each server \n" + "`-m` main channel \n" + "`-h` current channel \n", "announce -[p, a, m, h, e] <message>"));
         setCommandlvl(3);
         addAlias("say");
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

@@ -25,6 +25,7 @@ public class SetMusicCommand extends OrangePeelAdminCommand {
         setName("setMusic");
         setDescription(new CommandDescription("setMusic", "Set the music that the bot plays. DOn't forget to attach the file", "setMusic <attach file>"));
         setCommandlvl(3);
+        setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

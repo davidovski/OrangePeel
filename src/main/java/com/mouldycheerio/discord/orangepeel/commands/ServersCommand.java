@@ -20,6 +20,7 @@ public class ServersCommand extends OrangePeelCommand {
         setName("servers");
         setDescription(new CommandDescription("servers", "I am in a lot of servers, this will give you a list of them all!", "servers"));
         addAlias("guilds");
+        setCatagory(CommandCatagory.ABOUT);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

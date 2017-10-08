@@ -19,10 +19,44 @@ public class PeelingUtils {
         if (id.length() <= 4) {
 
             for (IUser u : server.getUsers()) {
-              if (u.getDiscriminator().equals(id) && u.getName().equals((mention.split("#")[0]))) {
-                  id = u.getStringID();
-                  break;
-              }
+                if (u.getDiscriminator().equals(id) && u.getName().equals((mention.split("#")[0]))) {
+                    id = u.getStringID();
+                    break;
+                }
+            }
+        }
+        return id;
+    }
+
+    public static IUser mentionToUser(String mention, IGuild server) {
+        String id = "";
+        for (char c : mention.toCharArray()) {
+            if (Character.isDigit(c)) {
+                id = id + c;
+            }
+        }
+        if (id.length() <= 4) {
+
+            for (IUser u : server.getUsers()) {
+                if (u.getDiscriminator().equals(id) && u.getName().equals((mention.split("#")[0]))) {
+                    id = u.getStringID();
+                    break;
+                }
+            }
+        }
+        for (IUser iUser : server.getUsers()) {
+            if (iUser.getStringID().equals(id)) {
+                return iUser;
+            }
+        }
+        return null;
+    }
+
+    public static String mentionToIdEz(String mention) {
+        String id = "";
+        for (char c : mention.toCharArray()) {
+            if (Character.isDigit(c)) {
+                id = id + c;
             }
         }
         return id;

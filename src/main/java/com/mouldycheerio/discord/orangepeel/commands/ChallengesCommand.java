@@ -20,6 +20,7 @@ public class ChallengesCommand extends OrangePeelCommand {
         setDescription(new CommandDescription("Challenges", "lists your challenges and goals", "challenges"));
         addAlias("challenge");
         addAlias("ch");
+        setCatagory(CommandCatagory.FUN);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {

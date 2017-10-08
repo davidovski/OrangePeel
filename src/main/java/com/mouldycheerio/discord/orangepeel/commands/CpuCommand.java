@@ -23,13 +23,13 @@ import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.EmbedBuilder;
 
-public class CpuCommand extends OrangePeelAdminCommand {
+public class CpuCommand extends OrangePeelCommand {
     public CpuCommand() {
         setName("cpu");
         setDescription(new CommandDescription("CPU", "Prints the stats regarding the cpu and memory usage of the bot.", "cpu"));
-        setCommandlvl(1);
         addAlias("nerdstats");
         addAlias("nerd");
+        setCatagory(CommandCatagory.ABOUT);
     }
 
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
