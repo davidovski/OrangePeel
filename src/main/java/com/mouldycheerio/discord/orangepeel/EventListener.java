@@ -1,6 +1,9 @@
 package com.mouldycheerio.discord.orangepeel;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.Writer;
 import java.time.LocalDateTime;
 import java.util.EnumSet;
 
@@ -36,7 +39,6 @@ public class EventListener {
         commandController = new CommandController(orangePeel);
 
     }
-
 
     @EventSubscriber
     public void onChannelCreateEvent(ChannelCreateEvent event) {
@@ -84,7 +86,6 @@ public class EventListener {
         Logger.raw(user.getName() + "#" + user.getDiscriminator());
         Logger.raw(user.getStringID());
         Logger.raw("==========");
-
 
         commandController.getCommands().add(new HangManCommand(orangePeel.getClient()));
         orangePeel.getClient().changePlayingText(orangePeel.getPlayingText());
@@ -168,6 +169,13 @@ public class EventListener {
 
     @EventSubscriber
     public void onMessageReceivedEvent(MessageReceivedEvent event) throws Exception {
+
+        if (event.getMessage().getContent().length() > 1) {
+            Writer output = new BufferedWriter(new FileWriter("messages", true)); // clears file every time
+            output.append(event.getAuthor().getName() + ": " + event.getMessage().getContent() + "\n");
+            output.close();
+        }
+
         for (Challenge challenge : orangePeel.getChallengeController().getChallanges()) {
             if (challenge instanceof OrangePeelChallenge && challenge.getStatus() == ChallengeStatus.ACTIVE) {
                 ((OrangePeelChallenge) challenge).onMessage(event);

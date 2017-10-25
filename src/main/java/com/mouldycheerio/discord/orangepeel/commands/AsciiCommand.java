@@ -20,12 +20,10 @@ import com.mouldycheerio.discord.orangepeel.OrangePeel;
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IMessage;
 
-public class AsciiCommand extends OrangePeelAdminCommand {
+public class AsciiCommand extends OrangePeelCommand {
     public AsciiCommand() {
         setName("ascii");
         setDescription(new CommandDescription("ascii", "creates a text art from your message", "ascii <txt>"));
-        setCommandlvl(1);
-        setNoPermText("You can't do this! (but yours friend might be able to...");
         setCatagory(CommandCatagory.UTIL);
     }
 

@@ -53,10 +53,13 @@ import com.mouldycheerio.discord.orangepeel.commands.TopCommand;
 import com.mouldycheerio.discord.orangepeel.commands.UpTimeCommand;
 import com.mouldycheerio.discord.orangepeel.commands.VoteCommand;
 import com.mouldycheerio.discord.orangepeel.commands.VotesCommand;
+import com.mouldycheerio.discord.orangepeel.commands.WahCommand;
+import com.mouldycheerio.discord.orangepeel.commands.WaveCommand;
 import com.mouldycheerio.discord.orangepeel.commands.XOXCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.BanCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.KickCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.MuteCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.NickAllCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.PurgeCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.SetupCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.UnBanCommand;
@@ -101,6 +104,8 @@ public class CommandController {
         commands.add(new RateCommand());
         commands.add(new ChallengesCommand());
 
+        commands.add(new NickAllCommand());
+
         commands.add(new AddPerServerCustomCommand());
 
         commands.add(new SummonCommand());
@@ -112,6 +117,8 @@ public class CommandController {
         commands.add(new ServersCommand());
         commands.add(new FakeUserCommand());
 
+        commands.add(new WaveCommand());
+        commands.add(new WahCommand());
         commands.add(new AsciiCommand());
         commands.add(new GeoLocateCommand());
 

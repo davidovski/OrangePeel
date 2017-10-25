@@ -13,6 +13,7 @@ import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IPrivateChannel;
 import sx.blah.discord.util.EmbedBuilder;
+import sx.blah.discord.util.RequestBuffer;
 
 public class HelpCommand extends OrangePeelCommand {
     private List<Command> commands;
@@ -26,6 +27,7 @@ public class HelpCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.ABOUT);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         String stringID = commandMessage.getAuthor().getStringID();
 
@@ -62,7 +64,7 @@ public class HelpCommand extends OrangePeelCommand {
             } catch (Exception e) {
                 message = "``` Orange Peel```";
             }
-            message = message + "**by davidovski**\n\n";
+            String m1message = message + "**by davidovski**\n\n";
             String message1 = "***__Commands__***\n\n";
             String messageabout = "\n**__bot commands__**\n\n";
             String messagemoderation = "\n**__Server Moderation commands__**\n\n";
@@ -127,25 +129,26 @@ public class HelpCommand extends OrangePeelCommand {
             two.withColor(new Color(255, 177, 3));
             three.withColor(new Color(255, 177, 3));
 
-            one.withDesc(messageabout + messagemoderation + messagefun + messagevoting + messageutil + messagegames + messageother);
+            EmbedBuilder b = new EmbedBuilder();
+            b.withColor(new Color(255, 177, 3));
+
+            one.withDesc(messageabout + messagemoderation + messagefun + messagevoting + messageutil + messagegames);
+            b.withDesc(messageother);
             two.withDesc(messagecustom);
             three.withDesc(messageadmin);
 
             orangepeel.getStatsCounter().incrementStat("helps");
-            pm.sendMessage(message);
-            pm.sendMessage(one.build());
-            if (orangepeel.getAdmins().has(stringID)) {
-                pm.sendMessage(two.build());
+            RequestBuffer.request(() -> {
+                pm.sendMessage(m1message);
+                pm.sendMessage(one.build());
+                pm.sendMessage(b.build());
+                if (orangepeel.getAdmins().has(stringID)) {
+                    pm.sendMessage(two.build());
 
-            }
-            pm.sendMessage(three.build());
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            pm.sendMessage("https://discord.gg/W7EATbm");
+                }
+                pm.sendMessage(three.build());
+                pm.sendMessage("https://discord.gg/W7EATbm");
+            });
             orangepeel.getStatsCounter().incrementStat("helped");
             // https://discordapp.com/oauth2/authorize?client_id=306115875784622080&scope=bot
         }
