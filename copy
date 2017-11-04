@@ -1,0 +1,2 @@
+#!/bin/bash
+scp bot.jar pi@pi3.thenet:orangePeel/

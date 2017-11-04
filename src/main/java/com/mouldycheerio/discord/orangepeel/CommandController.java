@@ -10,6 +10,7 @@ import com.mouldycheerio.discord.orangepeel.commands.ArtCommand;
 import com.mouldycheerio.discord.orangepeel.commands.AsciiCommand;
 import com.mouldycheerio.discord.orangepeel.commands.BotBanCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ChallengesCommand;
+import com.mouldycheerio.discord.orangepeel.commands.ChannelsCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ChopperCommand;
 import com.mouldycheerio.discord.orangepeel.commands.Command;
 import com.mouldycheerio.discord.orangepeel.commands.CommandCatagory;
@@ -23,6 +24,7 @@ import com.mouldycheerio.discord.orangepeel.commands.GiveAdminCommand;
 import com.mouldycheerio.discord.orangepeel.commands.HelpCommand;
 import com.mouldycheerio.discord.orangepeel.commands.HeyCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ImageCommand;
+import com.mouldycheerio.discord.orangepeel.commands.JackieChanCommand;
 import com.mouldycheerio.discord.orangepeel.commands.LoadAllCommand;
 import com.mouldycheerio.discord.orangepeel.commands.LogCommand;
 import com.mouldycheerio.discord.orangepeel.commands.MirrorMirrorCommand;
@@ -57,6 +59,7 @@ import com.mouldycheerio.discord.orangepeel.commands.WahCommand;
 import com.mouldycheerio.discord.orangepeel.commands.WaveCommand;
 import com.mouldycheerio.discord.orangepeel.commands.XOXCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.BanCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.BanHammerCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.KickCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.MuteCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.NickAllCommand;
@@ -81,6 +84,8 @@ public class CommandController {
         commands.add(new VoteCommand());
         commands.add(new MuteCommand());
         commands.add(new UnMuteCommand());
+
+        commands.add(new BanHammerCommand());
 
         commands.add(new KickCommand());
         commands.add(new BanCommand());
@@ -114,8 +119,11 @@ public class CommandController {
 
         commands.add(new ImageCommand());
         commands.add(new ArtCommand());
+        commands.add(new JackieChanCommand());
         commands.add(new ServersCommand());
         commands.add(new FakeUserCommand());
+        commands.add(new ChannelsCommand());
+
 
         commands.add(new WaveCommand());
         commands.add(new WahCommand());

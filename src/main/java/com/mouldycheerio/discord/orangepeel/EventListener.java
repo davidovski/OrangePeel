@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.Writer;
-import java.time.LocalDateTime;
 import java.util.EnumSet;
 
 import com.mouldycheerio.discord.orangepeel.challenges.Challenge;
@@ -51,31 +50,7 @@ public class EventListener {
 
     @EventSubscriber
     public void onInviteEvent(GuildCreateEvent event) throws InterruptedException {
-        if (!orangePeel.getClient().isReady()) {
-            orangePeel.getClient().getDispatcher().waitFor(ReadyEvent.class);
-        }
-        if (orangePeel.getLogChannel() != null) {
-            IChannel logChannel = orangePeel.getLogChannel();
-            EmbedBuilder embedBuilder = new EmbedBuilder();
-            embedBuilder.withTitle("Joined Server!");
-            embedBuilder.withDescription(event.getGuild().getName());
-            embedBuilder.withThumbnail(event.getGuild().getIconURL());
-            embedBuilder.withColor(new Color(54, 57, 62));
-            embedBuilder.withAuthorName("discord");
-            embedBuilder.appendField("ID", event.getGuild().getStringID(), true);
 
-            embedBuilder.appendField("Members", " " + event.getGuild().getUsers().size(), true);
-            embedBuilder.appendField("Channels", " " + event.getGuild().getChannels().size(), true);
-            embedBuilder.appendField("Voice Channels", " " + event.getGuild().getVoiceChannels().size(), true);
-
-            embedBuilder.appendField("Owner", " " + event.getGuild().getOwner().getName() + "#" + event.getGuild().getOwner().getDiscriminator(), false);
-            embedBuilder.appendField("CreationDate", event.getGuild().getCreationDate().getDayOfMonth() + "/" + event.getGuild().getCreationDate().getMonthValue() + "/"
-                    + event.getGuild().getCreationDate().getYear(), false);
-
-            logChannel.sendMessage(embedBuilder.build());
-        } else {
-            System.out.println("Loaded server: " + event.getGuild().getName());
-        }
 
     }
 
@@ -99,11 +74,15 @@ public class EventListener {
             EmbedBuilder embedBuilder = new EmbedBuilder();
             embedBuilder.withTitle("Orange Peel is ready!");
             embedBuilder.withTimestamp(System.currentTimeMillis());
-            embedBuilder.withDesc("Orange Peel has logged in as:");
-            embedBuilder.appendField("Name", orangePeel.getClient().getOurUser().getName() + "#" + orangePeel.getClient().getOurUser().getDiscriminator(), true);
+            embedBuilder.withDesc("Orange Peel has logged in as: " + orangePeel.getClient().getOurUser().getName() + "#" + orangePeel.getClient().getOurUser().getDiscriminator());
+            embedBuilder.appendField("Servers", orangePeel.getClient().getGuilds().size() + "", true);
+            embedBuilder.appendField("Custom Commands Loaded", orangePeel.getCmdadded()+ "", true);
+            embedBuilder.appendField("Challenges Loaded", orangePeel.getChallengeController().getChallanges().size()+ "", true);
+
             embedBuilder.appendField("ID", orangePeel.getClient().getOurUser().getStringID(), true);
-            LocalDateTime creationDate = orangePeel.getClient().getOurUser().getCreationDate();
-            embedBuilder.appendField("Created", creationDate.getDayOfMonth() + "/" + creationDate.getMonthValue() + "/" + creationDate.getYear(), true);
+//            LocalDateTime creationDate = orangePeel.getClient().getOurUser().getCreationDate();
+//            embedBuilder.appendField("Created", creationDate.getDayOfMonth() + "/" + creationDate.getMonthValue() + "/" + creationDate.getYear(), true);
+
             embedBuilder.withColor(new Color(54, 57, 62));
             logChannel.sendMessage(embedBuilder.build());
         }
@@ -119,7 +98,7 @@ public class EventListener {
     }
 
     @EventSubscriber
-    public void onUserJoinEvent(UserJoinEvent event) {
+    public void onUserJoinEvent(UserJoinEvent event) throws InterruptedException {
         if (orangePeel.getGreet().containsKey(event.getGuild().getStringID())) {
             event.getGuild().getChannelByID(Long.parseLong(orangePeel.getGreet().get(event.getGuild().getStringID())))
                     .sendMessage("Welcome, <@" + event.getUser().getStringID() + ">  to " + event.getGuild().getName() + "! :joy:");
@@ -127,6 +106,35 @@ public class EventListener {
 
         if (orangePeel.getAutoRole().containsKey(event.getGuild().getStringID())) {
             event.getUser().addRole(event.getGuild().getRoleByID(Long.parseLong(orangePeel.getAutoRole().get(event.getGuild().getStringID()))));
+        }
+
+        if (event.getUser().getStringID().equals(orangePeel.getClient().getOurUser().getStringID())) {
+            if (!orangePeel.getClient().isReady()) {
+                orangePeel.getClient().getDispatcher().waitFor(ReadyEvent.class);
+            }
+            if (orangePeel.getLogChannel() != null) {
+                IChannel logChannel = orangePeel.getLogChannel();
+                EmbedBuilder embedBuilder = new EmbedBuilder();
+                Logger.info("joined server.");
+                embedBuilder.withTitle("Joined Server!");
+                embedBuilder.withDescription(event.getGuild().getName());
+                embedBuilder.withThumbnail(event.getGuild().getIconURL());
+                embedBuilder.withColor(new Color(54, 57, 62));
+                embedBuilder.withAuthorName("discord");
+                embedBuilder.appendField("ID", event.getGuild().getStringID(), true);
+
+                embedBuilder.appendField("Members", " " + event.getGuild().getUsers().size(), true);
+                embedBuilder.appendField("Channels", " " + event.getGuild().getChannels().size(), true);
+                embedBuilder.appendField("Voice Channels", " " + event.getGuild().getVoiceChannels().size(), true);
+
+                embedBuilder.appendField("Owner", " " + event.getGuild().getOwner().getName() + "#" + event.getGuild().getOwner().getDiscriminator(), false);
+                embedBuilder.appendField("CreationDate", event.getGuild().getCreationDate().getDayOfMonth() + "/" + event.getGuild().getCreationDate().getMonthValue() + "/"
+                        + event.getGuild().getCreationDate().getYear(), false);
+
+                logChannel.sendMessage(embedBuilder.build());
+            } else {
+                System.out.println("Loaded server: " + event.getGuild().getName());
+            }
         }
     }
 

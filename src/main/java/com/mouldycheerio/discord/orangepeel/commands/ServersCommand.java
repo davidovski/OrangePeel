@@ -23,14 +23,16 @@ public class ServersCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.ABOUT);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
 
         List<IGuild> guilds = orangepeel.getClient().getGuilds();
 
         Collections.sort(guilds, new Comparator<IGuild>() {
 
+            @Override
             public int compare(IGuild o1, IGuild o2) {
-                return o2.getTotalMemberCount() - o1.getTotalMemberCount();
+                return o2.getUsers().size() - o1.getUsers().size();
             }
         });
         boolean ids = false;
@@ -41,7 +43,7 @@ public class ServersCommand extends OrangePeelCommand {
                 }
             } else {
                 if (args[1].equalsIgnoreCase("info")) {
-                    if (args[2] != null) {
+                    if (args.length > 2) {
                         boolean id = true;
                         for (char c : args[2].toCharArray()) {
                             if (!Character.isDigit(c)) {
@@ -102,7 +104,7 @@ public class ServersCommand extends OrangePeelCommand {
         String message = "```           Servers         \n(" + guilds.size() + " in total)\n\n";
 
         for (IGuild g : guilds) {
-            String members = "" + g.getTotalMemberCount();
+            String members = "" + g.getUsers().size();
             for (int i = members.length(); i < 8; i++) {
                 members = " " + members;
             }

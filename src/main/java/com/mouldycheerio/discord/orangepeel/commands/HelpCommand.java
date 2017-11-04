@@ -10,8 +10,8 @@ import java.util.List;
 import com.mouldycheerio.discord.orangepeel.OrangePeel;
 
 import sx.blah.discord.api.IDiscordClient;
+import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
-import sx.blah.discord.handle.obj.IPrivateChannel;
 import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.RequestBuffer;
 
@@ -50,21 +50,15 @@ public class HelpCommand extends OrangePeelCommand {
             }
         } else {
             commandMessage.reply("Check your PMs! ;)");
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            IPrivateChannel pm = client.getOrCreatePMChannel(commandMessage.getAuthor());
-
+            IChannel pm = client.getOrCreatePMChannel(commandMessage.getAuthor());
+//            IChannel pm = commandMessage.getChannel();
             String message = "";
             try {
                 message = message + "```" + getHTTP("http://artii.herokuapp.com/make?text=OrangePeel&font=weird") + "```\n";
             } catch (Exception e) {
                 message = "``` Orange Peel```";
             }
-            String m1message = message + "**by davidovski**\n\n";
+            String m1message = message + "**by davidovski**\nTry `>help [cmd name]` for more info on usage.\n\n";
             String message1 = "***__Commands__***\n\n";
             String messageabout = "\n**__bot commands__**\n\n";
             String messagemoderation = "\n**__Server Moderation commands__**\n\n";
@@ -75,7 +69,7 @@ public class HelpCommand extends OrangePeelCommand {
             String messagecustom = "\n**__Custom commands__**\n\n";
             String messageother = "\n**__other commands__**\n\n";
 
-            String messageadmin = "\n**__admin commands__**\n\n";
+            String messageadmin = "\n**__ bot admin commands__**\n\n";
 
             try {
                 if (commandMessage.getGuild() != null) {
@@ -132,21 +126,32 @@ public class HelpCommand extends OrangePeelCommand {
             EmbedBuilder b = new EmbedBuilder();
             b.withColor(new Color(255, 177, 3));
 
-            one.withDesc(messageabout + messagemoderation + messagefun + messagevoting + messageutil + messagegames);
-            b.withDesc(messageother);
+            one.withDesc(messageabout + messagemoderation + messagefun + messagegames);
+            b.withDesc(messageutil + messageother + messagevoting);
             two.withDesc(messagecustom);
             three.withDesc(messageadmin);
 
             orangepeel.getStatsCounter().incrementStat("helps");
             RequestBuffer.request(() -> {
                 pm.sendMessage(m1message);
+
+            });
+            RequestBuffer.request(() -> {
                 pm.sendMessage(one.build());
+            });
+            RequestBuffer.request(() -> {
                 pm.sendMessage(b.build());
+            });
+            RequestBuffer.request(() -> {
                 if (orangepeel.getAdmins().has(stringID)) {
                     pm.sendMessage(two.build());
 
                 }
+            });
+            RequestBuffer.request(() -> {
                 pm.sendMessage(three.build());
+            });
+            RequestBuffer.request(() -> {
                 pm.sendMessage("https://discord.gg/W7EATbm");
             });
             orangepeel.getStatsCounter().incrementStat("helped");

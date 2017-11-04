@@ -14,6 +14,7 @@ public class SetChannelCommand extends OrangePeelAdminCommand {
         setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         if (args.length >= 2) {
             String channelMention = args[2];
@@ -22,13 +23,13 @@ public class SetChannelCommand extends OrangePeelAdminCommand {
             IChannel channel = commandMessage.getGuild().getChannelByID(Long.parseLong(channelMention));
 
             if (args[1].contains("sug")) {
-                orangepeel.setSuggestions(channel);
+                orangepeel.setSuggestions(channel.getLongID());
                 commandMessage.reply("Ok, if anyone has a suggestion, I'll post it in <#" + channelMention + "> for developers to implement.");
             } else if (args[1].contains("bug")) {
-                orangepeel.setBugReports(channel);
+                orangepeel.setBugReports(channel.getLongID());
                 commandMessage.reply("Ok, if anyone has a bug, I'll post it in <#" + channelMention + "> for developers to look at (and fix?).");
             } else if (args[1].contains("log")) {
-                orangepeel.setLogChannel(channel);
+                orangepeel.setLogChannel(channel.getLongID());
                 commandMessage.reply("Ok, I'll post all messages that you may need to know in <#" + channelMention + ">");
             }
 

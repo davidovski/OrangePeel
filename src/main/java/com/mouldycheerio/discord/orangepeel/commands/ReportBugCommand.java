@@ -17,8 +17,9 @@ public class ReportBugCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.ABOUT);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
-        if (orangepeel.getBugReports() != null) {
+        if (orangepeel.getBugReportsChannel() != null) {
             StringBuilder sb = new StringBuilder();
             if (args.length > 1) {
                 for (int i = 1; i < args.length; i++) {
@@ -38,7 +39,9 @@ public class ReportBugCommand extends OrangePeelCommand {
             embedBuilder.withAuthorName(author.getName());
             embedBuilder.withColor(Color.RED);
 
-            orangepeel.getBugReports().sendMessage(embedBuilder.build());
+            orangepeel.getBugReportsChannel().sendMessage(embedBuilder.build());
+        } else {
+            commandMessage.reply("I can't do that for some reason, heres the reason why: ```Bug channel not set. Error code 1423```");
         }
 
 

@@ -41,6 +41,7 @@ import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.RateLimitException;
 
 public class OrangePeel {
+    private static final long PEEL_SERVER = Long.parseLong("306508548651745282");
     private EventListener eventListener;
     private IDiscordClient client;
     public EventDispatcher dispatcher;
@@ -56,9 +57,9 @@ public class OrangePeel {
     private Random random;
     private StatsCounter statsCounter;
 
-    private IChannel bugReports;
-    private IChannel suggestions;
-    private IChannel logChannel;
+    private long bugReports;
+    private long suggestions;
+    private long logChannel;
 
     private JSONObject admins;
     private String playingText = "a game";
@@ -74,8 +75,10 @@ public class OrangePeel {
     private HashMap<String, String> greet = new HashMap<String, String>();
     private HashMap<String, String> muted = new HashMap<String, String>();
     private List<Long> banned;
+    private int cmdadded;
 
     public OrangePeel(String token, String prefix) throws Exception {
+        setCmdadded(0);
         this.prefix = prefix;
         // ChatterBotFactory chatterBotFactory = new ChatterBotFactory();
         // chatterBot = chatterBotFactory.create(ChatterBotType.CLEVERBOT);
@@ -232,7 +235,7 @@ public class OrangePeel {
             if (obj.has("bug_reports")) {
                 for (IChannel c : client.getChannels()) {
                     if (c.getLongID() == obj.getLong("bug_reports")) {
-                        bugReports = c;
+                        bugReports = c.getLongID();
                     }
                 }
             }
@@ -240,7 +243,7 @@ public class OrangePeel {
             if (obj.has("suggestions")) {
                 for (IChannel c : client.getChannels()) {
                     if (c.getLongID() == obj.getLong("suggestions")) {
-                        suggestions = c;
+                        suggestions = c.getLongID();
                     }
                 }
             }
@@ -251,12 +254,12 @@ public class OrangePeel {
 
                         if (c.getLongID() == obj.getLong("logchannel")) {
 
-                            logChannel = c;
+                            logChannel = c.getLongID();
                         }
                     }
                 }
 
-                if (logChannel == null) {
+                if (getLogChannel() == null) {
                     Logger.warn("NO LOGGER CHANNEL!");
                 }
             }
@@ -290,14 +293,17 @@ public class OrangePeel {
                         }
                     }
                     if (doit) {
+
                         if (cmdServer != null) {
                             PerServerCustomCmd scc = new PerServerCustomCmd(cmdname, desc, cmdtext, client.getGuildByID(Long.parseLong(cmdServer)));
                             scc.setShowInHelp(false);
                             eventListener.getCommandController().getCommands().add(scc);
+                            setCmdadded(getCmdadded() + 1);
                         } else {
                             SimpleCustomCmd scc = new SimpleCustomCmd(cmdname, desc, cmdtext);
                             scc.setShowInHelp(false);
                             eventListener.getCommandController().getCommands().add(scc);
+                            setCmdadded(getCmdadded() + 1);
                         }
                     }
                 }
@@ -365,6 +371,7 @@ public class OrangePeel {
         JSONArray array = new JSONArray();
         for (Command command : getEventListener().getCommandController().getCommands()) {
             if (command instanceof SimpleCustomCmd) {
+                try {
                 JSONObject cmd = new JSONObject();
                 cmd.put("command", command.getName());
                 cmd.put("description", command.getDescription().getText());
@@ -374,6 +381,9 @@ public class OrangePeel {
                     cmd.put("server", ((PerServerCustomCmd) command).getServer().getStringID());
                 }
                 array.put(cmd);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -383,15 +393,9 @@ public class OrangePeel {
         }
         obj.put("banned", array2);
         obj.put("commands", array);
-        if (bugReports != null) {
-            obj.put("bug_reports", bugReports.getLongID());
-        }
-        if (suggestions != null) {
-            obj.put("suggestions", suggestions.getLongID());
-        }
-        if (logChannel != null) {
-            obj.put("logchannel", logChannel.getLongID());
-        }
+        obj.put("bug_reports", bugReports);
+        obj.put("suggestions", suggestions);
+        obj.put("logchannel", logChannel);
 
         List<IVoiceChannel> voices = client.getConnectedVoiceChannels();
         JSONArray jsonArray = new JSONArray();
@@ -522,17 +526,6 @@ public class OrangePeel {
                 } catch (RateLimitException ex) {
                     ex.printStackTrace();
                     Thread.sleep(3000);
-                }
-            }
-            if (suggestions != null) {
-                for (IMessage iMessage : suggestions.getMessages()) {
-                    if (!iMessage.getReactionByUnicode("thumbsup").getClientReacted()) {
-                        iMessage.addReaction("thumbsup");
-                    }
-
-                    if (!iMessage.getReactionByUnicode("thumbsdown").getClientReacted()) {
-                        iMessage.addReaction("thumbsdown");
-                    }
                 }
             }
             Iterator<XOXgame> it = xox.iterator();
@@ -668,19 +661,26 @@ public class OrangePeel {
         this.eventListener = eventListener;
     }
 
-    public IChannel getSuggestions() {
+    public long getSuggestions() {
         return suggestions;
     }
+    public IChannel getSuggestionsChannel() {
+        return client.getGuildByID(PEEL_SERVER).getChannelByID(suggestions);
+    }
 
-    public void setSuggestions(IChannel suggestions) {
+    public void setSuggestions(long suggestions) {
         this.suggestions = suggestions;
     }
 
-    public IChannel getBugReports() {
+    public long getBugReports() {
         return bugReports;
     }
 
-    public void setBugReports(IChannel bugReports) {
+    public IChannel getBugReportsChannel() {
+        return client.getGuildByID(PEEL_SERVER).getChannelByID(bugReports);
+    }
+
+    public void setBugReports(long bugReports) {
         this.bugReports = bugReports;
     }
 
@@ -692,11 +692,15 @@ public class OrangePeel {
         this.chatsession = chatsession;
     }
 
-    public IChannel getLogChannel() {
+    public long getLogChannelID() {
         return logChannel;
     }
 
-    public void setLogChannel(IChannel logChannel) {
+    public IChannel getLogChannel() {
+        return client.getGuildByID(PEEL_SERVER).getChannelByID(logChannel);
+    }
+
+    public void setLogChannel(long logChannel) {
         this.logChannel = logChannel;
     }
 
@@ -738,6 +742,14 @@ public class OrangePeel {
 
     public void setMuted(HashMap<String, String> muted) {
         this.muted = muted;
+    }
+
+    public int getCmdadded() {
+        return cmdadded;
+    }
+
+    public void setCmdadded(int cmdadded) {
+        this.cmdadded = cmdadded;
     }
 
 }

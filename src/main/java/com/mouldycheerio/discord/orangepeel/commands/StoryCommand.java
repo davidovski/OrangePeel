@@ -20,6 +20,7 @@ public class StoryCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.FUN);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         String[] split = readFile("stories/story.txt").split("\n");
         IMessage lastMessage = commandMessage.getChannel().sendMessage(split[0]);
@@ -67,7 +68,7 @@ public class StoryCommand extends OrangePeelCommand {
     private IMessage nextLineAfterTime(String line, IMessage lastMessage) {
 
         sleep(lastMessage.getContent().length() * 100);
-        String[] split = line.split("`");
+        String[] split = line.split("|");
         String fileLink = "";
 
         if (split.length > 1) {

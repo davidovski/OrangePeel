@@ -1,21 +1,21 @@
 **Little Goat**
-Little goat went to find the sweetest grass.`images/one.png
-The sky was blue above, but she did not look up.`images/two.png
-The river gargled below. But Little Goat did not listen to its song.`images/three.png
-A bird called to her saying, "how do you do?".`images/four.png
+Little goat went to find the sweetest grass.|images/one.png
+The sky was blue above, but she did not look up.|images/two.png
+The river gargled below. But Little Goat did not listen to its song.|images/three.png
+A bird called to her saying, "how do you do?".|images/four.png
 But Little Goat did not answer...
-She just walked along, looking for the sweetest grass`images/five.png
-As she walked along, she moved further and further away from mummy goat!`images/six.png
-Little goat found the sweetest grass. She ate and ate!`images/seven.png
-But she had walked far from mummy goat! `images/eight.png
+She just walked along, looking for the sweetest grass|images/five.png
+As she walked along, she moved further and further away from mummy goat!|images/six.png
+Little goat found the sweetest grass. She ate and ate!|images/seven.png
+But she had walked far from mummy goat! |images/eight.png
 Mummy goat wondered where Little goat was!
-She looked in the corn, but she was not there!`images/nine.png
-She looked by the river, but Little Goat was not there!`images/ten.png
-She asked a bird, "have you seen little goat?" But the bird said no.`images/eleven.png
-She crossed the bridge to the sweet grass.`images/twelve.png
-There she found little goat fast asleep`images/thirteen.png
-"Wake up little goat," said Mummy goat gently,  "you were lost"`images/fourteen.png
-"I wasn't lost," little goat replied, "I was here the whole time!"`images/fifteen.png
+She looked in the corn, but she was not there!|images/nine.png
+She looked by the river, but Little Goat was not there!|images/ten.png
+She asked a bird, "have you seen little goat?" But the bird said no.|images/eleven.png
+She crossed the bridge to the sweet grass.|images/twelve.png
+There she found little goat fast asleep|images/thirteen.png
+"Wake up little goat," said Mummy goat gently,  "you were lost"|images/fourteen.png
+"I wasn't lost," little goat replied, "I was here the whole time!"|images/fifteen.png
 **The End**
 
 
