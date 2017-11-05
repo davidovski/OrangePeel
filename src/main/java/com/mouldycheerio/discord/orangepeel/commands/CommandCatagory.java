@@ -12,5 +12,6 @@ public enum CommandCatagory {
     CUSTOM,
     VOTING,
     GAMES,
+    COINS,
     DEBUG
 }

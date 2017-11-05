@@ -58,7 +58,7 @@ public class HelpCommand extends OrangePeelCommand {
             } catch (Exception e) {
                 message = "``` Orange Peel```";
             }
-            String m1message = message + "**by davidovski**\nTry `>help [cmd name]` for more info on usage.\n\n";
+            String m1message = message + "**by davidovski**\nTry `>help [cmd name]` for more info on usage.\n https://discord.gg/KzHHRFg Join my server!\n";
             String message1 = "***__Commands__***\n\n";
             String messageabout = "\n**__bot commands__**\n\n";
             String messagemoderation = "\n**__Server Moderation commands__**\n\n";
@@ -132,10 +132,8 @@ public class HelpCommand extends OrangePeelCommand {
             three.withDesc(messageadmin);
 
             orangepeel.getStatsCounter().incrementStat("helps");
-            RequestBuffer.request(() -> {
                 pm.sendMessage(m1message);
 
-            });
             RequestBuffer.request(() -> {
                 pm.sendMessage(one.build());
             });
@@ -150,9 +148,6 @@ public class HelpCommand extends OrangePeelCommand {
             });
             RequestBuffer.request(() -> {
                 pm.sendMessage(three.build());
-            });
-            RequestBuffer.request(() -> {
-                pm.sendMessage("https://discord.gg/W7EATbm");
             });
             orangepeel.getStatsCounter().incrementStat("helped");
             // https://discordapp.com/oauth2/authorize?client_id=306115875784622080&scope=bot

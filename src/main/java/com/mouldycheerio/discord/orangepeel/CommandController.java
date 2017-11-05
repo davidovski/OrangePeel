@@ -58,6 +58,9 @@ import com.mouldycheerio.discord.orangepeel.commands.VotesCommand;
 import com.mouldycheerio.discord.orangepeel.commands.WahCommand;
 import com.mouldycheerio.discord.orangepeel.commands.WaveCommand;
 import com.mouldycheerio.discord.orangepeel.commands.XOXCommand;
+import com.mouldycheerio.discord.orangepeel.commands.coin.BalanceCommand;
+import com.mouldycheerio.discord.orangepeel.commands.coin.PayCommand;
+import com.mouldycheerio.discord.orangepeel.commands.coin.ShopCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.BanCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.BanHammerCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.KickCommand;
@@ -150,6 +153,11 @@ public class CommandController {
         commands.add(new ReloadCommand());
         commands.add(new SendFileCommand());
 
+        commands.add(new BalanceCommand());
+        commands.add(new PayCommand());
+        commands.add(new ShopCommand());
+
+
         commands.add(new ShutdownCommand());
         commands.add(new RebootCommand());
         commands.add(new SimpleCustomCmd(">>", "<<-->>", "<<<"));
@@ -178,6 +186,7 @@ public class CommandController {
                         if (orangePeel.getAdmins().has(event.getAuthor().getStringID())) {
                             if (((OrangePeelAdminCommand) c).getCommandlvl() <= orangePeel.getAdmins().getInt(event.getAuthor().getStringID())) {
                                 c.onCommand(orangePeel, orangePeel.getClient(), event.getMessage(), parts);
+                                orangePeel.coinController().incrementCoins(4, event.getAuthor(), event.getGuild());
                                 orangePeel.getStatsCounter().incrementStat("commands");
                             } else {
                                 event.getMessage().reply(((OrangePeelAdminCommand) c).getNoPermText());
@@ -188,6 +197,7 @@ public class CommandController {
                         }
                     } else {
                         c.onCommand(orangePeel, orangePeel.getClient(), event.getMessage(), parts);
+                        orangePeel.coinController().incrementCoins(4, event.getAuthor(), event.getGuild());
                         orangePeel.getStatsCounter().incrementStat("commands");
                     }
                 }

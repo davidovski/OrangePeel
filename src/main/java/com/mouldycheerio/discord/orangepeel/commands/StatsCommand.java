@@ -14,10 +14,12 @@ public class StatsCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.ABOUT);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         StatsCounter statsCounter = orangepeel.getStatsCounter();
         commandMessage.getChannel().sendMessage("```    Bot Statistics ``` \n" + "```python\n" + "Servers = " + statsCounter.getServers() + "\n" + "Users = "
-                + statsCounter.getUsers() + "\n" + "Channels = " + statsCounter.getChannels() + "```\n"
+                + statsCounter.getUsers() + "\n" + "Channels = " + statsCounter.getChannels() +  "\nCommands = "
+                        + orangepeel.getEventListener().getCommandController().getCommands().size() +  "```\n"
 
                 + "```python\n" + "Tic Tac Toe Games played = " + statsCounter.getXoxGamesPlayed() + "\n" + "     Bot Wins = " + statsCounter.getXOXwins() + "\n"
                 + "     Bot Losses = " + statsCounter.getXOXlosses() + "\n" + "Rock Paper Scissors Games played = " + statsCounter.getRPSplays() + "\n" + "     Bot Wins = "

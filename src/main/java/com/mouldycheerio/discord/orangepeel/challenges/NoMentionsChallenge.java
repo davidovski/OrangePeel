@@ -1,5 +1,7 @@
 package com.mouldycheerio.discord.orangepeel.challenges;
 
+import com.mouldycheerio.discord.orangepeel.OrangePeel;
+
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.obj.IUser;
@@ -7,7 +9,8 @@ import sx.blah.discord.handle.obj.IUser;
 public class NoMentionsChallenge extends OrangePeelChallenge {
     public long start = System.currentTimeMillis();
 
-    public NoMentionsChallenge(IUser user, IDiscordClient client) {
+    public NoMentionsChallenge(OrangePeel orangePeel, IUser user, IDiscordClient client) {
+        super(orangePeel);
         setClient(client);
         setUser(user);
         setMaxProgress(100);
@@ -30,6 +33,7 @@ public class NoMentionsChallenge extends OrangePeelChallenge {
         }
     }
 
+    @Override
     public boolean check() {
 
         if (getProgress() > getMaxProgress()) {

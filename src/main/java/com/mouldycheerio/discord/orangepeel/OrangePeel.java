@@ -1,6 +1,7 @@
 package com.mouldycheerio.discord.orangepeel;
 
 import java.awt.Color;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -27,6 +28,7 @@ import com.mouldycheerio.discord.orangepeel.commands.CommandDescription;
 import com.mouldycheerio.discord.orangepeel.commands.PerServerCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.SimpleCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.SummonCommand;
+import com.mouldycheerio.discord.orangepeel.commands.coin.CoinController;
 import com.vdurmont.emoji.Emoji;
 import com.vdurmont.emoji.EmojiManager;
 
@@ -53,6 +55,8 @@ public class OrangePeel {
     private Map<String, Long> voted;
     private List<XOXgame> xox;
     private List<RPSgame> rps;
+
+    private CoinController coinController;
 
     private Random random;
     private StatsCounter statsCounter;
@@ -85,6 +89,8 @@ public class OrangePeel {
         // chatsession = chatterBot.createSession(Locale.ENGLISH);
 
         random = new Random();
+
+        coinController = new CoinController(this);
 
         votes = new JSONObject();
         admins = new JSONObject();
@@ -182,12 +188,28 @@ public class OrangePeel {
         }
     }
 
+    public void log(String e) {
+
+            EmbedBuilder embedBuilder = new EmbedBuilder();
+            embedBuilder.withTitle("Log");
+            embedBuilder.withDescription(e);
+            embedBuilder.withAuthorName("OrangePeel Logger");
+            embedBuilder.withColor(new Color(54, 57, 62));
+            getLogChannel().sendMessage(embedBuilder.build());
+    }
+
     public void loadAll() {
         try {
 
             JSONTokener parser = new JSONTokener(new FileReader("OrangePeel.opf"));
 
+
+
             JSONObject obj = (JSONObject) parser.nextValue();
+
+
+            coinController.load(obj);
+
             if (obj.has("stats")) {
                 statsCounter.setStats(obj.getJSONObject("stats"));
             }
@@ -356,6 +378,10 @@ public class OrangePeel {
         }
         obj.put("autoroles", objauto);
 
+
+
+        obj = coinController.save(obj);
+
         JSONObject objgreet = new JSONObject();
         for (Entry<String, String> entry : greet.entrySet()) {
             objgreet.put(entry.getKey(), entry.getValue());
@@ -405,9 +431,12 @@ public class OrangePeel {
         obj.put("connected", jsonArray);
 
         try {
-            FileWriter file = new FileWriter("OrangePeel.opf");
-            file.write(obj.toString(1));
-            file.flush();
+            File file = new File("OrangePeel.opf");
+            FileWriter filew = new FileWriter(file);
+            filew.write(obj.toString(1));
+            filew.flush();
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -501,6 +530,11 @@ public class OrangePeel {
             } else {
                 playingtextindex = 0;
             }
+
+        }
+
+        if (alpha % 20*60*5 == 0) {
+            saveAll();
 
         }
 
@@ -750,6 +784,10 @@ public class OrangePeel {
 
     public void setCmdadded(int cmdadded) {
         this.cmdadded = cmdadded;
+    }
+
+    public CoinController coinController() {
+        return coinController;
     }
 
 }

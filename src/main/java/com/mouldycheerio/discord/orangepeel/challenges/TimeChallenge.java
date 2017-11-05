@@ -1,11 +1,14 @@
 package com.mouldycheerio.discord.orangepeel.challenges;
 
+import com.mouldycheerio.discord.orangepeel.OrangePeel;
+
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IUser;
 
 public class TimeChallenge extends OrangePeelChallenge {
     public long start = System.currentTimeMillis();
-    public TimeChallenge(IUser user, IDiscordClient client) {
+    public TimeChallenge(OrangePeel orangePeel, IUser user, IDiscordClient client) {
+        super(orangePeel);
         setClient(client);
         setUser(user);
         setMaxProgress(20);
@@ -15,6 +18,7 @@ public class TimeChallenge extends OrangePeelChallenge {
         setDescription(new ChallengeDescription("Just a sec...", "Wait one second"));
         start = System.currentTimeMillis();
     }
+    @Override
     public boolean check() {
         incrementProgress();
         if (getProgress() > getMaxProgress()) {

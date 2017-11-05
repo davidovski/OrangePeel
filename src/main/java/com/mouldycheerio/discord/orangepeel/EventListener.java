@@ -99,6 +99,7 @@ public class EventListener {
 
     @EventSubscriber
     public void onUserJoinEvent(UserJoinEvent event) throws InterruptedException {
+        orangePeel.coinController().incrementCoins(100, event.getUser(), event.getGuild());
         if (orangePeel.getGreet().containsKey(event.getGuild().getStringID())) {
             event.getGuild().getChannelByID(Long.parseLong(orangePeel.getGreet().get(event.getGuild().getStringID())))
                     .sendMessage("Welcome, <@" + event.getUser().getStringID() + ">  to " + event.getGuild().getName() + "! :joy:");
@@ -140,6 +141,7 @@ public class EventListener {
 
     @EventSubscriber
     public void onReactionAddEvent(ReactionAddEvent event) throws InterruptedException {
+        orangePeel.coinController().incrementCoins(event.getUser(), event.getGuild());
         if (!event.getReaction().isCustomEmoji() && event.getReaction().getUnicodeEmoji().getAliases().size() > 0) {
             String emoji = event.getReaction().getUnicodeEmoji().getAliases().get(0);
             int number = 0;
@@ -177,7 +179,7 @@ public class EventListener {
 
     @EventSubscriber
     public void onMessageReceivedEvent(MessageReceivedEvent event) throws Exception {
-
+        orangePeel.coinController().incrementCoins(event.getAuthor(), event.getGuild());
         if (event.getMessage().getContent().length() > 1) {
             Writer output = new BufferedWriter(new FileWriter("messages", true)); // clears file every time
             output.append(event.getAuthor().getName() + ": " + event.getMessage().getContent() + "\n");

@@ -1,12 +1,15 @@
 package com.mouldycheerio.discord.orangepeel.challenges;
 
+import com.mouldycheerio.discord.orangepeel.OrangePeel;
+
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IUser;
 
 public class NoAvatarChallenge extends OrangePeelChallenge {
     public long start = System.currentTimeMillis();
 
-    public NoAvatarChallenge(IUser user, IDiscordClient client) {
+    public NoAvatarChallenge(OrangePeel orangePeel, IUser user, IDiscordClient client) {
+        super(orangePeel);
         setClient(client);
         setUser(user);
         setMaxProgress(20*60*60*24);
@@ -20,6 +23,7 @@ public class NoAvatarChallenge extends OrangePeelChallenge {
 
 
 
+    @Override
     public boolean check() {
         if (getUser().getAvatarURL().startsWith("https://cdn.discordapp.com/embed/avatars/")) {
             incrementProgress();

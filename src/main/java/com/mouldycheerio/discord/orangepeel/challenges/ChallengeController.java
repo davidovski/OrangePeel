@@ -112,17 +112,18 @@ public class ChallengeController {
 
     public OrangePeelChallenge newChallange(IUser user, ChallengeType type) {
         if (type == ChallengeType.TIME) {
-            return new TimeChallenge(user, client);
+            return new TimeChallenge(orangePeel, user, client);
         } else if (type == ChallengeType.ONLINE) {
-            return new StayOnlineChallenge(user, client);
+            return new StayOnlineChallenge(orangePeel, user, client);
         } else if (type == ChallengeType.NO_AVATAR) {
-            return new NoAvatarChallenge(user, client);
+            return new NoAvatarChallenge(orangePeel, user, client);
         } else if (type == ChallengeType.NO_MENTIONS) {
-            return new NoMentionsChallenge(user, client);
+            return new NoMentionsChallenge(orangePeel, user, client);
         } else if (type == ChallengeType.OFFLINE) {
-            return new StayOfflineChallenge(user, client);
+            return new StayOfflineChallenge(orangePeel, user, client);
         } else {
-            OrangePeelChallenge c = new OrangePeelChallenge() {
+            OrangePeelChallenge c = new OrangePeelChallenge(orangePeel) {
+                @Override
                 public boolean check() {
                     win();
                     return false;

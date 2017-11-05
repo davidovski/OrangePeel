@@ -1,5 +1,7 @@
 package com.mouldycheerio.discord.orangepeel.challenges;
 
+import com.mouldycheerio.discord.orangepeel.OrangePeel;
+
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IUser;
 import sx.blah.discord.handle.obj.StatusType;
@@ -7,7 +9,8 @@ import sx.blah.discord.handle.obj.StatusType;
 public class StayOnlineChallenge extends OrangePeelChallenge {
     public long start = System.currentTimeMillis();
 
-    public StayOnlineChallenge(IUser user, IDiscordClient client) {
+    public StayOnlineChallenge(OrangePeel orangePeel, IUser user, IDiscordClient client) {
+        super(orangePeel);
         setClient(client);
         setUser(user);
         setMaxProgress(20*60*60*24);
@@ -19,6 +22,7 @@ public class StayOnlineChallenge extends OrangePeelChallenge {
         start = System.currentTimeMillis();
     }
 
+    @Override
     public boolean check() {
         if (getUser().getPresence().getStatus() == StatusType.OFFLINE) {
             fail();
