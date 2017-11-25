@@ -32,7 +32,7 @@ public class WahCommand extends OrangePeelCommand {
         if (args.length > 1) {
             for (int i = 1; i < args.length; i++) {
                 if (i > 1) {
-                    sb.append("+");
+                    sb.append(" ");
                 }
                 sb.append(args[i]);
             }

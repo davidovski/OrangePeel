@@ -64,8 +64,10 @@ public class ChallengeController {
             if (u.getStringID().equals(challenge.getUser().getStringID())) {
                 if (challenge.getType() == type) {
                     if (challenge instanceof OrangePeelChallenge) {
-                        ((OrangePeelChallenge) challenge).setStatus(ChallengeStatus.ACTIVE);
-                        ((OrangePeelChallenge) challenge).setProgress(0);
+                        if (challenge.getStatus() == ChallengeStatus.INACTIVE) {
+                            ((OrangePeelChallenge) challenge).setStatus(ChallengeStatus.ACTIVE);
+                            ((OrangePeelChallenge) challenge).setProgress(0);
+                        }
                     }
                 }
             }
@@ -79,6 +81,7 @@ public class ChallengeController {
 
         Logger.info("challenges...");
         for (int i = 0; i < b.length(); i++) {
+            try {
             Logger.info("loading " + i);
             JSONObject challenge = b.getJSONObject(i);
             JSONObject userObj = challenge.getJSONObject("user");
@@ -97,6 +100,9 @@ public class ChallengeController {
             c.setType(type);
             c.setStatus(status);
             challanges.add(c);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

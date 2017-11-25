@@ -23,7 +23,6 @@ public class ServersCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.ABOUT);
     }
 
-    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
 
         List<IGuild> guilds = orangepeel.getClient().getGuilds();

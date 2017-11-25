@@ -23,7 +23,6 @@ public class NickAllCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.MODERATION);
     }
 
-    @Override
     public void onCommand(OrangePeel bot, IDiscordClient client, IMessage commandMessage, String[] args) {
         IUser punisher = commandMessage.getAuthor();
         IGuild guild = commandMessage.getGuild();

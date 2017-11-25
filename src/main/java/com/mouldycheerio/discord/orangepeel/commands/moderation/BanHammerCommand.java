@@ -20,7 +20,6 @@ public class BanHammerCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.MODERATION);
     }
 
-    @Override
     public void onCommand(OrangePeel bot, IDiscordClient client, IMessage commandMessage, String[] args) {
 //        commandMessage.reply("insert ban here");
         IUser punisher = commandMessage.getAuthor();

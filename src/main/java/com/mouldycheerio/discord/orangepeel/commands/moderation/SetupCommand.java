@@ -34,6 +34,8 @@ public class SetupCommand extends OrangePeelCommand {
     private String greetchannelMessage;
     private String done;
     private String fourthMessage;
+    public HashMap<IChannel, Long> lastMessages = new HashMap<IChannel, Long>();
+
     private boolean registered = false;
 
     public SetupCommand() {
@@ -51,16 +53,19 @@ public class SetupCommand extends OrangePeelCommand {
         done = "Ok, we are all done, thank you.";
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         this.orangepeel = orangepeel;
         this.client = client;
         if (!registered) {
             client.getDispatcher().registerListener(this);
-            registered  = true;
+            registered = true;
         }
         if (commandMessage.getAuthor().getPermissionsForGuild(commandMessage.getGuild()).contains(Permissions.ADMINISTRATOR)) {
             running.put(commandMessage.getChannel(), commandMessage.getAuthor());
-            commandMessage.getChannel().sendMessage(firstMessage);
+            IMessage mg = commandMessage.getChannel().sendMessage(firstMessage);
+            lastMessages.put(mg.getChannel(), mg.getLongID());
+
         }
         orangepeel.saveAll();
     }
@@ -75,63 +80,67 @@ public class SetupCommand extends OrangePeelCommand {
             Entry<IChannel, IUser> entry = it.next();
             if (entry.getValue().equals(event.getAuthor())) {
                 if (entry.getKey().equals(event.getChannel())) {
-                    for (IMessage iMessage : channel.getMessageHistory(10)) {
-                        String m = iMessage.getContent();
-                        if (iMessage.getAuthor().getStringID().equals(client.getOurUser().getStringID())) {
+                    String m = event.getChannel().getMessageByID(lastMessages.get(event.getChannel())).getContent();
 
-                            if (m.equals(firstMessage)) {
-                                if (message.equalsIgnoreCase("no")) {
-                                    it.remove();
-                                } else {
-                                    event.getMessage().getChannel().sendMessage(secondMessage);
-                                }
-                                break;
-                            } else if (m.equals(secondMessage)) {
-                                if (message.equalsIgnoreCase("no")) {
-                                    event.getMessage().getChannel().sendMessage(thirdMessage);
-                                } else {
-                                    event.getMessage().getChannel().sendMessage(autoroleMessage);
-                                }
-                                break;
-                            } else if (m.equals(autoroleMessage)) {
-                                String roleID = PeelingUtils.mentionToIdEz(message);
-                                orangepeel.getAutoRole().put(event.getGuild().getStringID(), roleID);
-                                event.getMessage().getChannel().sendMessage(thirdMessage);
-                                break;
-                            } else if (m.equals(thirdMessage)) {
-                                if (message.equalsIgnoreCase("yes")) {
-                                    event.getMessage().getChannel().sendMessage(greetchannelMessage);
-                                    break;
-                                } else {
-                                    event.getMessage().getChannel().sendMessage(fourthMessage);
-                                    break;
-                                }
-
-                            } else if (m.equals(greetchannelMessage)) {
-                                String channelID = PeelingUtils.mentionToIdEz(message);
-                                orangepeel.getGreet().put(event.getGuild().getStringID(), channelID);
-                                event.getMessage().getChannel().sendMessage(fourthMessage);
-                                break;
-
-                            } else if (m.equals(fourthMessage)) {
-                                if (message.equalsIgnoreCase("yes")) {
-                                    IRole role = event.getGuild().createRole();
-                                    role.changeName("Muted");
-                                    role.changeColor(Color.black);
-                                    for (IChannel iChannel : event.getGuild().getChannels()) {
-                                        EnumSet<Permissions> toremove = EnumSet.of(Permissions.SEND_MESSAGES);
-                                        EnumSet<Permissions> toadd = EnumSet.noneOf(Permissions.class);
-                                        iChannel.overrideRolePermissions(role, toadd, toremove);
-                                    }
-                                    orangepeel.getMuted().put(event.getGuild().getStringID(), role.getStringID());
-                                }
-                                event.getMessage().getChannel().sendMessage(done);
-                                it.remove();
-                                orangepeel.saveAll();
-                                break;
-
-                            }
+                    if (m.equals(firstMessage)) {
+                        if (message.equalsIgnoreCase("no")) {
+                            it.remove();
+                        } else {
+                            IMessage mg = event.getMessage().getChannel().sendMessage(secondMessage);
+                            lastMessages.put(mg.getChannel(), mg.getLongID());
                         }
+                        break;
+                    } else if (m.equals(secondMessage)) {
+                        if (message.equalsIgnoreCase("no")) {
+                            IMessage mg = event.getMessage().getChannel().sendMessage(thirdMessage);
+                            lastMessages.put(mg.getChannel(), mg.getLongID());
+                        } else {
+                            IMessage mg = event.getMessage().getChannel().sendMessage(autoroleMessage);
+                            lastMessages.put(mg.getChannel(), mg.getLongID());
+                        }
+                        break;
+                    } else if (m.equals(autoroleMessage)) {
+                        String roleID = PeelingUtils.mentionToIdEz(message);
+                        orangepeel.getAutoRole().put(event.getGuild().getStringID(), roleID);
+                        IMessage mg = event.getMessage().getChannel().sendMessage(thirdMessage);
+                        lastMessages.put(mg.getChannel(), mg.getLongID());
+                        break;
+                    } else if (m.equals(thirdMessage)) {
+                        if (message.equalsIgnoreCase("yes")) {
+                            IMessage mg = event.getMessage().getChannel().sendMessage(greetchannelMessage);
+                            lastMessages.put(mg.getChannel(), mg.getLongID());
+                            break;
+                        } else {
+                            IMessage mg = event.getMessage().getChannel().sendMessage(fourthMessage);
+                            lastMessages.put(mg.getChannel(), mg.getLongID());
+                            break;
+                        }
+
+                    } else if (m.equals(greetchannelMessage)) {
+                        String channelID = PeelingUtils.mentionToIdEz(message);
+                        orangepeel.getGreet().put(event.getGuild().getStringID(), channelID);
+                        IMessage mg = event.getMessage().getChannel().sendMessage(fourthMessage);
+                        lastMessages.put(mg.getChannel(), mg.getLongID());
+                        break;
+
+                    } else if (m.equals(fourthMessage)) {
+                        if (message.equalsIgnoreCase("yes")) {
+                            IRole role = event.getGuild().createRole();
+                            role.changeName("Muted");
+                            role.changeColor(Color.black);
+                            for (IChannel iChannel : event.getGuild().getChannels()) {
+                                EnumSet<Permissions> toremove = EnumSet.of(Permissions.SEND_MESSAGES);
+                                EnumSet<Permissions> toadd = EnumSet.noneOf(Permissions.class);
+                                iChannel.overrideRolePermissions(role, toadd, toremove);
+                            }
+                            orangepeel.getMuted().put(event.getGuild().getStringID(), role.getStringID());
+                        }
+                        IMessage mg = event.getMessage().getChannel().sendMessage(done);
+                        lastMessages.put(mg.getChannel(), mg.getLongID());
+                        it.remove();
+                        orangepeel.saveAll();
+                        break;
+
                     }
                 }
             }

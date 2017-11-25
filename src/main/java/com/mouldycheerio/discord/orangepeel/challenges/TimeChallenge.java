@@ -18,7 +18,6 @@ public class TimeChallenge extends OrangePeelChallenge {
         setDescription(new ChallengeDescription("Just a sec...", "Wait one second"));
         start = System.currentTimeMillis();
     }
-    @Override
     public boolean check() {
         incrementProgress();
         if (getProgress() > getMaxProgress()) {

@@ -17,7 +17,6 @@ public class ReportBugCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.ABOUT);
     }
 
-    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         if (orangepeel.getBugReportsChannel() != null) {
             StringBuilder sb = new StringBuilder();

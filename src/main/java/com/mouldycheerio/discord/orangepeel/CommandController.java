@@ -3,13 +3,13 @@ package com.mouldycheerio.discord.orangepeel;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mouldycheerio.discord.orangepeel.challenges.ChallengesCommand;
 import com.mouldycheerio.discord.orangepeel.commands.AddCustomCommand;
 import com.mouldycheerio.discord.orangepeel.commands.AddPerServerCustomCommand;
 import com.mouldycheerio.discord.orangepeel.commands.AnnounceCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ArtCommand;
 import com.mouldycheerio.discord.orangepeel.commands.AsciiCommand;
 import com.mouldycheerio.discord.orangepeel.commands.BotBanCommand;
-import com.mouldycheerio.discord.orangepeel.commands.ChallengesCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ChannelsCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ChopperCommand;
 import com.mouldycheerio.discord.orangepeel.commands.Command;
@@ -24,7 +24,6 @@ import com.mouldycheerio.discord.orangepeel.commands.GiveAdminCommand;
 import com.mouldycheerio.discord.orangepeel.commands.HelpCommand;
 import com.mouldycheerio.discord.orangepeel.commands.HeyCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ImageCommand;
-import com.mouldycheerio.discord.orangepeel.commands.JackieChanCommand;
 import com.mouldycheerio.discord.orangepeel.commands.LoadAllCommand;
 import com.mouldycheerio.discord.orangepeel.commands.LogCommand;
 import com.mouldycheerio.discord.orangepeel.commands.MirrorMirrorCommand;
@@ -49,6 +48,7 @@ import com.mouldycheerio.discord.orangepeel.commands.ShutdownCommand;
 import com.mouldycheerio.discord.orangepeel.commands.SimpleCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.StatsCommand;
 import com.mouldycheerio.discord.orangepeel.commands.StoryCommand;
+import com.mouldycheerio.discord.orangepeel.commands.StreamCommand;
 import com.mouldycheerio.discord.orangepeel.commands.SuggestionCommand;
 import com.mouldycheerio.discord.orangepeel.commands.SummonCommand;
 import com.mouldycheerio.discord.orangepeel.commands.TopCommand;
@@ -59,8 +59,10 @@ import com.mouldycheerio.discord.orangepeel.commands.WahCommand;
 import com.mouldycheerio.discord.orangepeel.commands.WaveCommand;
 import com.mouldycheerio.discord.orangepeel.commands.XOXCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.BalanceCommand;
+import com.mouldycheerio.discord.orangepeel.commands.coin.JackieChan;
 import com.mouldycheerio.discord.orangepeel.commands.coin.PayCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.ShopCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.AutoRoleCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.BanCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.BanHammerCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.KickCommand;
@@ -68,6 +70,7 @@ import com.mouldycheerio.discord.orangepeel.commands.moderation.MuteCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.NickAllCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.PurgeCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.SetupCommand;
+import com.mouldycheerio.discord.orangepeel.commands.moderation.SetupMuteCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.UnBanCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.UnMuteCommand;
 
@@ -98,6 +101,10 @@ public class CommandController {
         commands.add(new DownVoteCommand());
         commands.add(new ChopperCommand());
         commands.add(new SetupCommand());
+        commands.add(new SetupMuteCommand());
+        commands.add(new AutoRoleCommand());
+
+
         commands.add(new ResponseTimeCommand());
         commands.add(new XOXCommand());
         commands.add(new RPScommand());
@@ -122,7 +129,7 @@ public class CommandController {
 
         commands.add(new ImageCommand());
         commands.add(new ArtCommand());
-        commands.add(new JackieChanCommand());
+        commands.add(new JackieChan());
         commands.add(new ServersCommand());
         commands.add(new FakeUserCommand());
         commands.add(new ChannelsCommand());
@@ -139,6 +146,7 @@ public class CommandController {
         commands.add(new AddCustomCommand());
         commands.add(new SetChannelCommand());
         commands.add(new NicknameCommand());
+        commands.add(new StreamCommand());
         commands.add(new LogCommand());
 
         commands.add(new SetVotesCommand());

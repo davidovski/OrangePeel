@@ -1,11 +1,15 @@
 package com.mouldycheerio.discord.orangepeel.commands.coin;
 
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import com.mouldycheerio.discord.orangepeel.OrangePeel;
 
@@ -14,7 +18,6 @@ import sx.blah.discord.handle.obj.IUser;
 
 public class CoinController {
     public static String emote = "<:coin:376493562092716033>";
-
 
     private Map<IGuild, Map<IUser, Integer>> coins;
 
@@ -83,14 +86,28 @@ public class CoinController {
         }
     }
 
-    public JSONObject save(JSONObject obj) {
+    public void save() {
+        JSONObject obj = new JSONObject();
         JSONObject coinz = new JSONObject();
         for (Entry<IGuild, Map<IUser, Integer>> entry : coins.entrySet()) {
             JSONObject g = new JSONObject();
             for (Entry<IUser, Integer> u : entry.getValue().entrySet()) {
-                g.put(u.getKey().getStringID(), u.getValue().intValue());
+                try {
+                    String stringID = u.getKey().getStringID();
+                    System.out.println("stringID=" + stringID);
+                    Integer value = u.getValue();
+                    System.out.println("value=" + value);
+
+                    g.put(stringID, value);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+            try {
             coinz.put(entry.getKey().getStringID(), g);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         JSONObject peels = new JSONObject();
@@ -101,10 +118,21 @@ public class CoinController {
         obj.put("peels", peels);
         obj.put("coins", coinz);
 
-        return obj;
+        try {
+            FileWriter file = new FileWriter("coins.opf");
+            file.write(obj.toString());
+            file.flush();
+
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void load(JSONObject obj) {
+    public void load() throws IOException {
+        FileReader fileReader = new FileReader("coins.opf");
+        JSONTokener parser = new JSONTokener(fileReader);
+        JSONObject obj = (JSONObject) parser.nextValue();
         if (obj.has("peels")) {
             JSONObject o = obj.getJSONObject("peels");
             Iterator<String> keys = o.keys();
@@ -133,5 +161,6 @@ public class CoinController {
 
             }
         }
+        fileReader.close();
     }
 }

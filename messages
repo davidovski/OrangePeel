@@ -373,3 +373,83 @@ davidovski: <>shop convert  coin
 davidovski: <>shop convert coin
 davidovski: <>balance
 davidovski: <>balance
+davidovski: <>jackiechan
+davidovski: good
+davidovski: <>shop
+davidovski: <>jc say boi
+davidovski: <>jc boi
+davidovski: <>jc boi
+davidovski: <>jc hello
+davidovski: `play talk dirty
+Joji Bot | `help: Enqueued **Jason Derulo - "Talk Dirty" feat. 2 Chainz (Official HD Music Video)** to be played. Position in queue: 1 - estimated time until playing: 0:01:47
+davidovski: <>shop
+davidovski: <>shop j
+davidovski: <>shop
+Joji Bot | `help: Now playing in Music 1: **Jason Derulo - "Talk Dirty" feat. 2 Chainz (Official HD Music Video)**
+davidovski: <>shop conv pea
+davidovski: <>shop conv peel
+davidovski: <>shop conv peel
+davidovski: <>streaming https://twitch.tv/theredturtlez
+davidovski: <>streaming
+davidovski: <>channels
+davidovski: >setChannel logs <#376141347029254144>
+davidovski: >setChannel sug <#324448786912903168>
+OrangePeel: <@!253275397444206594>, Ok, I'll post all messages that you may need to know in <#376141347029254144>
+OrangePeel: <@!253275397444206594>, Ok, if anyone has a suggestion, I'll post it in <#324448786912903168> for developers to implement.
+davidovski: >setChannel bugs <#327504772691263488>
+OrangePeel: <@!253275397444206594>, Ok, if anyone has a bug, I'll post it in <#327504772691263488> for developers to look at (and fix?).
+davidovski: >channels
+OrangePeel: ```Logs = 376141347029254144
+suggestions = 324448786912903168
+bugs = 327504772691263488```
+davidovski: >saveAll
+OrangePeel: :floppy_disk: 47ms
+davidovski: >channels
+OrangePeel: ```Logs = N/A
+suggestions = N/A
+bugs = N/A```
+davidovski: >setChannel logs <#376141347029254144>
+OrangePeel: <@!253275397444206594>, Ok, I'll post all messages that you may need to know in <#376141347029254144>
+davidovski: >channels
+OrangePeel: ```Logs = 376141347029254144
+suggestions = N/A
+bugs = N/A```
+davidovski: <>setup
+davidovski: yes
+davidovski: >setup
+davidovski: <>setup
+davidovski: yes
+davidovski: <>setup
+davidovski: yes
+davidovski: <>setup
+davidovski: yes
+davidovski: no
+davidovski: yes
+davidovski: <#366203090598363138>
+davidovski: yes
+davidovski: <#366203090598363138>
+davidovski: <>setup
+davidovski: yes
+davidovski: no
+davidovski: yes
+davidovski: <#366203090598363138>
+davidovski: yes
+davidovski: >mute <@306453403565817866>
+davidovski: <>mute <@306453403565817866>
+davidovski: lol
+davidovski: >setupMute
+davidovski: >setupMute
+davidovski: <>setupMute
+davidovski: <@&380501275281981450>
+davidovski: lol
+davidovski: <>mute <@253275397444206594>
+davidovski: <>unmute <@253275397444206594>
+davidovski: <>bug test
+davidovski: >top
+OrangePeel: __**The Most Popular People:**__
+**(1)**  Kaimeera with 105 votes
+**(2)**  davidovski with 19 votes
+**(3)**  TylerHoban.com with 7 votes
+davidovski: ok lol
+davidovski: <>help
+OrangePeel: I like ping pong too. (938ms)

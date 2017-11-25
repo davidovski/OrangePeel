@@ -18,7 +18,6 @@ public class ChannelsCommand extends OrangePeelCommand {
 
     }
 
-    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
 
         String logs = "Logs = ";

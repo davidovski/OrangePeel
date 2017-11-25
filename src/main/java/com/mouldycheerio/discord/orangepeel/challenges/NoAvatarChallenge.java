@@ -16,7 +16,7 @@ public class NoAvatarChallenge extends OrangePeelChallenge {
         setProgress(0);
         setStatus(ChallengeStatus.ACTIVE);
         setType(ChallengeType.NO_AVATAR);
-        setDescription(new ChallengeDescription("No Avatar", "Remove your avatar, and keep it that was for a day."));
+        setDescription(new ChallengeDescription(        "No Avatar", "Remove your avatar, and keep it that was for a day."));
         getDescription().setLongdescription("To win the challenge, you must not have an avatar at all (only the default) for 24 whole hours. ");
         start = System.currentTimeMillis();
     }
@@ -25,6 +25,7 @@ public class NoAvatarChallenge extends OrangePeelChallenge {
 
     @Override
     public boolean check() {
+        try {
         if (getUser().getAvatarURL().startsWith("https://cdn.discordapp.com/embed/avatars/")) {
             incrementProgress();
         } else {
@@ -33,6 +34,7 @@ public class NoAvatarChallenge extends OrangePeelChallenge {
         if (getProgress() > getMaxProgress()) {
             win();
         }
+        } catch (Exception e) {}
         return false;
     }
 

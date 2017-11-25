@@ -22,7 +22,6 @@ public class StayOnlineChallenge extends OrangePeelChallenge {
         start = System.currentTimeMillis();
     }
 
-    @Override
     public boolean check() {
         if (getUser().getPresence().getStatus() == StatusType.OFFLINE) {
             fail();

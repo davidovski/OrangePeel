@@ -28,46 +28,38 @@ public abstract class OrangePeelChallenge implements Challenge {
     public void onMessage(MessageReceivedEvent event) {
     }
 
-    @Override
     public void fail() {
         getClient().getOrCreatePMChannel(getUser()).sendMessage("You have failed your challenge: `" + getDescription().getName() + "`" );
 
         setStatus(ChallengeStatus.INACTIVE);
     }
 
-    @Override
     public void win() {
         getClient().getOrCreatePMChannel(getUser()).sendMessage("You have completed your challenge: `" + getDescription().getName() + "`"+ "\n You have recieved 1 Peel point, check your peel points with `>balance`");
         orangePeel.coinController().incrementPeels(getUser());
         setStatus(ChallengeStatus.COMPLETE);
     }
 
-    @Override
     public long getMaxProgress() {
         return maxProgress;
     }
 
-    @Override
     public long getProgress() {
         return progress;
     }
 
-    @Override
     public IUser getUser() {
         return user;
     }
 
-    @Override
     public IDiscordClient getClient() {
         return client;
     }
 
-    @Override
     public ChallengeDescription getDescription() {
         return description;
     }
 
-    @Override
     public ChallengeStatus getStatus() {
         return status;
     }
@@ -114,7 +106,6 @@ public abstract class OrangePeelChallenge implements Challenge {
         return obj;
     }
 
-    @Override
     public ChallengeType getType() {
         return type;
     }

@@ -14,7 +14,6 @@ public class StatsCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.ABOUT);
     }
 
-    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         StatsCounter statsCounter = orangepeel.getStatsCounter();
         commandMessage.getChannel().sendMessage("```    Bot Statistics ``` \n" + "```python\n" + "Servers = " + statsCounter.getServers() + "\n" + "Users = "

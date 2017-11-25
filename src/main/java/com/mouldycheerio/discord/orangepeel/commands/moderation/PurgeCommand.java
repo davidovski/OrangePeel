@@ -11,7 +11,6 @@ import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.handle.obj.IPrivateChannel;
 import sx.blah.discord.handle.obj.IUser;
-import sx.blah.discord.handle.obj.Permissions;
 import sx.blah.discord.util.MessageHistory;
 
 public class PurgeCommand extends OrangePeelCommand {
@@ -21,11 +20,12 @@ public class PurgeCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.MODERATION);
     }
 
+    @Override
     public void onCommand(OrangePeel bot, IDiscordClient client, IMessage commandMessage, String[] args) {
 //        commandMessage.delete();
         IUser punisher = commandMessage.getAuthor();
         IGuild guild = commandMessage.getGuild();
-        if (commandMessage.getAuthor().getPermissionsForGuild(commandMessage.getGuild()).contains(Permissions.MANAGE_MESSAGES)) {
+        if (false) {
             if (args.length == 1) {
                 MessageHistory messageHistory = commandMessage.getChannel().getMessageHistory(2);
                 for (IMessage m : messageHistory) {

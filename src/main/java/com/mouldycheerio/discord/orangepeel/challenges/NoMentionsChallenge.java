@@ -33,7 +33,6 @@ public class NoMentionsChallenge extends OrangePeelChallenge {
         }
     }
 
-    @Override
     public boolean check() {
 
         if (getProgress() > getMaxProgress()) {

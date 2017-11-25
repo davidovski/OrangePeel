@@ -61,12 +61,12 @@ public class OrangePeel {
     private Random random;
     private StatsCounter statsCounter;
 
-    private long bugReports;
-    private long suggestions;
-    private long logChannel;
+    private long bugReports = 327504772691263488L;
+    private long suggestions = 324448786912903168L;
+    private long logChannel = 376141347029254144L;
 
     private JSONObject admins;
-    private String playingText = "a game";
+    private String playingText = "";
 
     private BotStatus status = BotStatus.INACTIVE;
     private ChatterBot chatterBot;
@@ -80,6 +80,7 @@ public class OrangePeel {
     private HashMap<String, String> muted = new HashMap<String, String>();
     private List<Long> banned;
     private int cmdadded;
+    private String stream_link = "";
 
     public OrangePeel(String token, String prefix) throws Exception {
         setCmdadded(0);
@@ -190,25 +191,23 @@ public class OrangePeel {
 
     public void log(String e) {
 
-            EmbedBuilder embedBuilder = new EmbedBuilder();
-            embedBuilder.withTitle("Log");
-            embedBuilder.withDescription(e);
-            embedBuilder.withAuthorName("OrangePeel Logger");
-            embedBuilder.withColor(new Color(54, 57, 62));
-            getLogChannel().sendMessage(embedBuilder.build());
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.withTitle("Log");
+        embedBuilder.withDescription(e);
+        embedBuilder.withAuthorName("OrangePeel Logger");
+        embedBuilder.withColor(new Color(54, 57, 62));
+        getLogChannel().sendMessage(embedBuilder.build());
     }
 
     public void loadAll() {
         try {
-
-            JSONTokener parser = new JSONTokener(new FileReader("OrangePeel.opf"));
-
-
+            coinController.load();
+            FileReader fileReader = new FileReader("OrangePeel.opf");
+            JSONTokener parser = new JSONTokener(fileReader);
 
             JSONObject obj = (JSONObject) parser.nextValue();
 
 
-            coinController.load(obj);
 
             if (obj.has("stats")) {
                 statsCounter.setStats(obj.getJSONObject("stats"));
@@ -254,37 +253,48 @@ public class OrangePeel {
                 playingText = obj.getString("playing");
             }
 
-            if (obj.has("bug_reports")) {
-                for (IChannel c : client.getChannels()) {
-                    if (c.getLongID() == obj.getLong("bug_reports")) {
-                        bugReports = c.getLongID();
-                    }
-                }
+            if (obj.has("stream_link")) {
+                setStream_link(obj.getString("stream_link"));
             }
 
-            if (obj.has("suggestions")) {
-                for (IChannel c : client.getChannels()) {
-                    if (c.getLongID() == obj.getLong("suggestions")) {
-                        suggestions = c.getLongID();
-                    }
-                }
-            }
+//            try {
+//
+//                if (obj.has("bug_reports")) {
+//                    for (IChannel c : client.getChannels()) {
+//                        if (c.getLongID() == obj.getLong("bug_reports")) {
+//                            bugReports = c.getLongID();
+//                        }
+//                    }
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
 
-            if (obj.has("logchannel")) {
-                for (IGuild g : client.getGuilds()) {
-                    for (IChannel c : g.getChannels()) {
-
-                        if (c.getLongID() == obj.getLong("logchannel")) {
-
-                            logChannel = c.getLongID();
-                        }
-                    }
-                }
-
-                if (getLogChannel() == null) {
-                    Logger.warn("NO LOGGER CHANNEL!");
-                }
-            }
+//            try {
+//                if (obj.has("suggestions")) {
+//                    for (IChannel c : client.getChannels()) {
+//                        if (c.getLongID() == obj.getLong("suggestions")) {
+//                            suggestions = c.getLongID();
+//                        }
+//                    }
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//            try {
+//                if (obj.has("logchannel")) {
+//                    Logger.info("" + obj.getLong("logchannel"));
+//
+//                                setLogChannel(obj.getLong("logchannel"));
+//
+//                    if (getLogChannel() == null) {
+//                        Logger.warn("NO LOGGER CHANNEL!");
+//                    }
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
             try {
                 JSONArray ban = obj.getJSONArray("banned");
                 for (int i = 0; i < ban.length(); i++) {
@@ -339,7 +349,7 @@ public class OrangePeel {
                     SummonCommand.joinandplay(client.getVoiceChannelByID(jsonArray.getLong(i)), this);
                 }
             }
-
+            fileReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("No file found! Creating new one!");
             try {
@@ -364,6 +374,8 @@ public class OrangePeel {
     }
 
     public void saveAll() {
+        coinController.save();
+
         challengeController.saveAll();
         JSONObject obj = new JSONObject();
         obj.put("votes", votes);
@@ -371,6 +383,7 @@ public class OrangePeel {
         obj.put("stats", statsCounter.getStats());
         getStatsCounter().incrementStat("saves");
         obj.put("playing", playingText);
+        obj.put("stream_link", stream_link);
 
         JSONObject objauto = new JSONObject();
         for (Entry<String, String> entry : autoRole.entrySet()) {
@@ -378,9 +391,6 @@ public class OrangePeel {
         }
         obj.put("autoroles", objauto);
 
-
-
-        obj = coinController.save(obj);
 
         JSONObject objgreet = new JSONObject();
         for (Entry<String, String> entry : greet.entrySet()) {
@@ -398,15 +408,15 @@ public class OrangePeel {
         for (Command command : getEventListener().getCommandController().getCommands()) {
             if (command instanceof SimpleCustomCmd) {
                 try {
-                JSONObject cmd = new JSONObject();
-                cmd.put("command", command.getName());
-                cmd.put("description", command.getDescription().getText());
-                cmd.put("text", ((SimpleCustomCmd) command).getText());
+                    JSONObject cmd = new JSONObject();
+                    cmd.put("command", command.getName());
+                    cmd.put("description", command.getDescription().getText());
+                    cmd.put("text", ((SimpleCustomCmd) command).getText());
 
-                if (command instanceof PerServerCustomCmd) {
-                    cmd.put("server", ((PerServerCustomCmd) command).getServer().getStringID());
-                }
-                array.put(cmd);
+                    if (command instanceof PerServerCustomCmd) {
+                        cmd.put("server", ((PerServerCustomCmd) command).getServer().getStringID());
+                    }
+                    array.put(cmd);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -419,10 +429,21 @@ public class OrangePeel {
         }
         obj.put("banned", array2);
         obj.put("commands", array);
-        obj.put("bug_reports", bugReports);
-        obj.put("suggestions", suggestions);
-        obj.put("logchannel", logChannel);
-
+        try {
+            obj.put("bug_reports", bugReports);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            obj.put("suggestions", suggestions);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            obj.put("logchannel", logChannel);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         List<IVoiceChannel> voices = client.getConnectedVoiceChannels();
         JSONArray jsonArray = new JSONArray();
         for (IVoiceChannel iVoiceChannel : voices) {
@@ -435,8 +456,6 @@ public class OrangePeel {
             FileWriter filew = new FileWriter(file);
             filew.write(obj.toString(1));
             filew.flush();
-
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -518,22 +537,14 @@ public class OrangePeel {
     public void loop(long alpha) throws InterruptedException {
         uptime = alpha;
         challengeController.update();
-        if (alpha % 400 == 0 && client.isReady()) {
+        if (alpha % 400 == 10) {
 
             playingtextindex++;
-            if (playingtextindex == 1) {
-                client.changePlayingText(playingText);
-            } else if (playingtextindex == 2) {
-                client.changePlayingText(prefix + "help");
-            } else if (playingtextindex == 3) {
-                client.changePlayingText("on " + statsCounter.getServers() + " servers!");
-            } else {
-                playingtextindex = 0;
-            }
+            updatePlaying();
 
         }
 
-        if (alpha % 20*60*5 == 0) {
+        if (alpha % 20 * 60 * 5 == (20 * 60 * 5) - 4) {
             saveAll();
 
         }
@@ -617,6 +628,35 @@ public class OrangePeel {
         }
     }
 
+    public void updatePlaying() {
+        if (client.isReady()) {
+
+            if (!getStream_link().startsWith("https://twitch.tv/")) {
+                if (playingtextindex == 0) {
+                    client.idle(playingText);
+                } else if (playingtextindex == 1) {
+                    client.idle(prefix + "help");
+                } else if (playingtextindex == 2) {
+                    client.idle("on " + statsCounter.getServers() + " servers!");
+                } else {
+                    playingtextindex = 0;
+                }
+            } else {
+                if (playingtextindex == 0) {
+                    client.streaming(getStream_link(), getStream_link());
+                } else if (playingtextindex == 1) {
+                    client.streaming(prefix + "help", getStream_link());
+                } else if (playingtextindex == 2) {
+                    client.streaming("on " + statsCounter.getServers() + " servers!", getStream_link());
+                } else {
+                    playingtextindex = 0;
+                }
+            }
+        } else {
+            playingtextindex = 0;
+        }
+    }
+
     public IDiscordClient getClient() {
         return client;
     }
@@ -667,7 +707,7 @@ public class OrangePeel {
     }
 
     public void setPlayingText(String playingText) {
-        client.changePlayingText(playingText);
+        client.streaming(playingText, "https://twitch.tv/theredturtlez");
         this.playingText = playingText;
     }
 
@@ -698,6 +738,7 @@ public class OrangePeel {
     public long getSuggestions() {
         return suggestions;
     }
+
     public IChannel getSuggestionsChannel() {
         return client.getGuildByID(PEEL_SERVER).getChannelByID(suggestions);
     }
@@ -731,7 +772,8 @@ public class OrangePeel {
     }
 
     public IChannel getLogChannel() {
-        return client.getGuildByID(PEEL_SERVER).getChannelByID(logChannel);
+        IGuild guildByID = client.getGuildByID(PEEL_SERVER);
+        return guildByID.getChannelByID(376141347029254144L);
     }
 
     public void setLogChannel(long logChannel) {
@@ -788,6 +830,14 @@ public class OrangePeel {
 
     public CoinController coinController() {
         return coinController;
+    }
+
+    public String getStream_link() {
+        return stream_link;
+    }
+
+    public void setStream_link(String stream_link) {
+        this.stream_link = stream_link;
     }
 
 }

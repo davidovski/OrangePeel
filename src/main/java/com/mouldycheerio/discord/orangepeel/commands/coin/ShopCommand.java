@@ -1,5 +1,7 @@
 package com.mouldycheerio.discord.orangepeel.commands.coin;
 
+import static com.mouldycheerio.discord.orangepeel.commands.coin.JackieChan.sendJackieChanMessage;
+
 import java.awt.Color;
 
 import com.mouldycheerio.discord.orangepeel.OrangePeel;
@@ -8,7 +10,6 @@ import com.mouldycheerio.discord.orangepeel.commands.CommandDescription;
 import com.mouldycheerio.discord.orangepeel.commands.OrangePeelCommand;
 
 import sx.blah.discord.api.IDiscordClient;
-import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IMessage;
 import sx.blah.discord.util.EmbedBuilder;
 
@@ -47,6 +48,18 @@ public class ShopCommand extends OrangePeelCommand {
         } else if (args.length > 1) {
             if ("buy".equals(args[1]) || "b".equals(args[1])) {
 
+            } else if ("say".equals(args[1])) {
+                StringBuilder sb = new StringBuilder();
+                if (args.length > 2) {
+                    for (int i = 2; i < args.length; i++) {
+                        if (i > 1) {
+                            sb.append(" ");
+                        }
+                        sb.append(args[i]);
+                    }
+                }
+                String text = sb.toString();
+                sendJackieChanMessage(text, commandMessage.getChannel());
             } else if ("convert".equals(args[1]) || "conv".equals(args[1])) {
 
                 if ("c".equals(args[2]) || "coin".equals(args[2]) || "coins".equals(args[2])) {
@@ -74,21 +87,9 @@ public class ShopCommand extends OrangePeelCommand {
 
             }
         } else {
-            sendJackieChanMessage("hmm", commandMessage.getChannel());
+            sendJackieChanMessage("If you are seeing this message, please contact someone, quick! something doesnt make any sense. No args in the command, no command, but how do i know its the command. Please call help!!! QUICK!!!", commandMessage.getChannel());
         }
     }
 
-    public void sendJackieChanMessage(String content, IChannel channel) {
-        EmbedBuilder embedBuilder = new EmbedBuilder();
 
-        embedBuilder.withAuthorName("Jackie Chan");
-        embedBuilder.withAuthorUrl("http://jackiechan.com/");
-        embedBuilder.withImage("https://pmcvariety.files.wordpress.com/2017/09/jackie_chan.png");
-
-        embedBuilder.withDescription(content);
-
-        embedBuilder.withColor(new Color(54, 57, 62));
-
-        channel.sendMessage(embedBuilder.build());
-    }
 }

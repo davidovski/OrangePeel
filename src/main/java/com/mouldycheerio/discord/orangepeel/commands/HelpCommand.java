@@ -27,7 +27,6 @@ public class HelpCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.ABOUT);
     }
 
-    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         String stringID = commandMessage.getAuthor().getStringID();
 

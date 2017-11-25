@@ -16,7 +16,6 @@ import sx.blah.discord.handle.impl.events.ReadyEvent;
 import sx.blah.discord.handle.impl.events.guild.GuildCreateEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.ChannelCreateEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
-import sx.blah.discord.handle.impl.events.guild.channel.message.reaction.ReactionAddEvent;
 import sx.blah.discord.handle.impl.events.guild.member.UserJoinEvent;
 import sx.blah.discord.handle.impl.events.guild.member.UserLeaveEvent;
 import sx.blah.discord.handle.obj.IChannel;
@@ -28,8 +27,8 @@ public class EventListener {
     private String prefix;
     private OrangePeel orangePeel;
     private CommandController commandController;
-    private String ourmention;
-    private String ourmention2;
+    private String ourmention = "<@306115875784622080>";
+    private String ourmention2 = "<@!306115875784622080>";
 
     public EventListener(String prefix, OrangePeel orangePeel) {
         this.prefix = prefix;
@@ -50,7 +49,6 @@ public class EventListener {
 
     @EventSubscriber
     public void onInviteEvent(GuildCreateEvent event) throws InterruptedException {
-
 
     }
 
@@ -75,7 +73,6 @@ public class EventListener {
             embedBuilder.withTitle("Orange Peel is ready!");
             embedBuilder.withTimestamp(System.currentTimeMillis());
             embedBuilder.withDesc("Orange Peel has logged in as: " + orangePeel.getClient().getOurUser().getName() + "#" + orangePeel.getClient().getOurUser().getDiscriminator());
-            embedBuilder.appendField("Servers", orangePeel.getClient().getGuilds().size() + "", true);
             embedBuilder.appendField("Custom Commands Loaded", orangePeel.getCmdadded()+ "", true);
             embedBuilder.appendField("Challenges Loaded", orangePeel.getChallengeController().getChallanges().size()+ "", true);
 
@@ -86,7 +83,7 @@ public class EventListener {
             embedBuilder.withColor(new Color(54, 57, 62));
             logChannel.sendMessage(embedBuilder.build());
         }
-
+        orangePeel.updatePlaying();
     }
 
     @EventSubscriber
@@ -139,43 +136,43 @@ public class EventListener {
         }
     }
 
-    @EventSubscriber
-    public void onReactionAddEvent(ReactionAddEvent event) throws InterruptedException {
-        orangePeel.coinController().incrementCoins(event.getUser(), event.getGuild());
-        if (!event.getReaction().isCustomEmoji() && event.getReaction().getUnicodeEmoji().getAliases().size() > 0) {
-            String emoji = event.getReaction().getUnicodeEmoji().getAliases().get(0);
-            int number = 0;
-            if (emoji.equals("one")) {
-                number = 1;
-            } else if (emoji.equals("two")) {
-                number = 2;
-            } else if (emoji.equals("three")) {
-                number = 3;
-            } else if (emoji.equals("four")) {
-                number = 4;
-            } else if (emoji.equals("five")) {
-                number = 5;
-            } else if (emoji.equals("six")) {
-                number = 6;
-            } else if (emoji.equals("seven")) {
-                number = 7;
-            } else if (emoji.equals("eight")) {
-                number = 8;
-            } else if (emoji.equals("nine")) {
-                number = 9;
-            }
-
-            if (number != 0) {
-                orangePeel.xoxYourTurn(event.getMessage(), emoji, event.getReaction());
-            }
-            for (RPSgame g : orangePeel.getRps()) {
-                if (g.onReaction(event)) {
-                    break;
-                }
-
-            }
-        }
-    }
+//    @EventSubscriber
+//    public void onReactionAddEvent(ReactionAddEvent event) throws InterruptedException {
+//        orangePeel.coinController().incrementCoins(event.getUser(), event.getGuild());
+//        if (!event.getReaction().isCustomEmoji() && event.getReaction().getUnicodeEmoji().getAliases().size() > 0) {
+//            String emoji = event.getReaction().getUnicodeEmoji().getAliases().get(0);
+//            int number = 0;
+//            if (emoji.equals("one")) {
+//                number = 1;
+//            } else if (emoji.equals("two")) {
+//                number = 2;
+//            } else if (emoji.equals("three")) {
+//                number = 3;
+//            } else if (emoji.equals("four")) {
+//                number = 4;
+//            } else if (emoji.equals("five")) {
+//                number = 5;
+//            } else if (emoji.equals("six")) {
+//                number = 6;
+//            } else if (emoji.equals("seven")) {
+//                number = 7;
+//            } else if (emoji.equals("eight")) {
+//                number = 8;
+//            } else if (emoji.equals("nine")) {
+//                number = 9;
+//            }
+//
+//            if (number != 0) {
+//                orangePeel.xoxYourTurn(event.getMessage(), emoji, event.getReaction());
+//            }
+//            for (RPSgame g : orangePeel.getRps()) {
+//                if (g.onReaction(event)) {
+//                    break;
+//                }
+//
+//            }
+//        }
+//    }
 
     @EventSubscriber
     public void onMessageReceivedEvent(MessageReceivedEvent event) throws Exception {

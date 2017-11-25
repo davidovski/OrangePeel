@@ -20,7 +20,6 @@ public class PayCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.COINS);
     }
 
-    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
 
         IGuild guild = commandMessage.getGuild();

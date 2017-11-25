@@ -22,7 +22,6 @@ public class StayOfflineChallenge extends OrangePeelChallenge {
         start = System.currentTimeMillis();
     }
 
-    @Override
     public boolean check() {
         if (getProgress() < 20 * 60) {
             incrementProgress();

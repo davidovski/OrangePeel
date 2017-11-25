@@ -14,7 +14,6 @@ public class SetChannelCommand extends OrangePeelAdminCommand {
         setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
-    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         if (args.length >= 2) {
             String channelMention = args[2];

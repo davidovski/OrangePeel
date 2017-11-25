@@ -26,7 +26,6 @@ public class WaveCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.UTIL);
     }
 
-    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
 
         StringBuilder sb = new StringBuilder();
