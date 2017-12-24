@@ -29,15 +29,12 @@ import com.mouldycheerio.discord.orangepeel.commands.PerServerCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.SimpleCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.SummonCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.CoinController;
-import com.vdurmont.emoji.Emoji;
-import com.vdurmont.emoji.EmojiManager;
 
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.api.events.EventDispatcher;
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IMessage;
-import sx.blah.discord.handle.obj.IReaction;
 import sx.blah.discord.handle.obj.IVoiceChannel;
 import sx.blah.discord.util.EmbedBuilder;
 import sx.blah.discord.util.RateLimitException;
@@ -53,8 +50,7 @@ public class OrangePeel {
     private JSONObject votes;
 
     private Map<String, Long> voted;
-    private List<XOXgame> xox;
-    private List<RPSgame> rps;
+
 
     private CoinController coinController;
 
@@ -98,8 +94,6 @@ public class OrangePeel {
         voted = new HashMap<String, Long>();
         banned = new ArrayList<Long>();
 
-        xox = new ArrayList<XOXgame>();
-        rps = new ArrayList<RPSgame>();
 
         statsCounter = new StatsCounter(new JSONObject(), this);
         status = BotStatus.ACTIVE;
@@ -114,37 +108,7 @@ public class OrangePeel {
 
     }
 
-    public void xoxYourTurn(IMessage m, String number, IReaction reaction) throws InterruptedException {
-        boolean equals = false;
-        XOXgame game = null;
-        for (XOXgame g : xox) {
 
-            if (g.getMessage().getStringID().equals(m.getStringID())) {
-                equals = true;
-                game = g;
-
-                break;
-
-            }
-        }
-        if (equals && !m.getContent().equals("Game Loading...")) {
-            if (game.isUserTurn()) {
-                // TODO make peel play here
-                m.edit(m.getContent().replace(number, "negative_squared_cross_mark").replace(playXOXturn(game, null, false), "o2"));
-
-                Thread.sleep(200);
-                m.removeReaction(reaction);
-
-                game.toggleUserTurn();
-                game.nextTurn();
-                if (game.ended()) {
-                    xox.remove(game);
-                }
-
-            }
-
-        }
-    }
 
     public void logError(Exception e, IMessage commandMessage) {
         StringWriter sw = new StringWriter();
@@ -493,46 +457,7 @@ public class OrangePeel {
         }
     }
 
-    public String playXOXturn(XOXgame g, Iterator<XOXgame> it, boolean edit) throws InterruptedException {
 
-        IMessage m = g.getMessage();
-        List<IReaction> mine = new ArrayList<IReaction>();
-        for (IReaction iReaction : m.getReactions()) {
-            if (iReaction.getUsers().size() > 0 && iReaction.getUsers().contains(client.getOurUser())) {
-                mine.add(iReaction);
-            }
-        }
-        // if (mine.size() == 0) {
-        // xox.remove(id);
-        // m.edit("DRAW!");
-        // return;
-        // }
-        Logger.warn("chosing out of:" + mine.size());
-        String nextMove = g.getNextMove();
-        if (nextMove != "") {
-            Emoji e = EmojiManager.getForAlias(nextMove);
-            IReaction myturn = m.getReactionByUnicode(e);
-            Logger.info("I choose " + myturn.getUnicodeEmoji().getUnicode());
-            Thread.sleep(200);
-
-            m.removeReaction(myturn);
-            Thread.sleep(200);
-
-            if (edit) {
-                m.edit(m.getContent().replaceAll(myturn.getUnicodeEmoji().getAliases().get(0), "o2"));
-            }
-
-            g.toggleUserTurn();
-            g.nextTurn();
-            return myturn.getUnicodeEmoji().getAliases().get(0);
-        } else {
-            if (it != null) {
-                it.remove();
-            }
-        }
-        return "";
-
-    }
 
     public void loop(long alpha) throws InterruptedException {
         uptime = alpha;
@@ -549,75 +474,7 @@ public class OrangePeel {
 
         }
 
-        if (alpha % 10 == 0) {
 
-            Iterator<RPSgame> itrps = rps.iterator();
-            while (itrps.hasNext()) {
-                RPSgame g = itrps.next();
-
-                try {
-                    if (g.isEnded()) {
-                        itrps.remove();
-                    }
-                    if (alpha % 30 == 0) {
-                        g.getMessage().addReaction(RPSitem.PAPER.getEmoji());
-                    }
-                    if (alpha % 30 == 10) {
-                        g.getMessage().addReaction(RPSitem.SCISSORS.getEmoji());
-                    }
-                    if (alpha % 30 == 20) {
-                        g.getMessage().addReaction(RPSitem.ROCK.getEmoji());
-                    }
-                } catch (RateLimitException ex) {
-                    ex.printStackTrace();
-                    Thread.sleep(3000);
-                }
-            }
-            Iterator<XOXgame> it = xox.iterator();
-            while (it.hasNext()) {
-
-                XOXgame g = it.next();
-
-                if (!g.isUserTurn()) {
-                    playXOXturn(g, it, true);
-                }
-
-                if (g.getMessage().getContent().equals("Game Loading...")) {
-                    if (g.getNextnumbertoadd() == 1) {
-                        g.getMessage().addReaction(":one:");
-                    }
-                    if (g.getNextnumbertoadd() == 2) {
-                        g.getMessage().addReaction(":two:");
-                    }
-                    if (g.getNextnumbertoadd() == 3) {
-                        g.getMessage().addReaction(":three:");
-                    }
-                    if (g.getNextnumbertoadd() == 4) {
-                        g.getMessage().addReaction(":four:");
-                    }
-                    if (g.getNextnumbertoadd() == 5) {
-                        g.getMessage().addReaction(":five:");
-                    }
-                    if (g.getNextnumbertoadd() == 6) {
-                        g.getMessage().addReaction(":six:");
-                    }
-                    if (g.getNextnumbertoadd() == 7) {
-                        g.getMessage().addReaction(":seven:");
-                    }
-                    if (g.getNextnumbertoadd() == 8) {
-                        g.getMessage().addReaction(":eight:");
-                    }
-                    if (g.getNextnumbertoadd() == 9) {
-                        g.getMessage().addReaction(":nine:");
-                        g.getMessage().edit(":one::two::three:\n:four::five::six:\n:seven::eight::nine:");
-                    }
-                    g.addedNumber();
-                }
-                if (g.ended()) {
-                    it.remove();
-                }
-            }
-        }
         Iterator<Entry<String, Long>> iterator = voted.entrySet().iterator();
 
         while (iterator.hasNext()) {
@@ -677,14 +534,7 @@ public class OrangePeel {
         this.votes = votes;
     }
 
-    public List<XOXgame> getXox() {
-        return xox;
-    }
 
-    public void addXOXmessage(XOXgame m) {
-        xox.add(m);
-
-    }
 
     public StatsCounter getStatsCounter() {
         return statsCounter;
@@ -719,13 +569,7 @@ public class OrangePeel {
         this.status = status;
     }
 
-    public List<RPSgame> getRps() {
-        return rps;
-    }
 
-    public void setRps(List<RPSgame> rps) {
-        this.rps = rps;
-    }
 
     public EventListener getEventListener() {
         return eventListener;

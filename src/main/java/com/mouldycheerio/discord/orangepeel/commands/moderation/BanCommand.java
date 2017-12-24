@@ -17,9 +17,11 @@ public class BanCommand extends OrangePeelCommand {
     public BanCommand() {
         setName("ban");
         setDescription(new CommandDescription("ban", "ban someone of the server", "ban @user [reason]"));
+        addAlias("<:ban:346873537027375104>");
         setCatagory(CommandCatagory.MODERATION);
     }
 
+    @Override
     public void onCommand(OrangePeel bot, IDiscordClient client, IMessage commandMessage, String[] args) {
         IUser punisher = commandMessage.getAuthor();
         IGuild guild = commandMessage.getGuild();

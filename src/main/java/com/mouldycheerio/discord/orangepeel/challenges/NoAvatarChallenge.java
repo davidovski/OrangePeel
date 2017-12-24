@@ -23,7 +23,6 @@ public class NoAvatarChallenge extends OrangePeelChallenge {
 
 
 
-    @Override
     public boolean check() {
         try {
         if (getUser().getAvatarURL().startsWith("https://cdn.discordapp.com/embed/avatars/")) {

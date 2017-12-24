@@ -1,9 +1,7 @@
 package com.mouldycheerio.discord.orangepeel;
 
 import java.awt.Color;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.Writer;
+import java.time.format.DateTimeFormatter;
 import java.util.EnumSet;
 
 import com.mouldycheerio.discord.orangepeel.challenges.Challenge;
@@ -19,6 +17,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 import sx.blah.discord.handle.impl.events.guild.member.UserJoinEvent;
 import sx.blah.discord.handle.impl.events.guild.member.UserLeaveEvent;
 import sx.blah.discord.handle.obj.IChannel;
+import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IUser;
 import sx.blah.discord.handle.obj.Permissions;
 import sx.blah.discord.util.EmbedBuilder;
@@ -48,8 +47,23 @@ public class EventListener {
     }
 
     @EventSubscriber
-    public void onInviteEvent(GuildCreateEvent event) throws InterruptedException {
+    public void onGuildCreateEvent(GuildCreateEvent event) throws InterruptedException {
+        if (orangePeel.getUptime() > 1 * 60 * 1000) {
+            IGuild g = event.getGuild();
+            if (orangePeel.getLogChannel() != null) {
+                IChannel logChannel = orangePeel.getLogChannel();
+                EmbedBuilder embedBuilder = new EmbedBuilder();
+                embedBuilder.withAuthorName("Joined guild!");
+                embedBuilder.withTitle(g.getName());
+                embedBuilder.withThumbnail(g.getIconURL());
+                embedBuilder.appendField("Owner", g.getOwner().getName() + "#" + g.getOwner().getDiscriminator(), true);
+                embedBuilder.appendField("Users", g.getUsers().size() + "", true);
+                embedBuilder.appendField("Creation Date", g.getCreationDate().format(DateTimeFormatter.BASIC_ISO_DATE) + "", true);
 
+                embedBuilder.withColor(new Color(54, 57, 62));
+                logChannel.sendMessage(embedBuilder.build());
+            }
+        }
     }
 
     @EventSubscriber
@@ -73,12 +87,12 @@ public class EventListener {
             embedBuilder.withTitle("Orange Peel is ready!");
             embedBuilder.withTimestamp(System.currentTimeMillis());
             embedBuilder.withDesc("Orange Peel has logged in as: " + orangePeel.getClient().getOurUser().getName() + "#" + orangePeel.getClient().getOurUser().getDiscriminator());
-            embedBuilder.appendField("Custom Commands Loaded", orangePeel.getCmdadded()+ "", true);
-            embedBuilder.appendField("Challenges Loaded", orangePeel.getChallengeController().getChallanges().size()+ "", true);
+            embedBuilder.appendField("Custom Commands Loaded", orangePeel.getCmdadded() + "", true);
+            embedBuilder.appendField("Challenges Loaded", orangePeel.getChallengeController().getChallanges().size() + "", true);
 
             embedBuilder.appendField("ID", orangePeel.getClient().getOurUser().getStringID(), true);
-//            LocalDateTime creationDate = orangePeel.getClient().getOurUser().getCreationDate();
-//            embedBuilder.appendField("Created", creationDate.getDayOfMonth() + "/" + creationDate.getMonthValue() + "/" + creationDate.getYear(), true);
+            // LocalDateTime creationDate = orangePeel.getClient().getOurUser().getCreationDate();
+            // embedBuilder.appendField("Created", creationDate.getDayOfMonth() + "/" + creationDate.getMonthValue() + "/" + creationDate.getYear(), true);
 
             embedBuilder.withColor(new Color(54, 57, 62));
             logChannel.sendMessage(embedBuilder.build());
@@ -136,52 +150,9 @@ public class EventListener {
         }
     }
 
-//    @EventSubscriber
-//    public void onReactionAddEvent(ReactionAddEvent event) throws InterruptedException {
-//        orangePeel.coinController().incrementCoins(event.getUser(), event.getGuild());
-//        if (!event.getReaction().isCustomEmoji() && event.getReaction().getUnicodeEmoji().getAliases().size() > 0) {
-//            String emoji = event.getReaction().getUnicodeEmoji().getAliases().get(0);
-//            int number = 0;
-//            if (emoji.equals("one")) {
-//                number = 1;
-//            } else if (emoji.equals("two")) {
-//                number = 2;
-//            } else if (emoji.equals("three")) {
-//                number = 3;
-//            } else if (emoji.equals("four")) {
-//                number = 4;
-//            } else if (emoji.equals("five")) {
-//                number = 5;
-//            } else if (emoji.equals("six")) {
-//                number = 6;
-//            } else if (emoji.equals("seven")) {
-//                number = 7;
-//            } else if (emoji.equals("eight")) {
-//                number = 8;
-//            } else if (emoji.equals("nine")) {
-//                number = 9;
-//            }
-//
-//            if (number != 0) {
-//                orangePeel.xoxYourTurn(event.getMessage(), emoji, event.getReaction());
-//            }
-//            for (RPSgame g : orangePeel.getRps()) {
-//                if (g.onReaction(event)) {
-//                    break;
-//                }
-//
-//            }
-//        }
-//    }
-
     @EventSubscriber
     public void onMessageReceivedEvent(MessageReceivedEvent event) throws Exception {
         orangePeel.coinController().incrementCoins(event.getAuthor(), event.getGuild());
-        if (event.getMessage().getContent().length() > 1) {
-            Writer output = new BufferedWriter(new FileWriter("messages", true)); // clears file every time
-            output.append(event.getAuthor().getName() + ": " + event.getMessage().getContent() + "\n");
-            output.close();
-        }
 
         for (Challenge challenge : orangePeel.getChallengeController().getChallanges()) {
             if (challenge instanceof OrangePeelChallenge && challenge.getStatus() == ChallengeStatus.ACTIVE) {

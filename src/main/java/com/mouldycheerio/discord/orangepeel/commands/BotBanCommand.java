@@ -23,8 +23,9 @@ public class BotBanCommand extends OrangePeelAdminCommand {
         setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
-        IUser user = orangepeel.getClient().getUserByID(PeelingUtils.mentionToId(args[1], commandMessage.getGuild()));
+        IUser user = orangepeel.getClient().getUserByID(Long.parseLong(PeelingUtils.mentionToId(args[1], commandMessage.getGuild())));
         if (user != null) {
             if (args.length == 3 && "pardon".equals(args[2])) {
                 Iterator<Long> it = orangepeel.getBanned().iterator();

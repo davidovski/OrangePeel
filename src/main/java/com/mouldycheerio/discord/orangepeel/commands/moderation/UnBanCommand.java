@@ -21,13 +21,14 @@ public class UnBanCommand extends OrangePeelCommand {
         addAlias("pardon");
     }
 
+    @Override
     public void onCommand(OrangePeel bot, IDiscordClient client, IMessage commandMessage, String[] args) {
         IUser punisher = commandMessage.getAuthor();
         IGuild guild = commandMessage.getGuild();
         if (commandMessage.getAuthor().getPermissionsForGuild(commandMessage.getGuild()).contains(Permissions.BAN)) {
 
             String id = PeelingUtils.mentionToIdEz(args[1]);
-            guild.pardonUser(id);
+            guild.pardonUser(Long.parseLong(id));
             IPrivateChannel pm = client.getOrCreatePMChannel(client.getUserByID(Long.parseLong(id)));
             pm.sendMessage("Wow! looks like you have been unbanned on " + guild.getName() + " by " + punisher.getName() + ", thank them for doing this!");
             commandMessage.getChannel().sendMessage(args[1] + " has been unbanned.");

@@ -129,7 +129,6 @@ public class ChallengeController {
             return new StayOfflineChallenge(orangePeel, user, client);
         } else {
             OrangePeelChallenge c = new OrangePeelChallenge(orangePeel) {
-                @Override
                 public boolean check() {
                     win();
                     return false;

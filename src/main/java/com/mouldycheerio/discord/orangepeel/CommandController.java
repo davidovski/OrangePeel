@@ -31,7 +31,6 @@ import com.mouldycheerio.discord.orangepeel.commands.NicknameCommand;
 import com.mouldycheerio.discord.orangepeel.commands.OrangePeelAdminCommand;
 import com.mouldycheerio.discord.orangepeel.commands.PerServerCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.QuickPlayCommand;
-import com.mouldycheerio.discord.orangepeel.commands.RPScommand;
 import com.mouldycheerio.discord.orangepeel.commands.RateCommand;
 import com.mouldycheerio.discord.orangepeel.commands.RebootCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ReloadCommand;
@@ -57,11 +56,11 @@ import com.mouldycheerio.discord.orangepeel.commands.VoteCommand;
 import com.mouldycheerio.discord.orangepeel.commands.VotesCommand;
 import com.mouldycheerio.discord.orangepeel.commands.WahCommand;
 import com.mouldycheerio.discord.orangepeel.commands.WaveCommand;
-import com.mouldycheerio.discord.orangepeel.commands.XOXCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.BalanceCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.JackieChan;
 import com.mouldycheerio.discord.orangepeel.commands.coin.PayCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.ShopCommand;
+import com.mouldycheerio.discord.orangepeel.commands.debug.ReactCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.AutoRoleCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.BanCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.BanHammerCommand;
@@ -73,6 +72,8 @@ import com.mouldycheerio.discord.orangepeel.commands.moderation.SetupCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.SetupMuteCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.UnBanCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.UnMuteCommand;
+import com.mouldycheerio.discord.orangepeel.games.RPScommand;
+import com.mouldycheerio.discord.orangepeel.games.XOXCommand;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 
@@ -106,7 +107,7 @@ public class CommandController {
 
 
         commands.add(new ResponseTimeCommand());
-        commands.add(new XOXCommand());
+        commands.add(new XOXCommand(orangePeel.getClient()));
         commands.add(new RPScommand());
         commands.add(new TopCommand());
         commands.add(new StatsCommand());
@@ -120,6 +121,9 @@ public class CommandController {
         commands.add(new ChallengesCommand());
 
         commands.add(new NickAllCommand());
+        commands.add(new ReactCommand());
+
+
 
         commands.add(new AddPerServerCustomCommand());
 
@@ -205,6 +209,7 @@ public class CommandController {
                         }
                     } else {
                         c.onCommand(orangePeel, orangePeel.getClient(), event.getMessage(), parts);
+                        MetricsSystem.logCommand(event.getAuthor().getName() + "#" + event.getAuthor().getDiscriminator(), c.getName());
                         orangePeel.coinController().incrementCoins(4, event.getAuthor(), event.getGuild());
                         orangePeel.getStatsCounter().incrementStat("commands");
                     }
