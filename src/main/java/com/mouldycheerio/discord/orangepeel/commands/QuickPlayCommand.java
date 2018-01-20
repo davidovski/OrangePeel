@@ -20,42 +20,56 @@ public class QuickPlayCommand extends OrangePeelCommand {
 
     public QuickPlayCommand() {
         setName("qta");
-        setDescription(new CommandDescription("Start Quick Think Act", "Start a game of quick! Think! Act!.\nAn admin must run this command to avoid spam.", "qta"));
+        setDescription(new CommandDescription("Start Quick Think Act", "Start a game of quick! Think! Act!.\nAn admin must run this command to avoid spam.\nARGS:\n• players: players to wait for to join before starting the game\n• score: the score that a player must reach to trigger the end of the game.", "qta ["));
         addAlias("startQTA");
         addAlias("startQuickGame");
         setCatagory(CommandCatagory.GAMES);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         if (commandMessage.getAuthor().getPermissionsForGuild(commandMessage.getGuild()).contains(Permissions.ADMINISTRATOR)) {
             client.getDispatcher().registerListener(this);
             commandMessage.delete();
             // commandMessage.getChannel().sendMessage("");
-            games.add(new QuickPlayGame(commandMessage.getChannel()));
+            int players = 5;
+            if (args[1] != null) {
+                try {
+                    players = Integer.parseInt(args[1]);
+                }catch (Exception e) {
+                }
+            }
+            int score = 10;
+            if (args[2] != null) {
+                try {
+                    score = Integer.parseInt(args[2]);
+                }catch (Exception e) {
+                }
+            }
+            games.add(new QuickPlayGame(commandMessage.getChannel(), orangepeel, players, score));
             Logger.info("found");
+        } else {
+            commandMessage.reply("I'm sorry, but you must be a server admin to run this, as this command will clog the channel up with messages.");
         }
     }
 
     @EventSubscriber
-    public void onMessageReceivedEvent(MessageReceivedEvent event) {
+    public void onMessageReceivedEvent(MessageReceivedEvent event) throws InterruptedException {
         IChannel channel = event.getChannel();
         IGuild server = event.getGuild();
         String message = event.getMessage().getContent();
         Iterator<QuickPlayGame> iterator = games.iterator();
-        Logger.info("found");
         if (!event.getMessage().getAuthor().isBot()) {
             while (iterator.hasNext()) {
                 QuickPlayGame game = iterator.next();
 
                 if (game.getChannel().getStringID().equals(channel.getStringID())) {
                     if (game.isPlaying()) {
-                        Logger.info("testing against " + game.getCurrentWord());
                         boolean equals = message.equals(game.getCurrentWord());
                         if (game.isContains()) {
                             equals = message.toLowerCase().contains(game.getCurrentWord().toLowerCase());
                         }
                         if (equals) {
-                            Logger.info("tested");
                             game.nextWord(event.getMessage().getAuthor());
                         }
                     } else {

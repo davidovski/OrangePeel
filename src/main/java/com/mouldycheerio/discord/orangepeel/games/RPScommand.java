@@ -1,6 +1,7 @@
 package com.mouldycheerio.discord.orangepeel.games;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.mouldycheerio.discord.orangepeel.OrangePeel;
@@ -28,8 +29,9 @@ public class RPScommand extends OrangePeelCommand {
 
     @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
-        if (!registered  ) {
+        if (!registered) {
             client.getDispatcher().registerListener(this);
+            System.out.println("REGISTERED RPS LISTENER");
             registered = true;
         }
         IMessage m = commandMessage.getChannel().sendMessage("Rock Paper Scissors");
@@ -52,9 +54,13 @@ public class RPScommand extends OrangePeelCommand {
 
     @EventSubscriber
     public void onReactionAddEvent(ReactionAddEvent event) throws InterruptedException {
-        for (RPSgame g : rps) {
+        Iterator<RPSgame> iterator = rps.iterator();
+        while (iterator.hasNext()) {
+            RPSgame g = iterator.next();
+            System.out.println(g.getMessage().getContent());
+
             if (g.onReaction(event)) {
-                break;
+                iterator.remove();
             }
         }
     }

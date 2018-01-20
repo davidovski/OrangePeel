@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -44,12 +45,17 @@ public class CoinController {
         }
     }
 
-    public void incrementCoins(int a, IUser u, IGuild g) {
+    public void incrementCoins(int a, IUser u, IGuild g, boolean announce) {
         setCoinsForUser(a + getCoinsForUser(u, g), u, g);
+
+        if (a > 1 && announce) {
+            u.getOrCreatePMChannel().sendMessage("You just gained " + a + emote + " on " + g.getName() + ". Your total balance for that server is now " + coins.get(g).get(u));
+        }
+
     }
 
     public void incrementCoins(IUser u, IGuild g) {
-        incrementCoins(1, u, g);
+        incrementCoins(1, u, g, false);
     }
 
     public int getCoinsForUser(IUser u, IGuild g) {
@@ -87,44 +93,51 @@ public class CoinController {
     }
 
     public void save() {
-        JSONObject obj = new JSONObject();
-        JSONObject coinz = new JSONObject();
-        for (Entry<IGuild, Map<IUser, Integer>> entry : coins.entrySet()) {
-            JSONObject g = new JSONObject();
-            for (Entry<IUser, Integer> u : entry.getValue().entrySet()) {
-                try {
-                    String stringID = u.getKey().getStringID();
-                    System.out.println("stringID=" + stringID);
-                    Integer value = u.getValue();
-                    System.out.println("value=" + value);
+        try {
+            JSONObject obj = new JSONObject();
+            JSONObject coinz = new JSONObject();
+            for (Entry<IGuild, Map<IUser, Integer>> entry : coins.entrySet()) {
+                JSONObject g = new JSONObject();
+                for (Entry<IUser, Integer> u : entry.getValue().entrySet()) {
+                    try {
+                        String stringID = u.getKey().getStringID();
+                        System.out.println("stringID=" + stringID);
+                        Integer value = u.getValue();
+                        System.out.println("value=" + value);
 
-                    g.put(stringID, value);
+                        g.put(stringID, value);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                try {
+                    coinz.put(entry.getKey().getStringID(), g);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
+
+            JSONObject peels = new JSONObject();
+            Set<Entry<IUser, Integer>> entrySet = peelPoints.entrySet();
+            for (Entry<IUser, Integer> u : entrySet) {
+                String stringID = u.getKey().getStringID();
+                Integer value = u.getValue();
+                peels.put(stringID, value);
+            }
+
+            obj.put("peels", peels);
+            obj.put("coins", coinz);
+
             try {
-            coinz.put(entry.getKey().getStringID(), g);
-            } catch (Exception e) {
+                FileWriter file = new FileWriter("coins.opf");
+                file.write(obj.toString());
+                file.flush();
+
+                file.close();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-
-        JSONObject peels = new JSONObject();
-        for (Entry<IUser, Integer> u : peelPoints.entrySet()) {
-            peels.put(u.getKey().getStringID(), u.getValue());
-        }
-
-        obj.put("peels", peels);
-        obj.put("coins", coinz);
-
-        try {
-            FileWriter file = new FileWriter("coins.opf");
-            file.write(obj.toString());
-            file.flush();
-
-            file.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

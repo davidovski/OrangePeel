@@ -31,6 +31,7 @@ public class RPSgame {
         this.message = message;
     }
 
+
     public boolean onReaction(ReactionAddEvent event) {
         if (event.getMessage().equals(message) && !event.getUser().isBot()) {
             RPSitem choice = RPSitem.getRandom();
@@ -70,14 +71,6 @@ public class RPSgame {
                 message.edit(choice.getEmoji() + " = :" + emojiname + ":\n Its a draw!");
                 op.getStatsCounter().incrementStat("rps-draws");
             }
-
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-
         }
 
         return ended;

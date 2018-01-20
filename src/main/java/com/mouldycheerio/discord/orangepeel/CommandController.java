@@ -20,6 +20,7 @@ import com.mouldycheerio.discord.orangepeel.commands.EndGamesCommand;
 import com.mouldycheerio.discord.orangepeel.commands.EvalCommand;
 import com.mouldycheerio.discord.orangepeel.commands.FakeUserCommand;
 import com.mouldycheerio.discord.orangepeel.commands.GeoLocateCommand;
+import com.mouldycheerio.discord.orangepeel.commands.GetIDCommand;
 import com.mouldycheerio.discord.orangepeel.commands.GiveAdminCommand;
 import com.mouldycheerio.discord.orangepeel.commands.HelpCommand;
 import com.mouldycheerio.discord.orangepeel.commands.HeyCommand;
@@ -87,6 +88,8 @@ public class CommandController {
         commands = new ArrayList<Command>();
 
         commands.add(new HeyCommand());
+        commands.add(new GetIDCommand());
+
         commands.add(new UpTimeCommand());
         commands.add(new VoteCommand());
         commands.add(new MuteCommand());
@@ -198,7 +201,7 @@ public class CommandController {
                         if (orangePeel.getAdmins().has(event.getAuthor().getStringID())) {
                             if (((OrangePeelAdminCommand) c).getCommandlvl() <= orangePeel.getAdmins().getInt(event.getAuthor().getStringID())) {
                                 c.onCommand(orangePeel, orangePeel.getClient(), event.getMessage(), parts);
-                                orangePeel.coinController().incrementCoins(4, event.getAuthor(), event.getGuild());
+                                orangePeel.coinController().incrementCoins(4, event.getAuthor(), event.getGuild(), false);
                                 orangePeel.getStatsCounter().incrementStat("commands");
                             } else {
                                 event.getMessage().reply(((OrangePeelAdminCommand) c).getNoPermText());
@@ -209,8 +212,8 @@ public class CommandController {
                         }
                     } else {
                         c.onCommand(orangePeel, orangePeel.getClient(), event.getMessage(), parts);
-                        MetricsSystem.logCommand(event.getAuthor().getName() + "#" + event.getAuthor().getDiscriminator(), c.getName());
-                        orangePeel.coinController().incrementCoins(4, event.getAuthor(), event.getGuild());
+                        MetricsSystem.logCommand(event.getAuthor().getLongID(), c.getName(), event.getGuild().getLongID());
+                        orangePeel.coinController().incrementCoins(4, event.getAuthor(), event.getGuild(), false);
                         orangePeel.getStatsCounter().incrementStat("commands");
                     }
                 }

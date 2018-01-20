@@ -1,23 +1,23 @@
 {
  "autoroles": {},
  "stream_link": "",
- "bug_reports": 376141347029254144,
+ "bug_reports": 327504772691263488,
  "greetings": {"313761583291695104": "366203090598363138"},
  "connected": [],
  "logchannel": 376141347029254144,
  "stats": {
-  "saves": 8,
-  "loads": 5,
-  "boots": 5,
-  "messages": 17,
-  "commands": 3
+  "saves": 10,
+  "loads": 7,
+  "boots": 7,
+  "messages": 35,
+  "commands": 15
  },
- "votes": {},
+ "votes": {"327138048762445824": 1},
  "playing": "",
  "suggestions": 324448786912903168,
  "banned": [],
  "muted": {"313761583291695104": "380501275281981450"},
- "admins": {},
+ "admins": {"253275397444206594": 5},
  "commands": [
   {
    "description": "<<-->>",

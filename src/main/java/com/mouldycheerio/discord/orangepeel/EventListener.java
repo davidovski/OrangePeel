@@ -48,7 +48,7 @@ public class EventListener {
 
     @EventSubscriber
     public void onGuildCreateEvent(GuildCreateEvent event) throws InterruptedException {
-        if (orangePeel.getUptime() > 1 * 60 * 1000) {
+        if (orangePeel.getUptime() > 10 * 60 * 1000) {
             IGuild g = event.getGuild();
             if (orangePeel.getLogChannel() != null) {
                 IChannel logChannel = orangePeel.getLogChannel();
@@ -110,7 +110,7 @@ public class EventListener {
 
     @EventSubscriber
     public void onUserJoinEvent(UserJoinEvent event) throws InterruptedException {
-        orangePeel.coinController().incrementCoins(100, event.getUser(), event.getGuild());
+        orangePeel.coinController().incrementCoins(100, event.getUser(), event.getGuild(), false);
         if (orangePeel.getGreet().containsKey(event.getGuild().getStringID())) {
             event.getGuild().getChannelByID(Long.parseLong(orangePeel.getGreet().get(event.getGuild().getStringID())))
                     .sendMessage("Welcome, <@" + event.getUser().getStringID() + ">  to " + event.getGuild().getName() + "! :joy:");

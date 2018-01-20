@@ -1,0 +1,59 @@
+body {
+      background: #777;
+    }
+
+    .main {
+      padding: 1%;
+      margin: 2%;
+      color: #fff;
+    }
+
+    .section {
+      padding: 1%;
+      margin: 1%;
+      background: rgba(255, 100, 00, 0.7);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      color: #fff;
+      transition: background 0.5s;
+      display: block;
+    }
+
+    .section:hover {
+      padding: 1%;
+      margin: 1%;
+      background: rgba(255, 100, 00, 1.0);
+      transition: background 0.5s;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      color: #fff;
+      display: block;
+
+    }
+
+    .title {
+      width: 100%;
+      float: centre;
+    }
+
+    .fullwidth {
+      width: 100%;
+      float: left;
+    }
+
+    .left {
+      width: 45%;
+      float: left;
+    }
+
+    .right {
+      width: 50%;
+      float: right;
+    }
+
+    .percentage {
+      background: repeating-linear-gradient( to right, #ddd, #ddd 1px, #fff 1px, #fff 5%);
+    }
+
+    canvas {
+      width: 100%;
+    }
+

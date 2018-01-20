@@ -13,6 +13,7 @@ import java.util.Set;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import com.mouldycheerio.discord.orangepeel.OrangePeel;
 import com.mouldycheerio.discord.orangepeel.PeelingUtils;
 
 import sx.blah.discord.handle.obj.IChannel;
@@ -29,20 +30,24 @@ public class QuickPlayGame {
 
     private int players = 0;
 
-
-
     private HashMap<IUser, Integer> scores = new HashMap<IUser, Integer>();
     private int maxScore = 20;
+    private OrangePeel op;
+    private int maxPlayers;
 
-    public QuickPlayGame(IChannel channel) {
+    public QuickPlayGame(IChannel channel, OrangePeel op, int players, int maxScore) {
+        this.op = op;
+        maxPlayers = players;
+        this.maxScore = maxScore;
         this.setChannel(channel);
-        startMessage = channel.sendMessage("```Quick! Think! Act!```  A game about reacting :alarm_clock:, knowledge :thought_balloon: and speed! :runner: \n\n:arrow_forward: Type `ready` to join.\n\n:arrow_forward: Players needed to start : **3**\n\n:arrow_forward: Players joined = **0**");
+        startMessage = channel.sendMessage(
+                "```Quick! Think! Act!```  A game about reacting :alarm_clock:, knowledge :thought_balloon: and speed! :runner: \n\n:arrow_forward: Type `ready` to join.\n\n:arrow_forward: Players needed to start : **" + maxPlayers +"**\n\n:arrow_forward: Players joined = **0**");
         setCurrentWord("ready");
         setPlaying(false);
         players = 0;
     }
 
-    public String nextWord(IUser iUser) {
+    public String nextWord(IUser iUser) throws InterruptedException {
         if (iUser != null) {
             int value = 1;
             if (scores.containsKey(iUser)) {
@@ -53,14 +58,12 @@ public class QuickPlayGame {
                 scores.put(iUser, 1);
             }
 
-
-
             channel.sendMessage("<@" + iUser.getStringID() + "> won that round! They now have **" + scores.get(iUser) + "** points");
             if (value >= maxScore) {
 
-                Comparator<Entry<IUser, Integer>> valueComparator = new Comparator<Entry<IUser,Integer>>() {
+                Comparator<Entry<IUser, Integer>> valueComparator = new Comparator<Entry<IUser, Integer>>() {
 
-
+                    @Override
                     public int compare(Entry<IUser, Integer> o1, Entry<IUser, Integer> o2) {
                         return o2.getValue() - o1.getValue();
                     }
@@ -72,37 +75,41 @@ public class QuickPlayGame {
 
                 LinkedHashMap<IUser, Integer> sortedByValue = new LinkedHashMap<IUser, Integer>(listOfEntries.size());
 
-                for(Entry<IUser, Integer> entry : listOfEntries){
+                for (Entry<IUser, Integer> entry : listOfEntries) {
                     sortedByValue.put(entry.getKey(), entry.getValue());
                 }
 
-                System.out.println("HashMap after sorting entries by values ");
-                Set<Entry<IUser,Integer>> entrySetSortedByValue = sortedByValue.entrySet();
+                Set<Entry<IUser, Integer>> entrySetSortedByValue = sortedByValue.entrySet();
 
                 String scores = "```\n";
 
-                for(Entry<IUser, Integer> mapping : entrySetSortedByValue){
+                for (Entry<IUser, Integer> mapping : entrySetSortedByValue) {
                     scores = scores + mapping.getKey().getName() + ": " + mapping.getValue() + " points\n";
                 }
                 scores = scores + "```";
                 for (Entry<IUser, Integer> e : sortedByValue.entrySet()) {
                     channel.sendMessage("<@" + e.getKey().getStringID() + "> " + "is the winner with **" + maxScore + "** points! Here are the results:\n" + scores);
-
+                    op.coinController().incrementCoins(750, e.getKey(), channel.getGuild(), true);
                     break;
 
                 }
 
                 setPlaying(false);
-                setCurrentWord("neeeeee");
+                setCurrentWord("yrtytutr5e46rtiuyhgfdrr67t8yuyrd68yu");
                 return "";
             }
         }
         Random random = new Random();
-        int gametype = random.nextInt(5);
-        // int gametype = 0;
-        if (gametype == 0) {
-            try {
-                String word = PeelingUtils.getHTTP("http://www.setgetgo.com/randomword/get.php");
+        int gametype = random.nextInt(6);
+        Thread.sleep(400);
+//         int gametype = 5;
+        try {
+            if (gametype == 0) {
+                String json = PeelingUtils.getHTTP(
+                        "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&excludePartOfSpeech=family-name&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=14&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5");
+                JSONTokener parser = new JSONTokener(json);
+                JSONObject obj = (JSONObject) parser.nextValue();
+                String word = obj.getString("word").toLowerCase();
                 word = word.replace("\n", "");
                 IMessage m = channel.sendMessage("**Quick!**");
                 Thread.sleep(400);
@@ -111,11 +118,7 @@ public class QuickPlayGame {
                 m.edit("**Quick!** Type `" + word + "`");
                 setCurrentWord(word);
                 contains = false;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (gametype == 1) {
-            try {
+            } else if (gametype == 1) {
                 int a = 0;
                 int b = 0;
                 a = random.nextInt(10);
@@ -144,13 +147,8 @@ public class QuickPlayGame {
                 m.edit("**Quick!** Solve `" + a + "" + op + "" + b + "`");
                 contains = false;
                 setCurrentWord(answer + "");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (gametype == 2) {
-            try {
+            } else if (gametype == 2) {
                 String word = PeelingUtils.getHTTP("http://api.yomomma.info/");
-                System.out.println(word);
                 JSONTokener parser = new JSONTokener(word);
                 JSONObject obj = (JSONObject) parser.nextValue();
                 String string = obj.getString("joke");
@@ -159,36 +157,56 @@ public class QuickPlayGame {
                 m.edit("**Quick!** Laugh! ```" + string + "```");
                 contains = true;
                 setCurrentWord("ha");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (gametype == 3) {
-            try {
-                String word = PeelingUtils.getHTTP("http://api.yomomma.info/");
-                System.out.println(word);
-                JSONTokener parser = new JSONTokener(word);
-                JSONObject obj = (JSONObject) parser.nextValue();
-                String string = obj.getString("joke");
+
+            } else if (gametype == 3) {
                 IMessage m = channel.sendMessage("**Quick!**");
                 Thread.sleep(700);
                 m.edit("**Quick!** Dot!");
                 contains = false;
                 setCurrentWord(".");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (gametype == 4) {
-            try {
+            } else if (gametype == 4) {
                 IMessage m = channel.sendMessage("**Quick!**");
                 Thread.sleep(700);
                 m.edit("**Quick!** Speak!!");
                 contains = true;
                 setCurrentWord("");
-            } catch (Exception e) {
-                e.printStackTrace();
+            } else if (gametype == 5) {
+                String json = PeelingUtils.getHTTP(
+                        "http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&excludePartOfSpeech=family-name&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=14&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5");
+                JSONTokener parser = new JSONTokener(json);
+                JSONObject obj = (JSONObject) parser.nextValue();
+                String word = obj.getString("word").toLowerCase();
+                word = word.replace("\n", "");
+                int letter1i = random.nextInt(word.length() - 1);
+                char letter1 = word.charAt(letter1i);
+
+                int letter2i = letter1i + 1;
+                char letter2 = word.charAt(letter2i);
+
+                String str = word.substring(0, letter1i) + letter2 + letter1 + word.substring(letter2i + 1, word.length());
+
+                IMessage m = channel.sendMessage("**Quick!**");
+
+                Thread.sleep(400);
+                m.edit("**Quick!** Correct ...");
+                Thread.sleep(200);
+                m.edit("**Quick!** Correct `" + str + "`");
+                setCurrentWord(word);
+                contains = false;
+
+            }
+
+        } catch (Exception e) {
+            IMessage m = channel.sendMessage("**Quick!**");
+            Thread.sleep(700);
+            m.edit("**Quick!** Speak!!");
+            contains = true;
+            setCurrentWord("");
+            e.printStackTrace();
+            if (op.getLogChannel() != null) {
+                op.logError(e);
             }
         }
-
         return currentWord;
     }
 
@@ -227,9 +245,20 @@ public class QuickPlayGame {
     public void addPlayer() {
         players++;
         startMessage.edit(startMessage.getContent().split("=")[0] + "= **" + players + "**");
-        if (players >= 2) {
+        if (players >= maxPlayers) {
             setPlaying(true);
-            nextWord(null);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            try {
+                nextWord(null);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 

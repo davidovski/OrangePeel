@@ -130,6 +130,10 @@ public class OrangePeel {
     }
 
     public void logError(Exception e) {
+        logError(e, "An exception has been thrown");
+    }
+
+    public void logError(Exception e, String title) {
         if (e instanceof RateLimitException)
             return;
         try {
@@ -138,6 +142,7 @@ public class OrangePeel {
             e.printStackTrace(pw);
 
             EmbedBuilder embedBuilder = new EmbedBuilder();
+            embedBuilder.withAuthorName(title);
             embedBuilder.withTitle(e.getMessage() + " (" + e.getClass().getName() + ")");
             embedBuilder.withDescription(sw.toString());
             embedBuilder.withAuthorName("OrangePeel Logger");
@@ -165,7 +170,11 @@ public class OrangePeel {
 
     public void loadAll() {
         try {
-            coinController.load();
+            try {
+                coinController.load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             FileReader fileReader = new FileReader("OrangePeel.opf");
             JSONTokener parser = new JSONTokener(fileReader);
 
@@ -338,9 +347,16 @@ public class OrangePeel {
     }
 
     public void saveAll() {
-        coinController.save();
-
-        challengeController.saveAll();
+        try {
+            coinController.save();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            challengeController.saveAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         JSONObject obj = new JSONObject();
         obj.put("votes", votes);
         obj.put("admins", admins);
@@ -682,6 +698,18 @@ public class OrangePeel {
 
     public void setStream_link(String stream_link) {
         this.stream_link = stream_link;
+    }
+
+
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
     }
 
 }

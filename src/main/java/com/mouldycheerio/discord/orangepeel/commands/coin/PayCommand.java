@@ -20,6 +20,7 @@ public class PayCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.COINS);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
 
         IGuild guild = commandMessage.getGuild();
@@ -32,8 +33,8 @@ public class PayCommand extends OrangePeelCommand {
         }
         IUser to = client.getUserByID(Long.parseLong(id));
         if (orangepeel.coinController().getCoinsForUser(from, guild) >= ammount) {
-            orangepeel.coinController().incrementCoins(-ammount, from, guild);
-            orangepeel.coinController().incrementCoins(ammount, to, guild);
+            orangepeel.coinController().incrementCoins(-ammount, from, guild, false);
+            orangepeel.coinController().incrementCoins(ammount, to, guild, false);
             commandMessage.getChannel().sendMessage("**" + from.getName() + "** ~~---" + CoinController.emote + " " + ammount + " ---~~> **" + to.getName() + "**");
             if (to.getPresence().getStatus() == StatusType.OFFLINE) {
                 try {
