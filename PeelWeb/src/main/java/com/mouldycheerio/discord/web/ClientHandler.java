@@ -420,7 +420,6 @@ public class ClientHandler extends Thread {
         for (Long time : times) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(new Date(time));
-            System.out.println();
             hours.add(calendar.get(Calendar.DAY_OF_WEEK));
         }
 
