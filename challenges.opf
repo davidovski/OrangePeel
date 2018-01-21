@@ -1,1 +1,6338 @@
-{"challenges": []}
+{"challenges": [
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 0,
+  "progress": 0,
+  "typeID": 0,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Live",
+   "description": "just be alive"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 20,
+  "progress": 21,
+  "typeID": 1,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Just a sec...",
+   "description": "Wait one second"
+  },
+  "status": 2
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 2,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Online",
+   "description": "Stay online for a whole day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 3,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Avatar",
+   "description": "Remove your avatar, and keep it that was for a day."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 100,
+  "progress": 0,
+  "typeID": 4,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "No Mentions",
+   "description": "Do not mention anyone in the next 100 of your messages."
+  },
+  "status": 0
+ },
+ {
+  "maxProgress": 1728000,
+  "progress": 0,
+  "typeID": 5,
+  "user": {"id": 253275397444206594},
+  "desc": {
+   "name": "Stay Offline",
+   "description": "Do not go on discord for 24 hours"
+  },
+  "status": 0
+ }
+]}
