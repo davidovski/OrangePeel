@@ -19,6 +19,7 @@ public class AnnounceCommand extends OrangePeelAdminCommand {
         setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         if (args.length >= 2) {
             if (args[1].startsWith("-")) {
@@ -39,11 +40,16 @@ public class AnnounceCommand extends OrangePeelAdminCommand {
                     text = "@everyone " + text;
                 }
 
+
                 if (args[1].contains("p")) {
                     for (IUser u : client.getUsers()) {
                         if (!u.equals(client.getOurUser())) {
+                            try {
                             IPrivateChannel pm = client.getOrCreatePMChannel(u);
                             pm.sendMessage(text);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }
