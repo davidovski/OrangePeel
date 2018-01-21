@@ -20,6 +20,7 @@ public class RunServer {
             }
             if (s.startsWith("-config=")) {
                 configname = s.substring(8);
+                System.out.println(configname);
             }
         }
 
