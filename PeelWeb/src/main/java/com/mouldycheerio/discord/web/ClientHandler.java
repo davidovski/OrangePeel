@@ -130,8 +130,12 @@ public class ClientHandler extends Thread {
                 if (iconURL.contains("null")) {
                     iconURL = "https://cdn.discordapp.com/icons/313763491259351050/35216e6d5326c11e6f2cef435dfa08c3.jpg";
                 }
+                try {
                 html = html + "<tr><td> <img class=\"icon\"src=" + iconURL + "></td><td>" + g.getUsers().size() + "</td><td>" + g.getName() + "</td> <td>" + g.getOwner().getName()
                         + "</td> </tr>";
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
         html = html + "</table>";
@@ -197,6 +201,7 @@ public class ClientHandler extends Thread {
         ArrayList<String> commands = new ArrayList<String>();
         for (String s : metrics) {
             String[] split = s.split("\\|");
+            if (split.length > index)
             commands.add(split[index]);
         }
 
