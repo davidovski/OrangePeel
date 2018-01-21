@@ -108,8 +108,8 @@ function BarGraph(canvas) {
 		if (barHeight > border * 2) {
 			// Create gradient
 			gradient = ctx.createLinearGradient(0, 0, 0, graphAreaHeight);
-			gradient.addColorStop(0, 1);
-			gradient.addColorStop(0, 1);
+			gradient.addColorStop("#fff", "#fff");
+			gradient.addColorStop("#fff", "#fff");
 
 			ctx.fillStyle = gradient;
 			// Fill rectangle with gradient
