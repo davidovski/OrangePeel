@@ -153,7 +153,7 @@ public class ClientHandler extends Thread {
 
         if ("/metrics".equals(request)) {
             String metricsHTML = readFile("assets/metrics.html");
-            String metricsFile = readFile("assets/metrics/commands.all");
+            String metricsFile = readFile("../metrics/commands.all");
             List<String> metrics = Arrays.asList(metricsFile.split("\n"));
 
             String commandsList = makeList(metrics, 2, true);
