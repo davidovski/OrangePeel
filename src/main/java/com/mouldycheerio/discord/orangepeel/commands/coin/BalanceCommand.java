@@ -15,6 +15,10 @@ public class BalanceCommand extends OrangePeelCommand {
         setDescription(new CommandDescription("balance", "check your coin balance!", "balance"));
         setCatagory(CommandCatagory.COINS);
         addAlias("$");
+        addAlias("£");
+        addAlias("€");
+        addAlias("¥");
+
         addAlias("bal");
     }
 

@@ -108,7 +108,6 @@ public class CommandController {
         commands.add(new SetupMuteCommand());
         commands.add(new AutoRoleCommand());
 
-
         commands.add(new ResponseTimeCommand());
         commands.add(new XOXCommand(orangePeel.getClient()));
         commands.add(new RPScommand());
@@ -126,13 +125,10 @@ public class CommandController {
         commands.add(new NickAllCommand());
         commands.add(new ReactCommand());
 
-
-
         commands.add(new AddPerServerCustomCommand());
 
         commands.add(new SummonCommand());
         commands.add(new QuickPlayCommand());
-
 
         commands.add(new ImageCommand());
         commands.add(new ArtCommand());
@@ -140,7 +136,6 @@ public class CommandController {
         commands.add(new ServersCommand());
         commands.add(new FakeUserCommand());
         commands.add(new ChannelsCommand());
-
 
         commands.add(new WaveCommand());
         commands.add(new WahCommand());
@@ -171,7 +166,6 @@ public class CommandController {
         commands.add(new BalanceCommand());
         commands.add(new PayCommand());
         commands.add(new ShopCommand());
-
 
         commands.add(new ShutdownCommand());
         commands.add(new RebootCommand());
@@ -213,7 +207,9 @@ public class CommandController {
                     } else {
                         c.onCommand(orangePeel, orangePeel.getClient(), event.getMessage(), parts);
                         MetricsSystem.logCommand(event.getAuthor().getLongID(), c.getName(), event.getGuild().getLongID());
-                        orangePeel.coinController().incrementCoins(4, event.getAuthor(), event.getGuild(), false);
+                        if (!c.getName().equals("balance")) {
+                            orangePeel.coinController().incrementCoins(4, event.getAuthor(), event.getGuild(), false);
+                        }
                         orangePeel.getStatsCounter().incrementStat("commands");
                     }
                 }
@@ -229,7 +225,7 @@ public class CommandController {
                         }
                     }
                 }
-                if(match == false) {
+                if (match == false) {
                     commands.add(toadd);
                 }
                 toadd = null;
