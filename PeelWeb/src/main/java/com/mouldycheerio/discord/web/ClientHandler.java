@@ -293,6 +293,7 @@ public class ClientHandler extends Thread {
         ArrayList<String> commands = new ArrayList<String>();
         for (String s : metrics) {
             String[] split = s.split("\\|");
+            if (split.length > index)
             commands.add(split[index]);
         }
 
