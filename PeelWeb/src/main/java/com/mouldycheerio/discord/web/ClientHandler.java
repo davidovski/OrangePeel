@@ -165,8 +165,8 @@ public class ClientHandler extends Thread {
 
 
             metricsHTML = metricsHTML.replace("{{commands.list}}", commandsList);
-            metricsHTML = metricsHTML.replace("{{commandValues}}", getValues(commandslist, 30));
-            metricsHTML = metricsHTML.replace("{{commandKeys}}", getKeys(commandslist, 30, 8));
+            metricsHTML = metricsHTML.replace("{{commandValues}}", getValues(commandslist, 25));
+            metricsHTML = metricsHTML.replace("{{commandKeys}}", getKeys(commandslist, 25, 8));
 
 
             metricsHTML = metricsHTML.replace("{{times}}", times);
