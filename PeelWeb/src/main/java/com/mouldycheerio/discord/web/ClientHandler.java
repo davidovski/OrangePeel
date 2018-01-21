@@ -94,7 +94,12 @@ public class ClientHandler extends Thread {
             file = file.replace("{{users}}", client.getUsers().size() + "");
             file = file.replace("{{invite}}", "https://discord.gg/XZB8kSx");
             file = file.replace("{{commands}}", "53");
-            file = file.replace("{{guilds.table}}", getGuilds());
+
+            try {
+                file = file.replace("{{guilds.table}}", getGuilds());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             String mimeType = "text/html";
 
@@ -131,8 +136,8 @@ public class ClientHandler extends Thread {
                     iconURL = "https://cdn.discordapp.com/icons/313763491259351050/35216e6d5326c11e6f2cef435dfa08c3.jpg";
                 }
                 try {
-                html = html + "<tr><td> <img class=\"icon\"src=" + iconURL + "></td><td>" + g.getUsers().size() + "</td><td>" + g.getName() + "</td> <td>" + g.getOwner().getName()
-                        + "</td> </tr>";
+                    html = html + "<tr><td> <img class=\"icon\"src=" + iconURL + "></td><td>" + g.getUsers().size() + "</td><td>" + g.getName() + "</td> <td>"
+                            + g.getOwner().getName() + "</td> </tr>";
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -156,22 +161,38 @@ public class ClientHandler extends Thread {
         }
 
         if ("/metrics".equals(request)) {
-            String metricsHTML = readFile("assets/metrics.html");
-            String metricsFile = readFile("../metrics/commands.all");
+            String metricsHTML;
+            metricsHTML = readFile("assets/metrics.html");
+            String metricsFile;
+            metricsFile = readFile("../metrics/commands.all");
             List<String> metrics = Arrays.asList(metricsFile.split("\n"));
 
-            String commandsList = makeList(metrics, 2, true);
-            String usersList = makeListUsers(metrics, 1, false, 20);
-            String serverslist = makeListServers(metrics, true);
+            String commandsList = "NONE";
+            try {
+                commandsList = makeList(metrics, 2, true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            String usersList = "NONE";
+            try {
+                usersList = makeListUsers(metrics, 1, false, 20);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            String serverslist = "NONE";
+            try {
+                serverslist = makeListServers(metrics, true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             String times = getTimes(metrics);
             LinkedHashMap<String, Integer> commandslist = makeListCommands(metrics);
 
-
             metricsHTML = metricsHTML.replace("{{commands.list}}", commandsList);
             metricsHTML = metricsHTML.replace("{{commandValues}}", getValues(commandslist, 25));
             metricsHTML = metricsHTML.replace("{{commandKeys}}", getKeys(commandslist, 25, 8));
-
 
             metricsHTML = metricsHTML.replace("{{times}}", times);
             metricsHTML = metricsHTML.replace("{{days}}", getWeekDays(metrics));
@@ -202,7 +223,7 @@ public class ClientHandler extends Thread {
         for (String s : metrics) {
             String[] split = s.split("\\|");
             if (split.length > index)
-            commands.add(split[index]);
+                commands.add(split[index]);
         }
 
         final Map<String, Integer> mostCommon = mostCommon(commands);
@@ -299,7 +320,7 @@ public class ClientHandler extends Thread {
         for (String s : metrics) {
             String[] split = s.split("\\|");
             if (split.length > index)
-            commands.add(split[index]);
+                commands.add(split[index]);
         }
 
         final Map<String, Integer> mostCommon = mostCommon(commands);
@@ -339,7 +360,7 @@ public class ClientHandler extends Thread {
         for (Integer string : map.values()) {
             if (i <= limit) {
 
-            t = t + "\"" + string + "\"" + ",";
+                t = t + "\"" + string + "\"" + ",";
             }
             i++;
         }
@@ -355,7 +376,7 @@ public class ClientHandler extends Thread {
                     string = string.substring(0, crop) + "-";
                 }
 
-            t = t + "\"" + string + "\"" + ",";
+                t = t + "\"" + string + "\"" + ",";
             }
             i++;
         }
