@@ -16,6 +16,7 @@ import com.mouldycheerio.discord.orangepeel.commands.Command;
 import com.mouldycheerio.discord.orangepeel.commands.CommandCatagory;
 import com.mouldycheerio.discord.orangepeel.commands.CpuCommand;
 import com.mouldycheerio.discord.orangepeel.commands.DownVoteCommand;
+import com.mouldycheerio.discord.orangepeel.commands.EmbedCommand;
 import com.mouldycheerio.discord.orangepeel.commands.EndGamesCommand;
 import com.mouldycheerio.discord.orangepeel.commands.EvalCommand;
 import com.mouldycheerio.discord.orangepeel.commands.FakeUserCommand;
@@ -86,6 +87,7 @@ public class CommandController {
     public CommandController(OrangePeel orangePeel) {
         this.orangePeel = orangePeel;
         commands = new ArrayList<Command>();
+        commands.add(new EmbedCommand());
 
         commands.add(new HeyCommand());
         commands.add(new GetIDCommand());

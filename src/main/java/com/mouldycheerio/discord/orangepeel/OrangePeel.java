@@ -57,9 +57,9 @@ public class OrangePeel {
     private Random random;
     private StatsCounter statsCounter;
 
-    private long bugReports = 327504772691263488L;
-    private long suggestions = 324448786912903168L;
-    private long logChannel = 376141347029254144L;
+    private long bugReports = 404732553132507147L;
+    private long suggestions = 4047333279924224108L;
+    private long logChannel = 404730227051462657L;
 
     private JSONObject admins;
     private String playingText = "";
