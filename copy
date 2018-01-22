@@ -1,2 +1,4 @@
 #!/bin/bash
 scp bot.jar pi@pi3.thenet:orangePeel/
+scp PeelWeb/server.jar pi@pi3.thenet:server/
+scp -r PeelWeb/assets pi@pi3.thenet:server/

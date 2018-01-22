@@ -164,7 +164,7 @@ public class ClientHandler extends Thread {
             String metricsHTML;
             metricsHTML = readFile("assets/metrics.html");
             String metricsFile;
-            metricsFile = readFile("../metrics/commands.all");
+            metricsFile = readFile("metrics/commands.all");
             List<String> metrics = Arrays.asList(metricsFile.split("\n"));
 
             String commandsList = "NONE";
