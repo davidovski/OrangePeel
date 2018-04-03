@@ -1,0 +1,7 @@
+{
+ "leave": "Goodbye [user]!",
+ "greet": "",
+ "autorole": "",
+ "join": "Welcome [user] to [server]",
+ "muted": ""
+}

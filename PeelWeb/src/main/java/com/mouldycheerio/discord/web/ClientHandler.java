@@ -2,43 +2,40 @@ package com.mouldycheerio.discord.web;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Random;
 import java.util.StringTokenizer;
+
+import com.mrpowergamerbr.temmiediscordauth.TemmieDiscordAuth;
+import com.mrpowergamerbr.temmiediscordauth.utils.TemmieGuild;
 
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IUser;
+import sx.blah.discord.handle.obj.Permissions;
 
 public class ClientHandler extends Thread {
     private Socket socket;
     private IDiscordClient client;
+    private WebServer server;
 
-    public ClientHandler(Socket s, IDiscordClient idc) {
+    public ClientHandler(Socket s, IDiscordClient idc, WebServer server) {
         socket = s;
         this.client = idc;
+        this.server = server;
         start();
+
     }
 
     @Override
@@ -52,12 +49,202 @@ public class ClientHandler extends Thread {
 
             StringTokenizer st = new StringTokenizer(s);
 
+            String ckie = "";
+            boolean sendNew = true;
+
+            String input = "";
+
+            String line;
+            line = in.readLine();
+            input = input + "line";
+            boolean isPost = line.startsWith("POST");
+            int contentLength = 0;
+
+            while (!(line = in.readLine()).equals("")) {
+                input = input + "\n" + line;
+
+                final String contentHeader = "Content-Length: ";
+                if (line.startsWith(contentHeader)) {
+                    contentLength = Integer.parseInt(line.substring(contentHeader.length()));
+
+                }
+
+                if (line.startsWith("Cookie: ")) {
+                    String cookiesString = line.substring(8);
+                    String[] cookies = cookiesString.split("; ");
+                    for (String string : cookies) {
+                        if (string.startsWith("OPID=")) {
+                            String value = string.substring(5);
+                            ckie = value;
+                            sendNew = false;
+                        }
+                    }
+                }
+            }
+
+            String data = "";
+            int c = 0;
+
+            for (int i = 0; i < contentLength; i++) {
+                c = in.read();
+                data = data + (char) c;
+            }
+
+            if (sendNew) {
+                ckie = PeelUtil.getRandomToken();
+            }
+
             String request = "";
-            if (st.hasMoreElements() && st.nextToken().equalsIgnoreCase("GET") && st.hasMoreElements()) {
+            // System.out.println(input);
+            String t = st.nextToken();
+            if (st.hasMoreElements() && (t.equalsIgnoreCase("GET") || t.equalsIgnoreCase("POST")) && st.hasMoreElements()) {
                 request = st.nextToken();
             } else {
-                throw new FileNotFoundException();
+                // throw new FileNotFoundException();
             }
+
+            if (request.startsWith("/config/save")) {
+
+                try {
+                    String id = "";
+                    String[] args = request.split("\\?");
+                    id = args[1];
+                    String re = "";
+
+                    if (contentLength > 0) {
+                        String[] values = URLDecoder.decode(data, "UTF-8").split("&");
+
+                        TemmieDiscordAuth session = server.getSession(ckie);
+                        boolean authorised = false;
+                        if (session != null) {
+                            for (IGuild g : client.getGuilds()) {
+                                if (g.getStringID().equals(id)) {
+                                    IUser u = g.getUserByID(Long.parseLong(session.getCurrentUserIdentification().getId()));
+                                    if (u.getPermissionsForGuild(g).contains(Permissions.ADMINISTRATOR)) {
+                                        authorised = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        if (authorised) {
+                            ServerConfig config = new ServerConfig(id, client);
+                            for (String v : values) {
+                                if (v.startsWith("autorole=")) {
+                                    config.setAutoRoleID("" + v.substring(9));
+                                }
+                                if (v.startsWith("muted=")) {
+                                    config.setMutedRoleID("" + v.substring(6));
+                                }
+                                if (v.startsWith("greet=")) {
+                                    config.setGreetChannelID("" + v.substring(6));
+                                }
+                                if (v.startsWith("join=")) {
+                                    config.setGreetMessage("" + v.substring(5));
+                                }
+                                if (v.startsWith("leave=")) {
+                                    config.setLeaveMessage("" + v.substring(6));
+                                }
+                                if (v.startsWith("mc=")) {
+                                    config.getMagicChannels().clear();
+                                    System.out.println(v);
+                                    v = v.substring(3);
+                                    if (v.length() > 0) {
+                                        String[] list = v.split("and");
+                                        for (int i = 0; i < list.length; i++) {
+                                            if (list[i] != "") {
+                                                String[] split = list[i].split("for");
+
+                                                String channel = split[0];
+                                                String role = split[1];
+                                                System.out.println(channel + "for" + role);
+
+                                                MagicChannel e = new MagicChannel(client, channel, role);
+                                                System.out.println(e.getVoiceChannel().getStringID() + "for" + e.getRole().getStringID());
+                                                System.out.println("---");
+
+                                                config.getMagicChannels().add(e);
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+
+                            config.save();
+                            System.out.println("saved");
+                            re = "Changes Saved";
+                        } else {
+                            re = "Error, you are not logged in!";
+
+                        }
+
+                    }
+
+                    out.print("HTTP/1.0 200 OK\r\n" + "Content-type: " + "text/html" + "\r\n\r\n");
+                    out.write(re.getBytes());
+
+                    out.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                return;
+            }
+
+            if (request.startsWith("/auth")) {
+                String code = request.split("=")[1];
+                System.out.println(code);
+                TemmieDiscordAuth temmie;
+                if (WebServer.TEST) {
+                    temmie = new TemmieDiscordAuth(code, "http://mc.mouldycheerio.com:8213/auth", "370240387455123457", "jaLok-rslhZr9SStroMqHCpollEi70_q");
+                } else {
+                    temmie = new TemmieDiscordAuth(code, "https://bot.mouldycheerio.com/auth", "370240387455123457", "jaLok-rslhZr9SStroMqHCpollEi70_q");
+                }
+                temmie.doTokenExchange();
+                server.getSessions().put(ckie, temmie);
+
+                // String re = "<meta http-equiv=\"refresh\" content=\"0; url=\"http://bot.mouldycheerio.com\" />";
+                String re = "";
+                re = PeelUtil.readFile("assets/panel_redirect.html");
+
+                out.print("HTTP/1.0 200 OK\r\n" + "Content-type: " + "text/html" + "\r\n\r\n");
+                out.write(re.getBytes());
+
+                out.close();
+                return;
+            }
+
+            if (request.startsWith("/logout")) {
+
+                server.getSessions().remove(ckie);
+                // String re = "<head><meta http-equiv=\"refresh\" content=\"0; url=http://mc.mouldycheerio.com:8213\" /></head>";
+
+                String re = "<head><meta http-equiv=\"refresh\" content=\"0; url=https://bot.mouldycheerio.com\" /></head>";
+
+                out.print("HTTP/1.0 200 OK\r\n" + "Content-type: " + "text/html" + "\r\n\r\n");
+                out.write(re.getBytes());
+
+                out.close();
+                return;
+            }
+
+            // if (request.equals("/me")) {
+            // String re = "";
+            // try {
+            // TemmieDiscordAuth temmie = server.getSession(socket.getInetAddress().toString().split(":")[0]);
+            // for (TemmieGuild temmieGuild : temmie.getUserGuilds()) {
+            // re = re + temmieGuild.getName() + "";
+            // }
+            // } catch (NullPointerException e) {
+            // re = "401 unauthorised";
+            // }
+            // out.print("HTTP/1.0 200 OK\r\n" + "Content-type: " + "text/html" + "\r\n\r\n");
+            // out.write(re.getBytes());
+            //
+            // out.close();
+            // return;
+            // }
 
             if (request.endsWith("favicon.ico")) {
                 String mimeType = "image/png";
@@ -66,6 +253,58 @@ public class ClientHandler extends Thread {
                 byte[] bytes = Files.readAllBytes(Paths.get("assets/orangePeel.png"));
                 out.write(bytes);
                 out.close();
+
+                return;
+            }
+
+            if (request.equals("/api/jackiechan")) {
+                String mimeType = "image/png";
+                out.print("HTTP/1.0 200 OK\r\n" + "Content-type: " + mimeType + "\r\n\r\n");
+                File folder = new File("assets/jackiechan");
+                if (folder.exists() && folder.isDirectory()) {
+                    File[] files = folder.listFiles();
+                    ArrayList<File> filelist = new ArrayList<File>();
+                    for (File f : files) {
+                        if (f.getName().startsWith("0")) {
+                            filelist.add(f);
+                        }
+                    }
+                    Random random = new Random();
+                    File photo = filelist.get(random.nextInt(filelist.size()));
+                    System.out.println(photo.getName());
+
+                    byte[] bytes = Files.readAllBytes(Paths.get("assets/jackiechan/" + photo.getName()));
+                    out.write(bytes);
+                    out.close();
+                }
+
+                return;
+            }
+
+            if (request.equals("/api/peeled.jpg") || request.equals("/api/peeled")) {
+
+                File folder = new File("assets/peeled");
+                if (folder.exists() && folder.isDirectory()) {
+                    File[] files = folder.listFiles();
+                    ArrayList<File> filelist = new ArrayList<File>();
+                    for (File f : files) {
+                        if (f.getName().startsWith("0")) {
+                            filelist.add(f);
+                        }
+                    }
+                    Random random = new Random();
+                    File photo = filelist.get(random.nextInt(filelist.size()));
+                    System.out.println(photo.getName());
+
+                    String mimeType = "image/png";
+                    if (photo.getName().endsWith(".jpg")) {
+                        mimeType = "image/jpeg";
+                    }
+                    out.print("HTTP/1.0 200 OK\r\n" + "Content-type: " + mimeType + "\r\n\r\n");
+                    byte[] bytes = Files.readAllBytes(Paths.get("assets/peeled/" + photo.getName()));
+                    out.write(bytes);
+                    out.close();
+                }
 
                 return;
             }
@@ -81,22 +320,31 @@ public class ClientHandler extends Thread {
                 return;
             }
 
-            String file = respond(request);
+            String file = respond(request, ckie);
 
-            String nav = readFile("assets/navbar.html");
+            String nav = PeelUtil.readFile("assets/navbar.html");
             file = file.replace("{{header}}", nav);
 
-            String foot = readFile("assets/footer.html");
+            TemmieDiscordAuth temmie = server.getSession(ckie);
+            if (temmie != null) {
+                String usr = PeelUtil.readFile("assets/loggedin.html");
+                file = file.replace("{{usr}}", usr);
+            } else {
+                String usr = PeelUtil.readFile("assets/loggedout.html");
+                file = file.replace("{{usr}}", usr);
+            }
+
+            String foot = PeelUtil.readFile("assets/footer.html");
             file = file.replace("{{footer}}", foot);
 
-            file = file.replace("{{head}}", readFile("assets/head.html"));
+            file = file.replace("{{head}}", PeelUtil.readFile("assets/head.html"));
             file = file.replace("{{guilds}}", client.getGuilds().size() + "");
             file = file.replace("{{users}}", client.getUsers().size() + "");
             file = file.replace("{{invite}}", "https://discord.gg/XZB8kSx");
             file = file.replace("{{commands}}", "53");
 
             try {
-                file = file.replace("{{guilds.table}}", getGuilds());
+                file = file.replace("{{guilds.table}}", getGuilds(client));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -108,16 +356,23 @@ public class ClientHandler extends Thread {
                 file = file.substring(mimeType.length() + 2);
             }
 
-            out.print("HTTP/1.0 200 OK\r\n" + "Content-type: " + mimeType + "\r\n\r\n");
-            out.write(file.getBytes());
+            // in.close();
 
+            out.print("HTTP/1.0 200 OK\r\n" + "Content-type: " + mimeType + "\r\n");
+            if (sendNew) {
+                out.println("Set-Cookie: OPID=" + ckie + ";\r\n");
+            }
+            out.print("\r\n");
+            out.write(file.getBytes());
             out.close();
+            socket.close();
         } catch (IOException x) {
             System.out.println(x);
         }
+
     }
 
-    private String getGuilds() {
+    private static String getGuilds(IDiscordClient client) {
         String html = "<table class=\"table\">";
         html = html + "<tr><th>Icon</th><th>Users</th> <th>Name</th> <th>Owner</th> </tr>";
 
@@ -147,65 +402,42 @@ public class ClientHandler extends Thread {
         return html;
     }
 
-    public String respond(String request) {
+    public String respond(String request, String ckie) {
         if ("/guilds".equals(request)) {
             return "<h1>I AM IN " + client.getGuilds().size() + " GUILDS;";
         }
 
         if ("/style.css".equals(request)) {
-            return "#text/css#" + readFile("assets/style.css");
+            return "#text/css#" + PeelUtil.readFile("assets/style.css");
         }
 
         if ("/barGraph.js".equals(request)) {
-            return "#text/js#" + readFile("assets/barGraph.js");
+            return "#text/js#" + PeelUtil.readFile("assets/barGraph.js");
         }
 
         if ("/metrics".equals(request)) {
-            String metricsHTML;
-            metricsHTML = readFile("assets/metrics.html");
-            String metricsFile;
-            metricsFile = readFile("metrics/commands.all");
-            List<String> metrics = Arrays.asList(metricsFile.split("\n"));
+            return Metrics.getMetricsPage(client);
+        }
 
-            String commandsList = "NONE";
+        if (request.startsWith("/config")) {
             try {
-                commandsList = makeList(metrics, 2, true);
+                String id = "";
+                String[] args = request.split("\\?");
+                id = args[1];
+
+                return ConfigPanel.getPanelPage(client, ckie, server, id);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            String usersList = "NONE";
-            try {
-                usersList = makeListUsers(metrics, 1, false, 20);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            return "";
+        }
 
-            String serverslist = "NONE";
-            try {
-                serverslist = makeListServers(metrics, true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            String times = getTimes(metrics);
-            LinkedHashMap<String, Integer> commandslist = makeListCommands(metrics);
-
-            metricsHTML = metricsHTML.replace("{{commands.list}}", commandsList);
-            metricsHTML = metricsHTML.replace("{{commandValues}}", getValues(commandslist, 25));
-            metricsHTML = metricsHTML.replace("{{commandKeys}}", getKeys(commandslist, 25, 8));
-
-            metricsHTML = metricsHTML.replace("{{times}}", times);
-            metricsHTML = metricsHTML.replace("{{days}}", getWeekDays(metrics));
-
-            metricsHTML = metricsHTML.replace("{{servers}}", serverslist);
-
-            metricsHTML = metricsHTML.replace("{{users}}", usersList);
-
-            return metricsHTML;
+        if ("/me".equals(request) || "/panel".equals(request)) {
+            return ControlPanel.getPanelPage(client, ckie, server);
         }
 
         // if ("/".equals(request)) {
-        // return readFile("assets/main.html");
+        // return FileUtil.readFile("assets/main.html");
         // }
 
         String f = "assets/" + request;
@@ -215,301 +447,20 @@ public class ClientHandler extends Thread {
         if (!f.contains(".")) {
             f = f + ".html";
         }
-        return readFile(f);
+        return PeelUtil.readFile(f);
     }
 
-    private String makeListUsers(List<String> metrics, int index, boolean stacking, int limit) {
-        ArrayList<String> commands = new ArrayList<String>();
-        for (String s : metrics) {
-            String[] split = s.split("\\|");
-            if (split.length > index)
-                commands.add(split[index]);
-        }
-
-        final Map<String, Integer> mostCommon = mostCommon(commands);
-
-        List<String> keys = new LinkedList<String>(mostCommon.keySet());
-
-        Collections.sort(keys, new Comparator<String>() {
-
-            public int compare(String o1, String o2) {
-                return mostCommon.get(o2) - mostCommon.get(o1);
-            }
-        });
-
-        LinkedHashMap<String, Integer> mostCommonSorted = new LinkedHashMap<String, Integer>();
-        for (String key : keys) {
-            mostCommonSorted.put(key, mostCommon.get(key));
-        }
-
-        String commandsList = "";
-
-        int i = 0;
-        for (Entry<String, Integer> entry : mostCommonSorted.entrySet()) {
-            String name = entry.getKey();
-
-            for (IUser u : client.getUsers()) {
-                if (u.getLongID() == Long.parseLong(entry.getKey())) {
-                    name = u.getName() + "#" + u.getDiscriminator();
-                }
-            }
-            i++;
-            if (i <= limit) {
-                if (stacking) {
-                    commandsList = commandsList + "<li> " + repeat("|", entry.getValue()) + " <b>" + name + "</b></li>";
-                } else {
-                    commandsList = commandsList + "<li><b>" + name + "</b> (" + entry.getValue() + ")</li>";
-
-                }
-            } else {
-                return commandsList;
-            }
-        }
-        return commandsList;
-    }
-
-    private String makeListServers(List<String> metrics, boolean stacking) {
-        ArrayList<String> commands = new ArrayList<String>();
-        for (String s : metrics) {
-            String[] split = s.split("\\|");
-            if (split.length > 3) {
-                commands.add(split[3]);
-            }
-        }
-
-        final Map<String, Integer> mostCommon = mostCommon(commands);
-
-        List<String> keys = new LinkedList<String>(mostCommon.keySet());
-
-        Collections.sort(keys, new Comparator<String>() {
-
-            public int compare(String o1, String o2) {
-                return mostCommon.get(o2) - mostCommon.get(o1);
-            }
-        });
-
-        LinkedHashMap<String, Integer> mostCommonSorted = new LinkedHashMap<String, Integer>();
-        for (String key : keys) {
-            mostCommonSorted.put(key, mostCommon.get(key));
-        }
-
-        String commandsList = "";
-
-        int i = 0;
-        for (Entry<String, Integer> entry : mostCommonSorted.entrySet()) {
-            String name = entry.getKey();
-
-            for (IGuild u : client.getGuilds()) {
-                if (u.getLongID() == Long.parseLong(entry.getKey())) {
-                    name = u.getName();
-                }
-            }
-            i++;
-            if (stacking) {
-                commandsList = commandsList + "<li> " + repeat("|", entry.getValue()) + " <b>" + name + "</b></li>";
-            } else {
-                commandsList = commandsList + "<li><b>" + name + "</b> (" + entry.getValue() + ")</li>";
-
-            }
-        }
-        return commandsList;
-    }
-
-    private String makeList(List<String> metrics, int index, boolean stacking) {
-        ArrayList<String> commands = new ArrayList<String>();
-        for (String s : metrics) {
-            String[] split = s.split("\\|");
-            if (split.length > index)
-                commands.add(split[index]);
-        }
-
-        final Map<String, Integer> mostCommon = mostCommon(commands);
-
-        List<String> keys = new LinkedList<String>(mostCommon.keySet());
-
-        Collections.sort(keys, new Comparator<String>() {
-
-            public int compare(String o1, String o2) {
-                return mostCommon.get(o2) - mostCommon.get(o1);
-            }
-        });
-
-        LinkedHashMap<String, Integer> mostCommonSorted = new LinkedHashMap<String, Integer>();
-        for (String key : keys) {
-            mostCommonSorted.put(key, mostCommon.get(key));
-        }
-
-        String commandsList = "";
-
-        int i = 0;
-        for (Entry<String, Integer> entry : mostCommonSorted.entrySet()) {
-            i++;
-            if (stacking) {
-                commandsList = commandsList + "<li> " + repeat("|", entry.getValue()) + " <b>" + entry.getKey() + "</b></li>";
-            } else {
-                commandsList = commandsList + "<li><b>" + entry.getKey() + "</b> (" + entry.getValue() + ")</li>";
-
-            }
-        }
-        return commandsList;
-    }
-
-    private String getValues(LinkedHashMap<String, Integer> map, int limit) {
-        String t = "[";
-        int i = 0;
-        for (Integer string : map.values()) {
-            if (i <= limit) {
-
-                t = t + "\"" + string + "\"" + ",";
-            }
-            i++;
-        }
-        return t + "]";
-    }
-
-    private String getKeys(LinkedHashMap<String, Integer> map, int limit, int crop) {
-        String t = "[";
-        int i = 0;
-        for (String string : map.keySet()) {
-            if (i <= limit) {
-                if (crop != -1 && string.length() > crop) {
-                    string = string.substring(0, crop) + "-";
-                }
-
-                t = t + "\"" + string + "\"" + ",";
-            }
-            i++;
-        }
-        return t + "]";
-    }
-
-    private LinkedHashMap<String, Integer> makeListCommands(List<String> metrics) {
-        ArrayList<String> commands = new ArrayList<String>();
-        for (String s : metrics) {
-            String[] split = s.split("\\|");
-            commands.add(split[2]);
-        }
-
-        final Map<String, Integer> mostCommon = mostCommon(commands);
-
-        List<String> keys = new LinkedList<String>(mostCommon.keySet());
-
-        Collections.sort(keys, new Comparator<String>() {
-
-            public int compare(String o1, String o2) {
-                return mostCommon.get(o2) - mostCommon.get(o1);
-            }
-        });
-
-        LinkedHashMap<String, Integer> mostCommonSorted = new LinkedHashMap<String, Integer>();
-        for (String key : keys) {
-            mostCommonSorted.put(key, mostCommon.get(key));
-        }
-
-        return mostCommonSorted;
-    }
-
-    private String getTimes(List<String> metrics) {
-        ArrayList<Long> times = new ArrayList<Long>();
-        for (String s : metrics) {
-            String[] split = s.split("\\|");
-            times.add(Long.parseLong(split[0]));
-        }
-
-        LinkedList<Integer> hours = new LinkedList<Integer>();
-        for (Long time : times) {
-            DateFormat dateFormat = new SimpleDateFormat("HH");
-            Date date = new Date(time);
-            hours.add(Integer.parseInt(dateFormat.format(date)));
-        }
-
-        Map<Integer, Integer> mostCommon = mostCommon(hours);
-        String t = "[";
-
-        for (int i = 0; i < 24; i++) {
-            if (mostCommon.containsKey(i)) {
-                t = t + mostCommon.get(i) + ",";
-            } else {
-                t = t + "0, ";
-            }
-        }
-        return t + "]";
-    }
-
-    private String getWeekDays(List<String> metrics) {
-        ArrayList<Long> times = new ArrayList<Long>();
-        for (String s : metrics) {
-            String[] split = s.split("\\|");
-            times.add(Long.parseLong(split[0]));
-        }
-
-        LinkedList<Integer> hours = new LinkedList<Integer>();
-        for (Long time : times) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(new Date(time));
-            hours.add(calendar.get(Calendar.DAY_OF_WEEK));
-        }
-
-        Map<Integer, Integer> mostCommon = mostCommon(hours);
-        String t = "[";
-
-        for (int i = 0; i < 7; i++) {
-            if (mostCommon.containsKey(i)) {
-                t = t + mostCommon.get(i) + ",";
-            } else {
-                t = t + "0, ";
-            }
-        }
-        return t + "]";
-    }
-
-    public static String repeat(String s, int times) {
-        String r = "";
-        for (int i = 0; i < times; i++) {
-            r = r + s;
-        }
-        return r;
-    }
-
-    public static <T> Map<T, Integer> mostCommon(List<T> list) {
-        Map<T, Integer> map = new HashMap<T, Integer>();
-
-        for (T t : list) {
-            Integer val = map.get(t);
-            map.put(t, val == null ? 1 : val + 1);
-        }
-
-        Entry<T, Integer> max = null;
-
-        for (Entry<T, Integer> e : map.entrySet()) {
-            if (max == null || e.getValue() > max.getValue())
-                max = e;
-        }
-
-        return map;
-    }
-
-    public String readFile(String name) {
-
-        InputStream is;
+    public ArrayList<String> getSharedServers(String ckie) {
+        ArrayList<String> guilds = new ArrayList<String>();
         try {
-            is = new FileInputStream(name);
-
-            BufferedReader buf = new BufferedReader(new InputStreamReader(is));
-
-            String line = buf.readLine();
-            StringBuilder sb = new StringBuilder();
-
-            while (line != null) {
-                sb.append(line).append("\n");
-                line = buf.readLine();
+            TemmieDiscordAuth temmie = server.getSession(ckie);
+            for (TemmieGuild temmieGuild : temmie.getUserGuilds()) {
+                guilds.add(temmieGuild.getId());
             }
+        } catch (NullPointerException e) {
 
-            String fileAsString = sb.toString();
-            return fileAsString;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "404";
         }
+        return guilds;
     }
+
 }

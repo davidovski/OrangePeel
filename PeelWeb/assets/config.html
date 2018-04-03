@@ -1,0 +1,298 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    {{head}}
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+  
+    <script> 
+        var shown = "";
+
+        var magicChannel = `<li>\
+                    <button onclick="$(this).parent().remove()" class="minus">x</button>\
+                    <br>\
+                    <br>\
+                    <div class="options">\
+                        <h5>Voice Channel:</h5>\
+                        <div class="custom-select">\
+                            <select class="magicChannel">\
+                                {{channels}}\
+                            </select>\
+                        </div>\
+                        <h5>Role:</h5>\
+                        <div class="custom-select">\
+                            <select class="magicRole">\
+                                {{roles}}\
+                            </select>\
+                        </div>\
+                    </div>\
+                </li>`;
+
+
+
+        
+
+        function addMagic() {
+            var g = $(magicChannel).appendTo('#magiclist');
+            var x, i, j, selElmnt, a, b, c;
+
+            x = g[0].getElementsByClassName("custom-select");
+            for (i = 0; i < x.length; i++) {
+                selElmnt = x[i].getElementsByTagName("select")[0];
+                /*for each element, create a new DIV that will act as the selected item:*/
+                a = document.createElement("DIV");
+                a.setAttribute("class", "select-selected");
+                a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+                x[i].appendChild(a);
+                /*for each element, create a new DIV that will contain the option list:*/
+                b = document.createElement("DIV");
+                b.setAttribute("class", "select-items select-hide");
+                for (j = 1; j < selElmnt.length; j++) {
+                    /*for each option in the original select element,
+                    create a new DIV that will act as an option item:*/
+                    c = document.createElement("DIV");
+                    c.innerHTML = selElmnt.options[j].innerHTML;
+                    c.addEventListener("click", function (e) {
+                        /*when an item is clicked, update the original select box,
+                        and the selected item:*/
+                        var i, s, h;
+                        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                        h = this.parentNode.previousSibling;
+                        for (i = 0; i < s.length; i++) {
+                            if (s.options[i].innerHTML == this.innerHTML) {
+                                s.selectedIndex = i;
+                                h.innerHTML = this.innerHTML;
+                                break;
+                            }
+                        }
+                        h.click();
+                    });
+                    b.appendChild(c);
+                }
+                x[i].appendChild(b);
+                a.addEventListener("click", function (e) {
+                    /*when the select box is clicked, close any other select boxes,
+                    and open/close the current select box:*/
+                    e.stopPropagation();
+                    closeAllSelect(this);
+                    this.nextSibling.classList.toggle("select-hide");
+                    this.classList.toggle("select-arrow-active");
+                });
+
+            }
+            /*if the user clicks anywhere outside the select box,
+            then close all select boxes:*/
+            e.addEventListener("click", closeAllSelect);
+        }
+
+
+        function save() {
+            autorole = $('#autorole').val();
+            autoroleEnabled = $('#autoroleOn').is(":checked");
+
+            mutedRole = $('#mute').val();
+            enableMute = $('#muteOn').is(":checked");
+
+            greeterOn = $('#greeterOn').is(":checked");
+            greeterChannel = $('#greetChannel').val();
+
+            joinMSG = $('#join').val();
+            leaveMSG = $('#leave').val();
+
+            mcOn = $('#mcOn').is(":checked");
+            mcChannel = $('#mcChannel').val();
+            mcRole = $('#mcRole').val();
+
+
+            data = {}
+
+            if (autoroleEnabled) {
+                data.autorole = autorole;
+            } else {
+                data.autorole = "";
+            }
+
+            if (enableMute) {
+                data.muted = mutedRole;
+            } else {
+                data.muted = "";
+            }
+
+            if (greeterOn) {
+                data.greet = greeterChannel;
+            } else {
+                data.greet = "";
+            }
+
+            var d = ""
+
+            var listItems = $("#magiclist li");
+            listItems.each(function (idx, li) {
+                var product = $(li);
+                console.log(li);
+                d = d + product.find(".magicChannel").val() + "for" + product.find(".magicRole").val()
+
+                d = d + "and";
+            });
+            // d = d.substring(0, d.length - 3);
+            data.mc = d;
+            data.join = joinMSG;
+            data.leave = leaveMSG;
+
+
+            console.log(data)
+            // console.log("autorole: " + autoroleEneabled + " / " + autorole)
+
+
+            // console.log("greeter: " + joinMSG + " / " + leaveMSG)
+
+            $.post("https://bot.mouldycheerio.com/config/save?{{id}}", data, function (result) {
+                $("#res").html(result);
+            });
+            // $.post("http://mc.mouldycheerio.com:8213/config/save?{{id}}", data, function (result) {
+            //     $("#res").html(result);
+            // });
+
+
+        }
+
+        window.onload = function() {
+            updateBoxes();
+        }
+
+        function updateBoxes(e) {
+            autorole = $('#autoroleOn').is(":checked");
+            mute = $('#muteOn').is(":checked");
+            mc = $('#mcOn').is(":checked");
+
+            greet = $('#greeterOn').is(":checked");
+            if (greet) {
+                $("#greeterOptions").removeClass("hidden");
+                $("#greeterOptions2").removeClass("hidden");
+
+            } else {
+                $("#greeterOptions").addClass("hidden");
+                $("#greeterOptions2").addClass("hidden");
+
+            }
+
+            if (autorole) {
+                $("#autoroleOptions").removeClass("hidden");
+            } else {
+                $("#autoroleOptions").addClass("hidden");
+            }
+
+            if (mute) {
+                $("#muteOptions").removeClass("hidden");
+            } else {
+                $("#muteOptions").addClass("hidden");
+            }
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+    {{header}}
+
+    <div class="main">
+        <div class="section title">
+            <h1>Configuring {{server}}...</h1>
+        </div>
+        <div class="section fullwidth">
+            <a href="panel">
+                <button class="loginbtn">Back</button>
+            </a>
+
+            <p id="res"></p>
+            <h2>Autorole</h2>
+            <p>When a user joins your server, the provided role will be assigned to them. </p>
+            <label class="switch">
+                <input {{autoroleOn}} id="autoroleOn" onchange="updateBoxes(this)" type="checkbox">
+                <span class="slider"></span>
+            </label>
+
+            <div id="autoroleOptions" class="custom-select">
+                <select id="autorole">
+                    {{autorole}}
+                </select>
+            </div>
+
+            <br>
+            <br>
+            <h1>Greeter</h1>
+            <p>The bot will send a message in a chosen channel when a user joins / leaves</p>
+            <label class="switch">
+                <input {{greeterOn}} id="greeterOn" onchange="updateBoxes(this)" type="checkbox">
+                <span class="slider"></span>
+            </label>
+
+            <div id="greeterOptions" class="custom-select">
+                <select id="greetChannel">
+                    {{greetChannel}}
+                </select>
+
+            </div>
+
+            <div class="inputbar" id="greeterOptions2">
+                <h5>Welcome Message:</h5>
+                <input id="join" value="{{joinMessage}}">
+                <br>
+                <h5>Leave Message:</h5>
+                <input id="leave" value="{{leaveMessage}}">
+
+            </div>
+            <br>
+            <br>
+
+            <br>
+            <h2>Magic Voice Channels</h2>
+            <p>When a user joins one of the voice channels that you add, they get the role provided, it will be removed when
+                they leave.</p>
+
+            <ul id="magiclist">
+                {{magic}}
+            </ul>
+            <button onclick="addMagic()" class="add">+</button>
+
+
+            <br>
+            <br>
+            <br>
+
+
+
+            <h2>Muting</h2>
+            <p>The role that the bot gives members when muted by the >mute command</p>
+
+            <label class="switch">
+                <input {{mutedOn}} id="muteOn" onchange="updateBoxes(this)" type="checkbox">
+                <span class="slider"></span>
+            </label>
+
+
+            <div id="muteOptions" class="custom-select">
+
+                <select id="mute">
+                    {{muted}}
+                </select>
+            </div>
+            <br>
+            <br>
+            <button class="post" onclick="save()"> Save </button>
+        </div>
+        <script src="dropDown.js"></script>
+        <script>updateBoxes();</script>
+
+    </div>
+
+    {{footer}}
+</body>
+
+</html>

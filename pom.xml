@@ -4,6 +4,93 @@
 	<groupId>com.mouldycheerio.discord.orangepeel</groupId>
 	<artifactId>OrangePeel</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<!-- You need to build an exectuable uberjar, I like Shade for that -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+
+									<!-- note that the main class is set *here* -->
+
+									<mainClass>org.ah.http.proxy.Proxy</mainClass>
+								</transformer>
+							</transformers>
+							<createDependencyReducedPom>false</createDependencyReducedPom>
+							<filters>
+								<filter>
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- now make the jar chmod +x style executable -->
+			<plugin>
+				<groupId>org.skife.maven</groupId>
+				<artifactId>really-executable-jar-maven-plugin</artifactId>
+				<version>1.4.1</version>
+				<configuration>
+					<!-- value of flags will be interpolated into the java invocation -->
+					<!-- as "java $flags -jar ..." -->
+					<flags>-Xmx1G</flags>
+
+					<!-- (optional) name for binary executable, if not set will just -->
+					<!-- make the regular jar artifact executable -->
+					<programFile>proxy</programFile>
+
+					<!-- (optional) support other packaging formats than jar -->
+					<!-- <allowOtherTypes>true</allowOtherTypes> -->
+
+					<!-- (optional) name for a file that will define what script gets -->
+					<!-- embedded into the executable jar. This can be used to -->
+					<!-- override the default startup script which is -->
+					<!-- `#!/bin/sh -->
+					<!-- -->
+					<!-- exec java " + flags + " -jar "$0" "$@" -->
+					<!-- <scriptFile>src/packaging/someScript.extension</scriptFile> -->
+				</configuration>
+
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>really-executable-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.austinv11</groupId>
@@ -26,6 +113,22 @@
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.MrPowerGamerBR</groupId>
+			<artifactId>TemmieDiscordAuth</artifactId>
+			<version>-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.DiscordBotList</groupId>
+			<artifactId>DBL-Java-Wrapper</artifactId>
+			<version>LATEST</version>
 		</dependency>
 	</dependencies>
 	<repositories>
@@ -54,6 +157,10 @@
 		<repository>
 			<id>Lab4Inf</id>
 			<url>http://www.lab4inf.fh-muenster.de/lab4inf/maven-repository</url>
+		</repository>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
 </project>

@@ -1,0 +1,9 @@
+{
+ "nick": true,
+ "magic": {"409489900220448778": "409480966348996609"},
+ "leave": "Sorry to see you go, [user]",
+ "greet": "406584046806761480",
+ "autorole": "366162556873605123",
+ "join": "Welcome [user] to [server]. You are our [count] member",
+ "muted": "406584072719171600"
+}

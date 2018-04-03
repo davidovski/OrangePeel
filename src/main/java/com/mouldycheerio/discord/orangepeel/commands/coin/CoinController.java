@@ -1,8 +1,10 @@
 package com.mouldycheerio.discord.orangepeel.commands.coin;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,6 +15,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import com.mouldycheerio.discord.orangepeel.OrangePeel;
+import com.mouldycheerio.discord.orangepeel.PeelingUtils;
 
 import sx.blah.discord.handle.obj.IGuild;
 import sx.blah.discord.handle.obj.IUser;
@@ -70,6 +73,7 @@ public class CoinController {
     public void setPeelsForUser(int c, IUser u) {
         try {
             peelPoints.put(u, c);
+            savePeels();
         } catch (Exception e) {
 
         }
@@ -93,87 +97,112 @@ public class CoinController {
     }
 
     public void save() {
-        try {
-            JSONObject obj = new JSONObject();
-            JSONObject coinz = new JSONObject();
-            for (Entry<IGuild, Map<IUser, Integer>> entry : coins.entrySet()) {
+
+        saveCoins();
+        savePeels();
+
+    }
+
+    public void saveCoins() {
+        for (Entry<IGuild, Map<IUser, Integer>> entry : coins.entrySet()) {
+            try {
                 JSONObject g = new JSONObject();
                 for (Entry<IUser, Integer> u : entry.getValue().entrySet()) {
                     try {
                         String stringID = u.getKey().getStringID();
-                        System.out.println("stringID=" + stringID);
                         Integer value = u.getValue();
-                        System.out.println("value=" + value);
 
                         g.put(stringID, value);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                try {
-                    coinz.put(entry.getKey().getStringID(), g);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+                PeelingUtils.writeToFile(PeelingUtils.getDataFile(entry.getKey().getStringID(), "coins/money"), g.toString());
 
-            JSONObject peels = new JSONObject();
-            Set<Entry<IUser, Integer>> entrySet = peelPoints.entrySet();
-            for (Entry<IUser, Integer> u : entrySet) {
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void savePeels() {
+        JSONObject peels = new JSONObject();
+        Set<Entry<IUser, Integer>> entrySet = peelPoints.entrySet();
+        for (Entry<IUser, Integer> u : entrySet) {
+            try {
                 String stringID = u.getKey().getStringID();
                 Integer value = u.getValue();
                 peels.put(stringID, value);
-            }
-
-            obj.put("peels", peels);
-            obj.put("coins", coinz);
-
-            try {
-                FileWriter file = new FileWriter("coins.opf");
-                file.write(obj.toString());
-                file.flush();
-
-                file.close();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-        } catch (Exception e) {
+        }
+        PeelingUtils.writeToFile(PeelingUtils.getDataFile("peels", "coins"), peels.toString());
+    }
+
+    public void load() throws IOException {
+        loadCoins();
+        loadPeels();
+    }
+
+    public void loadCoins() {
+        File folder = PeelingUtils.getDataFolder("coins/money/");
+        if (folder.exists() && folder.isDirectory()) {
+            File[] files = folder.listFiles();
+            ArrayList<File> filelist = new ArrayList<File>();
+            for (File f : files) {
+                if (f.exists()) {
+                    try {
+                        FileReader fileReader = new FileReader(f);
+                        JSONTokener parser = new JSONTokener(fileReader);
+
+                        JSONObject obj = (JSONObject) parser.nextValue();
+
+                        IGuild g = orangePeel.getClient().getGuildByID(Long.parseLong(f.getName().substring(0, f.getName().length() - 4)));
+                        if (g != null) {
+                            HashMap<IUser, Integer> map = new HashMap<IUser, Integer>();
+
+                            Iterator<String> keys = obj.keys();
+                            while (keys.hasNext()) {
+                                String key = keys.next();
+                                int value = obj.getInt(key);
+                                IUser user = orangePeel.getClient().getUserByID(Long.parseLong(key));
+                                if (user != null) {
+                                    System.out.println(user.getStringID() + " //" + value);
+                                    map.put(user, value);
+                                }
+                            }
+                            coins.put(g, map);
+                        }
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+    public void loadPeels() {
+
+        try {
+            FileReader fileReader = new FileReader(PeelingUtils.getDataFile("peels", "coins"));
+            JSONTokener parser = new JSONTokener(fileReader);
+
+            JSONObject obj = (JSONObject) parser.nextValue();
+
+            Iterator<String> keys = obj.keys();
+            while (keys.hasNext()) {
+                String key = keys.next();
+                int value = obj.getInt(key);
+                IUser user = orangePeel.getClient().getUserByID(Long.parseLong(key));
+                if (user != null) {
+                    peelPoints.put(user, value);
+                }
+            }
+
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public void load() throws IOException {
-        FileReader fileReader = new FileReader("coins.opf");
-        JSONTokener parser = new JSONTokener(fileReader);
-        JSONObject obj = (JSONObject) parser.nextValue();
-        if (obj.has("peels")) {
-            JSONObject o = obj.getJSONObject("peels");
-            Iterator<String> keys = o.keys();
-            while (keys.hasNext()) {
-                String next = keys.next();
-                peelPoints.put(orangePeel.getClient().getUserByID(Long.parseLong(next)), o.getInt(next));
-            }
-        }
-        if (obj.has("coins")) {
-            JSONObject jo = obj.getJSONObject("coins");
-            Iterator<String> keys = jo.keys();
-            while (keys.hasNext()) {
-                String next = keys.next();
-                JSONObject jjo = jo.getJSONObject(next);
-
-                HashMap<IUser, Integer> hashMap = new HashMap<IUser, Integer>();
-
-                Iterator<String> keysj = jjo.keys();
-                while (keysj.hasNext()) {
-                    String nextj = keysj.next();
-                    hashMap.put(orangePeel.getClient().getUserByID(Long.parseLong(nextj)), jjo.getInt(nextj));
-
-                }
-
-                coins.put(orangePeel.getClient().getGuildByID(Long.parseLong(next)), hashMap);
-
-            }
-        }
-        fileReader.close();
-    }
 }

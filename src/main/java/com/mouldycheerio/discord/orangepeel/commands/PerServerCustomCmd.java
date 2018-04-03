@@ -17,8 +17,8 @@ public class PerServerCustomCmd extends SimpleCustomCmd {
 
     @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
-        if (commandMessage.getGuild().getStringID().equals(server.getStringID())) {
-            commandMessage.getChannel().sendMessage(getText());
+        if (server != null && commandMessage.getGuild().getStringID().equals(server.getStringID())) {
+            commandMessage.getChannel().sendMessage(compute(orangepeel, commandMessage, args));
         }
     }
 

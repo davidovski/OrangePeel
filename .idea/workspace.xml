@@ -2,9 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9814831d-836e-4ec6-8b95-38f94208d1f9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/server.jar" afterPath="$PROJECT_DIR$/PeelWeb/server.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bot.jar" afterPath="$PROJECT_DIR$/bot.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/AsciiCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/AsciiCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OrangePeel.opf" afterPath="$PROJECT_DIR$/OrangePeel.opf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/assets/footer.html" afterPath="$PROJECT_DIR$/PeelWeb/assets/footer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/assets/head.html" afterPath="$PROJECT_DIR$/PeelWeb/assets/head.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/assets/metrics.html" afterPath="$PROJECT_DIR$/PeelWeb/assets/metrics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/assets/metrics/commands.all" afterPath="$PROJECT_DIR$/PeelWeb/assets/metrics/commands.all" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/assets/navbar.html" afterPath="$PROJECT_DIR$/PeelWeb/assets/navbar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/assets/servers.html" afterPath="$PROJECT_DIR$/PeelWeb/assets/servers.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/assets/style.css" afterPath="$PROJECT_DIR$/PeelWeb/assets/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/pom.xml" afterPath="$PROJECT_DIR$/PeelWeb/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/src/main/java/com/mouldycheerio/discord/web/ClientHandler.java" afterPath="$PROJECT_DIR$/PeelWeb/src/main/java/com/mouldycheerio/discord/web/ClientHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PeelWeb/src/main/java/com/mouldycheerio/discord/web/WebServer.java" afterPath="$PROJECT_DIR$/PeelWeb/src/main/java/com/mouldycheerio/discord/web/WebServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/copy" afterPath="$PROJECT_DIR$/copy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/metrics/commands.all" afterPath="$PROJECT_DIR$/metrics/commands.all" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/CommandController.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/CommandController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/EventListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/EventListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/MetricsSystem.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/MetricsSystem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/OrangePeel.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/OrangePeel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/Run.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/Run.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/HelpCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/HelpCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/LogCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/LogCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/ResponseTimeCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/ResponseTimeCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/SuggestionCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/SuggestionCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/AutoRoleCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/AutoRoleCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/MuteCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/MuteCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/NickAllCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/NickAllCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/SetupCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/SetupCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/SetupMuteCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/SetupMuteCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/UnMuteCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/commands/moderation/UnMuteCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/games/QuickPlayGame.java" afterPath="$PROJECT_DIR$/src/main/java/com/mouldycheerio/discord/orangepeel/games/QuickPlayGame.java" />
     </list>
     <ignored path="OrangePeel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,8 +84,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -65,8 +92,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OrangePeel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="OrangePeel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -83,24 +122,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1276" height="777" extended-state="6" />
+    <frame x="0" y="23" width="1276" height="777" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>

@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "assets"
+		},
+		{
+			"path": "metrics"
+		},
+		{
+			"path": "modules"
+		},
+		{
+			"path": "server"
+		},
+		{
+			"path": "servers"
+		},
+		{
+			"path": "src"
+		},
+		{
+			"path": "target"
+		}
+	]
+}

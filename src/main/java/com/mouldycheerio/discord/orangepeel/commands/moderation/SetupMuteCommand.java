@@ -81,7 +81,7 @@ public class SetupMuteCommand extends OrangePeelCommand {
                                             EnumSet<Permissions> toadd = EnumSet.noneOf(Permissions.class);
                                             iChannel.overrideRolePermissions(role, toadd, toremove);
                                         }
-                                        orangepeel.getMuted().put(event.getGuild().getStringID(), role.getStringID());
+                                        orangepeel.getConfig(server).setMutedRole(role);
                                 } else {
                                         IRole role = event.getGuild().getRoleByID(Long.parseLong(PeelingUtils.mentionToIdEz(message)));
                                         role.changeName("Muted");
@@ -91,12 +91,12 @@ public class SetupMuteCommand extends OrangePeelCommand {
                                             EnumSet<Permissions> toadd = EnumSet.noneOf(Permissions.class);
                                             iChannel.overrideRolePermissions(role, toadd, toremove);
                                         }
-                                        orangepeel.getMuted().put(event.getGuild().getStringID(), role.getStringID());
+                                        orangepeel.getConfig(server).setMutedRole(role);
                                 }
 
                                 event.getMessage().getChannel().sendMessage(done);
                                 it.remove();
-                                orangepeel.saveAll();
+                                orangepeel.getConfig(server).save();
                                 break;
 
                             }

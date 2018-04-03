@@ -77,10 +77,10 @@ public class AutoRoleCommand extends OrangePeelCommand {
                                 break;
                             } else if (m.equals(secondMessage)) {
                                 String roleID = PeelingUtils.mentionToIdEz(message);
-                                orangepeel.getAutoRole().put(event.getGuild().getStringID(), roleID);
+                                orangepeel.getConfig(server).setAutoRole(event.getGuild().getRoleByID(Long.parseLong(roleID)));
                                 event.getMessage().getChannel().sendMessage(done);
                                 it.remove();
-                                orangepeel.saveAll();
+                                orangepeel.getConfig(server).save();
                                 break;
 
                             }

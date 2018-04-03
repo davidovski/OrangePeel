@@ -17,6 +17,7 @@ public class SuggestionCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.ABOUT);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         if (orangepeel.getSuggestionsChannel() != null) {
             StringBuilder sb = new StringBuilder();
@@ -40,8 +41,20 @@ public class SuggestionCommand extends OrangePeelCommand {
             embedBuilder.withTimestamp(System.currentTimeMillis());
 
             IMessage iMessage = orangepeel.getSuggestionsChannel().sendMessage(embedBuilder.build());
-            iMessage.addReaction(ReactionEmoji.of("👍"));
-            iMessage.addReaction(ReactionEmoji.of("👎"));
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            iMessage.addReaction(ReactionEmoji.of("thumbsup", 409355634644090890L));
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            iMessage.addReaction(ReactionEmoji.of("thumbsdown", 409355670597402644L));
         } else {
             commandMessage.reply("I can't do that for some reason, heres the reason why: ```Suggestion channel not set. Error code 1424```");
         }

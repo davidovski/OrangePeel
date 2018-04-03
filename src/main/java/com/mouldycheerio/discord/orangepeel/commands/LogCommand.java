@@ -2,6 +2,7 @@ package com.mouldycheerio.discord.orangepeel.commands;
 
 import java.awt.Color;
 
+import com.mouldycheerio.discord.orangepeel.MetricsSystem;
 import com.mouldycheerio.discord.orangepeel.OrangePeel;
 
 import sx.blah.discord.api.IDiscordClient;
@@ -16,7 +17,10 @@ public class LogCommand extends OrangePeelAdminCommand {
         setCatagory(CommandCatagory.BOT_ADMIN);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
+        MetricsSystem.logPing();
+        MetricsSystem.logServers(client);
         StringBuilder sb = new StringBuilder();
         if (args.length > 1) {
             for (int i = 1; i < args.length; i++) {

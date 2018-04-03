@@ -23,6 +23,7 @@ public class NickAllCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.MODERATION);
     }
 
+    @Override
     public void onCommand(OrangePeel bot, IDiscordClient client, IMessage commandMessage, String[] args) {
         IUser punisher = commandMessage.getAuthor();
         IGuild guild = commandMessage.getGuild();
@@ -41,27 +42,32 @@ public class NickAllCommand extends OrangePeelCommand {
             }
             final String nick = sb.toString();
 
-            IMessage m;
-            if (args.length > 1) {
-                m = commandMessage.getChannel().sendMessage("Changing everyone's nickname to **" + nick + "**...");
-            } else {
-                m = commandMessage.getChannel().sendMessage("Resetting everyone's nickname...");
-            }
-            for (IUser u : guild.getUsers()) {
-                RequestBuffer.request(() -> {
-                    try {
-                        if (args.length > 1) {
-                            guild.setUserNickname(u, nick);
-                        } else {
-                            guild.setUserNickname(u, u.getName());
+            if (nick.length() <= 32) {
+                IMessage m;
+                if (args.length > 1) {
+                    m = commandMessage.getChannel().sendMessage("Changing everyone's nickname to **" + nick + "**...");
+                } else {
+                    m = commandMessage.getChannel().sendMessage("Resetting everyone's nickname...");
+                }
+                for (IUser u : guild.getUsers()) {
+                    RequestBuffer.request(() -> {
+                        try {
+                            if (args.length > 1) {
+                                guild.setUserNickname(u, nick);
+                            } else {
+                                guild.setUserNickname(u, u.getName());
+                            }
+                            Logger.info("changed " + u.getName() + "'s nick to " + nick);
+                        } catch (MissingPermissionsException e) {
+                            e.printStackTrace();
+                        } catch (RateLimitException e) {
+                            throw e; // This makes sure that RequestBuffer will do the retry for you
                         }
-                        Logger.info("changed " + u.getName() + "'s nick to " + nick);
-                    } catch (MissingPermissionsException e) {
-                        e.printStackTrace();
-                    } catch (RateLimitException e) {
-                        throw e; // This makes sure that RequestBuffer will do the retry for you
-                    }
-                });
+                    });
+                }
+            } else {
+                commandMessage.getChannel().sendMessage("This nick is too long. Try one that is less than 32 characters long.");
+
             }
 
         } else {

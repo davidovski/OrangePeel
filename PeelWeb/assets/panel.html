@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"> {{head}}
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    {{header}}
+    <div class="main">
+        <div class="section title">
+            <h2>Welcome
+                <b>{{user}}</b> to, </h2>
+
+            <h1>The OrangePeel Control Panel</h1>
+        </div>
+
+        <div class="section fullwidth">
+            <h4>Your Servers</h4>
+            {{guilds}}
+        </div>
+
+        <div class="section right">
+            <h4>Stats</h4>
+
+            {{stats}}
+        </div>
+
+        <!-- <div class="section left">
+            <h4>Mutual Servers</h4>
+            {{mutual}}
+        </div> -->
+        <div class="section left">
+            <h4>Help improve this!</h4>
+            <p>If you think this panel is still a bit empty and feature less, please feel free to suggest additions to it. Do this with the <div class="cmd">>suggest</div> command.</p>
+            Example:
+            <div class="cmd">>suggest Add a coin count to the control panel</div>
+        </div>
+        {{footer}}
+
+</body>
+
+</html>

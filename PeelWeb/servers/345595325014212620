@@ -1,0 +1,7 @@
+{
+ "leave": "Sorry to see you go, [user]",
+ "greet": "345595325446094850",
+ "autorole": "",
+ "join": "Welcome [user] to [server]. You are our [count] member",
+ "muted": ""
+}

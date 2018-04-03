@@ -1,13 +1,17 @@
 package com.mouldycheerio.discord.orangepeel;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,6 +20,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
+import javax.net.ssl.HttpsURLConnection;
+
+import org.discordbots.api.client.DiscordBotListAPI;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -29,6 +36,7 @@ import com.mouldycheerio.discord.orangepeel.commands.PerServerCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.SimpleCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.SummonCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.CoinController;
+import com.mouldycheerio.discord.web.ServerConfig;
 
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.api.events.EventDispatcher;
@@ -51,14 +59,13 @@ public class OrangePeel {
 
     private Map<String, Long> voted;
 
-
     private CoinController coinController;
 
     private Random random;
     private StatsCounter statsCounter;
 
     private long bugReports = 404732553132507147L;
-    private long suggestions = 4047333279924224108L;
+    private long suggestions = 404733327992422410L;
     private long logChannel = 404730227051462657L;
 
     private JSONObject admins;
@@ -71,12 +78,14 @@ public class OrangePeel {
     private int playingtextindex = 0;
     private String prefix;
     private ChallengeController challengeController;
-    private HashMap<String, String> autoRole = new HashMap<String, String>();
-    private HashMap<String, String> greet = new HashMap<String, String>();
-    private HashMap<String, String> muted = new HashMap<String, String>();
+    private List<ServerConfig> configs = new ArrayList<ServerConfig>();
     private List<Long> banned;
     private int cmdadded;
     private String stream_link = "";
+
+    private int logCooldown = 60 * 60 * 20;
+    private String botlisttoken = "";
+    private String dbltoken;;
 
     public OrangePeel(String token, String prefix) throws Exception {
         setCmdadded(0);
@@ -94,7 +103,6 @@ public class OrangePeel {
         voted = new HashMap<String, Long>();
         banned = new ArrayList<Long>();
 
-
         statsCounter = new StatsCounter(new JSONObject(), this);
         status = BotStatus.ACTIVE;
 
@@ -106,9 +114,21 @@ public class OrangePeel {
         dispatcher = client.getDispatcher();
         dispatcher.registerListener(eventListener);
 
+        WebServer webServer = new WebServer(this);
+        webServer.start(8213);
+
     }
 
-
+    public void loadConfigs() {
+        File folder = new File(ServerConfig.PATH);
+        if (folder.exists() && folder.isDirectory()) {
+            File[] files = folder.listFiles();
+            ArrayList<File> filelist = new ArrayList<File>();
+            for (File f : files) {
+                configs.add(new ServerConfig(f.getName(), client));
+            }
+        }
+    }
 
     public void logError(Exception e, IMessage commandMessage) {
         StringWriter sw = new StringWriter();
@@ -170,51 +190,16 @@ public class OrangePeel {
 
     public void loadAll() {
         try {
-            try {
-                coinController.load();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            coinController.load();
             FileReader fileReader = new FileReader("OrangePeel.opf");
             JSONTokener parser = new JSONTokener(fileReader);
 
             JSONObject obj = (JSONObject) parser.nextValue();
 
-
-
             if (obj.has("stats")) {
                 statsCounter.setStats(obj.getJSONObject("stats"));
             }
 
-            if (obj.has("autoroles")) {
-                JSONObject jo = obj.getJSONObject("autoroles");
-                Iterator<String> keys = jo.keys();
-                while (keys.hasNext()) {
-                    String next = keys.next();
-                    autoRole.put(next, jo.getString(next));
-
-                }
-            }
-
-            if (obj.has("greetings")) {
-                JSONObject jo = obj.getJSONObject("greetings");
-                Iterator<String> keys = jo.keys();
-                while (keys.hasNext()) {
-                    String next = keys.next();
-                    greet.put(next, jo.getString(next));
-
-                }
-            }
-
-            if (obj.has("muted")) {
-                JSONObject jo = obj.getJSONObject("muted");
-                Iterator<String> keys = jo.keys();
-                while (keys.hasNext()) {
-                    String next = keys.next();
-                    muted.put(next, jo.getString(next));
-
-                }
-            }
             if (obj.has("votes")) {
                 votes = obj.getJSONObject("votes");
             }
@@ -230,44 +215,44 @@ public class OrangePeel {
                 setStream_link(obj.getString("stream_link"));
             }
 
-//            try {
-//
-//                if (obj.has("bug_reports")) {
-//                    for (IChannel c : client.getChannels()) {
-//                        if (c.getLongID() == obj.getLong("bug_reports")) {
-//                            bugReports = c.getLongID();
-//                        }
-//                    }
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            // try {
+            //
+            // if (obj.has("bug_reports")) {
+            // for (IChannel c : client.getChannels()) {
+            // if (c.getLongID() == obj.getLong("bug_reports")) {
+            // bugReports = c.getLongID();
+            // }
+            // }
+            // }
+            // } catch (Exception e) {
+            // e.printStackTrace();
+            // }
 
-//            try {
-//                if (obj.has("suggestions")) {
-//                    for (IChannel c : client.getChannels()) {
-//                        if (c.getLongID() == obj.getLong("suggestions")) {
-//                            suggestions = c.getLongID();
-//                        }
-//                    }
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//
-//            try {
-//                if (obj.has("logchannel")) {
-//                    Logger.info("" + obj.getLong("logchannel"));
-//
-//                                setLogChannel(obj.getLong("logchannel"));
-//
-//                    if (getLogChannel() == null) {
-//                        Logger.warn("NO LOGGER CHANNEL!");
-//                    }
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            // try {
+            // if (obj.has("suggestions")) {
+            // for (IChannel c : client.getChannels()) {
+            // if (c.getLongID() == obj.getLong("suggestions")) {
+            // suggestions = c.getLongID();
+            // }
+            // }
+            // }
+            // } catch (Exception e) {
+            // e.printStackTrace();
+            // }
+            //
+            // try {
+            // if (obj.has("logchannel")) {
+            // Logger.info("" + obj.getLong("logchannel"));
+            //
+            // setLogChannel(obj.getLong("logchannel"));
+            //
+            // if (getLogChannel() == null) {
+            // Logger.warn("NO LOGGER CHANNEL!");
+            // }
+            // }
+            // } catch (Exception e) {
+            // e.printStackTrace();
+            // }
             try {
                 JSONArray ban = obj.getJSONArray("banned");
                 for (int i = 0; i < ban.length(); i++) {
@@ -344,6 +329,10 @@ public class OrangePeel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        for (ServerConfig c : configs) {
+            c.reload();
+        }
     }
 
     public void saveAll() {
@@ -364,25 +353,6 @@ public class OrangePeel {
         getStatsCounter().incrementStat("saves");
         obj.put("playing", playingText);
         obj.put("stream_link", stream_link);
-
-        JSONObject objauto = new JSONObject();
-        for (Entry<String, String> entry : autoRole.entrySet()) {
-            objauto.put(entry.getKey(), entry.getValue());
-        }
-        obj.put("autoroles", objauto);
-
-
-        JSONObject objgreet = new JSONObject();
-        for (Entry<String, String> entry : greet.entrySet()) {
-            objgreet.put(entry.getKey(), entry.getValue());
-        }
-        obj.put("greetings", objgreet);
-
-        JSONObject objmute = new JSONObject();
-        for (Entry<String, String> entry : muted.entrySet()) {
-            objmute.put(entry.getKey(), entry.getValue());
-        }
-        obj.put("muted", objmute);
 
         JSONArray array = new JSONArray();
         for (Command command : getEventListener().getCommandController().getCommands()) {
@@ -429,6 +399,7 @@ public class OrangePeel {
         for (IVoiceChannel iVoiceChannel : voices) {
             jsonArray.put(iVoiceChannel.getLongID());
         }
+
         obj.put("connected", jsonArray);
 
         try {
@@ -473,13 +444,29 @@ public class OrangePeel {
         }
     }
 
-
-
     public void loop(long alpha) throws InterruptedException {
+        alpha++;
+
         uptime = alpha;
         challengeController.update();
-        if (alpha % 400 == 10) {
+        logCooldown -= 1;
+        // System.out.println("l=" + logCooldown);
 
+        if (logCooldown < 0) {
+            MetricsSystem.logPing();
+            MetricsSystem.logServers(client);
+            logCooldown = 60 * 60 * 20;
+        }
+        if (alpha % 20 * 60 * 10 == 10) {
+            try {
+                sendStats();
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        if (alpha % 400 == 10) {
             playingtextindex++;
             updatePlaying();
 
@@ -487,9 +474,7 @@ public class OrangePeel {
 
         if (alpha % 20 * 60 * 5 == (20 * 60 * 5) - 4) {
             saveAll();
-
         }
-
 
         Iterator<Entry<String, Long>> iterator = voted.entrySet().iterator();
 
@@ -550,8 +535,6 @@ public class OrangePeel {
         this.votes = votes;
     }
 
-
-
     public StatsCounter getStatsCounter() {
         return statsCounter;
     }
@@ -584,8 +567,6 @@ public class OrangePeel {
     public void setStatus(BotStatus status) {
         this.status = status;
     }
-
-
 
     public EventListener getEventListener() {
         return eventListener;
@@ -633,7 +614,7 @@ public class OrangePeel {
 
     public IChannel getLogChannel() {
         IGuild guildByID = client.getGuildByID(PEEL_SERVER);
-        return guildByID.getChannelByID(376141347029254144L);
+        return guildByID.getChannelByID(logChannel);
     }
 
     public void setLogChannel(long logChannel) {
@@ -656,30 +637,6 @@ public class OrangePeel {
         this.banned = banned;
     }
 
-    public HashMap<String, String> getAutoRole() {
-        return autoRole;
-    }
-
-    public void setAutoRole(HashMap<String, String> autoRole) {
-        this.autoRole = autoRole;
-    }
-
-    public HashMap<String, String> getGreet() {
-        return greet;
-    }
-
-    public void setGreet(HashMap<String, String> greet) {
-        this.greet = greet;
-    }
-
-    public HashMap<String, String> getMuted() {
-        return muted;
-    }
-
-    public void setMuted(HashMap<String, String> muted) {
-        this.muted = muted;
-    }
-
     public int getCmdadded() {
         return cmdadded;
     }
@@ -700,16 +657,83 @@ public class OrangePeel {
         this.stream_link = stream_link;
     }
 
-
-
     public String getPrefix() {
         return prefix;
     }
 
-
-
     public void setPrefix(String prefix) {
         this.prefix = prefix;
+    }
+
+    public List<ServerConfig> getConfigs() {
+        return configs;
+    }
+
+    public ServerConfig getConfig(IGuild g) {
+        return getConfig(g.getLongID());
+    }
+
+    public ServerConfig getConfig(long id) {
+        for (ServerConfig c : configs) {
+            if (c.getGuildID() == id) {
+                return c;
+            }
+        }
+        ServerConfig c = new ServerConfig(id + "", client);
+        configs.add(c);
+        return c;
+    }
+
+    private void sendStats() throws Exception {
+
+        String url = "https://bots.discord.pw/api/bots/306115875784622080/stats";
+        URL obj = new URL(url);
+        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+
+        String urlParameters = "{\"server_count\": " + client.getGuilds().size() + "}";
+
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(urlParameters);
+        wr.flush();
+        wr.close();
+
+        int responseCode = con.getResponseCode();
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+
+        // print result
+        System.out.println(response.toString());
+
+        DiscordBotListAPI api = new DiscordBotListAPI.Builder()
+                .token(getDbltoken())
+                .build();
+        api.setStats("306115875784622080", client.getGuilds().size());
+
+
+    }
+
+    public String getBotListToken() {
+        return botlisttoken;
+    }
+
+    public void setBotListToken(String botlisttoken) {
+        this.botlisttoken = botlisttoken;
+    }
+
+    public String getDbltoken() {
+        return dbltoken;
+    }
+
+    public void setDbltoken(String dbltoken) {
+        this.dbltoken = dbltoken;
     }
 
 }

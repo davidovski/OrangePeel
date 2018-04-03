@@ -1,0 +1,8 @@
+{
+ "magic": {},
+ "leave": "Sorry to see you go, [user]",
+ "greet": "",
+ "autorole": "",
+ "join": "Welcome [user] to [server]. You are our [count] member",
+ "muted": ""
+}

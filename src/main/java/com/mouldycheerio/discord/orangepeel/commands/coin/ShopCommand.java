@@ -38,8 +38,8 @@ public class ShopCommand extends OrangePeelCommand {
             embedBuilder.withDescription("Welcome to My Store, Please take a look around!\n\nTo buy something, use `>shop buy` [id]\n\n for info on currency conversion, try `>shop conv`\n"
                     + "~~----------------------------------------~~");
             embedBuilder.appendField("[0] JackieChan" , "Change your nickname to Jackie Chan\n**price: 10" +  CoinController.emote + "**\n\n", true);
-            // embedBuilder.appendField("1 Peel Point", "1000" + CoinController.emote, true);
-            // embedBuilder.appendField("1000" + CoinController.emote, "1 Peel Point", true);
+            // embedBuilder.appendField("1 Peel Point", "500" + CoinController.emote, true);
+            // embedBuilder.appendField("500" + CoinController.emote, "1 Peel Point", true);
 
             embedBuilder.withColor(new Color(54, 57, 62));
 
@@ -68,25 +68,25 @@ public class ShopCommand extends OrangePeelCommand {
 
                 if ("c".equals(args[2]) || "coin".equals(args[2]) || "coins".equals(args[2])) {
                     if (orangepeel.coinController().getPeelsForUser(commandMessage.getAuthor()) >= 1) {
-                        orangepeel.coinController().incrementCoins(1000, commandMessage.getAuthor(), commandMessage.getGuild(), true);
+                        orangepeel.coinController().incrementCoins(500, commandMessage.getAuthor(), commandMessage.getGuild(), true);
                         orangepeel.coinController().incrementPeels(-1, commandMessage.getAuthor());
-                        sendJackieChanMessage("Well done! You just converted 1 peel point into 1000 coins, now you can spend those coins on this server!",
+                        sendJackieChanMessage("Well done! You just converted 1 peel point into 500 coins, now you can spend those coins on this server!",
                                 commandMessage.getChannel());
                     } else {
                         sendJackieChanMessage("You don't have enough peel points for that.", commandMessage.getChannel());
                     }
 
                 } else if ("peel".equals(args[2]) || "p".equals(args[2])) {
-                    if (orangepeel.coinController().getCoinsForUser(commandMessage.getAuthor(), commandMessage.getGuild()) >= 1000) {
+                    if (orangepeel.coinController().getCoinsForUser(commandMessage.getAuthor(), commandMessage.getGuild()) >= 500) {
                         orangepeel.coinController().incrementPeels(1, commandMessage.getAuthor());
-                        orangepeel.coinController().incrementCoins(-1000, commandMessage.getAuthor(), commandMessage.getGuild(), false);
-                        sendJackieChanMessage("Well done! You just converted 1000 coins points into 1 Peel point!", commandMessage.getChannel());
+                        orangepeel.coinController().incrementCoins(-500, commandMessage.getAuthor(), commandMessage.getGuild(), false);
+                        sendJackieChanMessage("Well done! You just converted 500 coins points into 1 Peel point!", commandMessage.getChannel());
                     } else {
                         sendJackieChanMessage("You don't have enough coins for that.", commandMessage.getChannel());
                     }
                 } else {
-                    sendJackieChanMessage("**1 Peel Point** - 1000 coins\n" + "**1000 coins** - 1 Peel Point"
-                            + "\n\nuse `>shop conv peel` to convert 1000 coins into one peel point\nand `>shop conv coins` to convert your 1 peel point back into 1000 coins\n"
+                    sendJackieChanMessage("**1 Peel Point** - 500 coins\n" + "**500 coins** - 1 Peel Point"
+                            + "\n\nuse `>shop conv peel` to convert 500 coins into one peel point\nand `>shop conv coins` to convert your 1 peel point back into 500 coins\n"
                             + "Peel Points are a global currency, meaning that you always have **" + orangepeel.coinController().getPeelsForUser(commandMessage.getAuthor())
                             + "** peel points.\n" + "Coins, however, are only per server, and are gained by being active. On this server, " + commandMessage.getGuild().getName()
                             + ", you have **" + orangepeel.coinController().getCoinsForUser(commandMessage.getAuthor(), commandMessage.getGuild()) + "** coins. " + CoinController.emote, commandMessage.getChannel());

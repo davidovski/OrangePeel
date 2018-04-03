@@ -100,7 +100,7 @@ public class QuickPlayGame {
             }
         }
         Random random = new Random();
-        int gametype = random.nextInt(6);
+        int gametype = random.nextInt(5);
         Thread.sleep(400);
 //         int gametype = 5;
         try {
@@ -166,7 +166,7 @@ public class QuickPlayGame {
                 setCurrentWord(".");
             } else if (gametype == 4) {
                 IMessage m = channel.sendMessage("**Quick!**");
-                Thread.sleep(700);
+                Thread.sleep(1500);
                 m.edit("**Quick!** Speak!!");
                 contains = true;
                 setCurrentWord("");
@@ -198,7 +198,7 @@ public class QuickPlayGame {
 
         } catch (Exception e) {
             IMessage m = channel.sendMessage("**Quick!**");
-            Thread.sleep(700);
+            Thread.sleep(1500);
             m.edit("**Quick!** Speak!!");
             contains = true;
             setCurrentWord("");

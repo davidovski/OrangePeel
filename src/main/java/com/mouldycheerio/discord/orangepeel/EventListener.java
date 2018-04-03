@@ -12,15 +12,23 @@ import com.mouldycheerio.discord.orangepeel.commands.HangManCommand;
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
 import sx.blah.discord.handle.impl.events.guild.GuildCreateEvent;
+import sx.blah.discord.handle.impl.events.guild.GuildLeaveEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.ChannelCreateEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.impl.events.guild.member.UserJoinEvent;
 import sx.blah.discord.handle.impl.events.guild.member.UserLeaveEvent;
+import sx.blah.discord.handle.impl.events.guild.voice.user.UserVoiceChannelJoinEvent;
+import sx.blah.discord.handle.impl.events.guild.voice.user.UserVoiceChannelLeaveEvent;
+import sx.blah.discord.handle.impl.events.guild.voice.user.UserVoiceChannelMoveEvent;
 import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.handle.obj.IGuild;
+import sx.blah.discord.handle.obj.IRole;
 import sx.blah.discord.handle.obj.IUser;
 import sx.blah.discord.handle.obj.Permissions;
 import sx.blah.discord.util.EmbedBuilder;
+import sx.blah.discord.util.MissingPermissionsException;
+import sx.blah.discord.util.RateLimitException;
+import sx.blah.discord.util.RequestBuffer;
 
 public class EventListener {
     private String prefix;
@@ -37,14 +45,97 @@ public class EventListener {
 
     }
 
+
     @EventSubscriber
-    public void onChannelCreateEvent(ChannelCreateEvent event) {
-        if (orangePeel.getMuted().containsKey(event.getGuild().getStringID())) {
-            EnumSet<Permissions> toremove = EnumSet.of(Permissions.SEND_MESSAGES);
-            EnumSet<Permissions> toadd = EnumSet.noneOf(Permissions.class);
-            event.getChannel().overrideRolePermissions(event.getGuild().getRoleByID(Long.parseLong(orangePeel.getMuted().get(event.getGuild().getStringID()))), toadd, toremove);
+    public void onUserVoiceChannelJoinEvent(UserVoiceChannelJoinEvent event) {
+        IRole r = orangePeel.getConfig(event.getGuild()).getRoleForChannel(event.getVoiceChannel());
+        if (r != null) {
+            RequestBuffer.request(() -> {
+                try {
+                    event.getUser().addRole(r);
+                } catch (MissingPermissionsException e) {
+                    e.printStackTrace();
+                } catch (RateLimitException e) {
+                    throw e;
+                }
+            });
         }
     }
+
+    @EventSubscriber
+    public void onUserVoiceChannelLeaveEvent(UserVoiceChannelLeaveEvent event) {
+        IRole r = orangePeel.getConfig(event.getGuild()).getRoleForChannel(event.getVoiceChannel());
+        if (r != null) {
+            RequestBuffer.request(() -> {
+                try {
+                    event.getUser().removeRole(r);
+                } catch (MissingPermissionsException e) {
+                    e.printStackTrace();
+                } catch (RateLimitException e) {
+                    throw e;
+                }
+            });
+        }
+    }
+
+    @EventSubscriber
+    public void onUserVoiceChannelMoveEvent(UserVoiceChannelMoveEvent event) {
+        IRole r = orangePeel.getConfig(event.getGuild() ).getRoleForChannel(event.getOldChannel());
+        IRole r2 = orangePeel.getConfig(event.getGuild()).getRoleForChannel(event.getNewChannel());
+        if (r2 != null && r != null && r.getStringID().equals(r2.getStringID())) {
+            return;
+        }
+        if (r != null) {
+
+            RequestBuffer.request(() -> {
+                try {
+                    event.getUser().removeRole(r);
+                } catch (MissingPermissionsException e) {
+                    e.printStackTrace();
+                } catch (RateLimitException e) {
+                    throw e;
+                }
+            });
+        }
+        if (r2 != null) {
+            RequestBuffer.request(() -> {
+                try {
+                    event.getUser().addRole(r2);
+                } catch (MissingPermissionsException e) {
+                    e.printStackTrace();
+                } catch (RateLimitException e) {
+                    throw e;
+                }
+            });
+        }
+    }
+
+
+    @EventSubscriber
+    public void onChannelCreateEvent(ChannelCreateEvent event) {
+        if (orangePeel.getConfig(event.getGuild()).hasMutedRole()) {
+            EnumSet<Permissions> toremove = EnumSet.of(Permissions.SEND_MESSAGES, Permissions.ADD_REACTIONS, Permissions.VOICE_SPEAK, Permissions.VOICE_CONNECT);
+
+            EnumSet<Permissions> toadd = EnumSet.noneOf(Permissions.class);
+            event.getChannel().overrideRolePermissions(orangePeel.getConfig(event.getGuild()).getMutedRole(), toadd, toremove);
+        }
+    }
+
+    @EventSubscriber
+    public void onGuildLeaveEvent(GuildLeaveEvent event) throws InterruptedException {
+            IGuild g = event.getGuild();
+            if (orangePeel.getLogChannel() != null) {
+                IChannel logChannel = orangePeel.getLogChannel();
+                EmbedBuilder embedBuilder = new EmbedBuilder();
+                embedBuilder.withAuthorName("Left guild!");
+                embedBuilder.withTitle(g.getName()+ " (" + g.getStringID() + ")");
+                embedBuilder.withThumbnail(g.getIconURL());
+
+                embedBuilder.withColor(new Color(54, 57, 62));
+                logChannel.sendMessage(embedBuilder.build());
+        }
+    }
+
 
     @EventSubscriber
     public void onGuildCreateEvent(GuildCreateEvent event) throws InterruptedException {
@@ -54,9 +145,9 @@ public class EventListener {
                 IChannel logChannel = orangePeel.getLogChannel();
                 EmbedBuilder embedBuilder = new EmbedBuilder();
                 embedBuilder.withAuthorName("Joined guild!");
-                embedBuilder.withTitle(g.getName());
+                embedBuilder.withTitle(g.getName()+ " (" + g.getStringID() + ")");
                 embedBuilder.withThumbnail(g.getIconURL());
-                embedBuilder.appendField("Owner", g.getOwner().getName() + "#" + g.getOwner().getDiscriminator(), true);
+                embedBuilder.appendField("Owner", g.getOwner().getName() + "#" + g.getOwner().getDiscriminator() + " (" + g.getOwner().getStringID() + ")", true);
                 embedBuilder.appendField("Users", g.getUsers().size() + "", true);
                 embedBuilder.appendField("Creation Date", g.getCreationDate().format(DateTimeFormatter.BASIC_ISO_DATE) + "", true);
 
@@ -81,6 +172,9 @@ public class EventListener {
         orangePeel.loadAll();
         orangePeel.getStatsCounter().incrementStat("boots");
 
+
+        orangePeel.updatePlaying();
+        orangePeel.loadConfigs();
         if (orangePeel.getLogChannel() != null) {
             IChannel logChannel = orangePeel.getLogChannel();
             EmbedBuilder embedBuilder = new EmbedBuilder();
@@ -97,27 +191,34 @@ public class EventListener {
             embedBuilder.withColor(new Color(54, 57, 62));
             logChannel.sendMessage(embedBuilder.build());
         }
-        orangePeel.updatePlaying();
     }
 
     @EventSubscriber
     public void onUserLeaveEvent(UserLeaveEvent event) {
-        if (orangePeel.getGreet().containsKey(event.getGuild().getStringID())) {
-            event.getGuild().getChannelByID(Long.parseLong(orangePeel.getGreet().get(event.getGuild().getStringID())))
-                    .sendMessage("Aww, " + event.getUser().getName() + "#" + event.getUser().getDiscriminator() + "  has just left! :cry:");
+        if (orangePeel.getConfig(event.getGuild()).hasGreetChannel()) {
+            orangePeel.getConfig(event.getGuild()).getGreetChannel()
+                    .sendMessage(orangePeel.getConfig(event.getGuild()).getLeaveMessage(event.getGuild(), event.getUser()));
         }
     }
 
     @EventSubscriber
     public void onUserJoinEvent(UserJoinEvent event) throws InterruptedException {
+        orangePeel.getConfig(event.getGuild()).reload();
         orangePeel.coinController().incrementCoins(100, event.getUser(), event.getGuild(), false);
-        if (orangePeel.getGreet().containsKey(event.getGuild().getStringID())) {
-            event.getGuild().getChannelByID(Long.parseLong(orangePeel.getGreet().get(event.getGuild().getStringID())))
-                    .sendMessage("Welcome, <@" + event.getUser().getStringID() + ">  to " + event.getGuild().getName() + "! :joy:");
+        if (orangePeel.getConfig(event.getGuild()).hasGreetChannel()) {
+            orangePeel.getConfig(event.getGuild()).getGreetChannel().sendMessage(orangePeel.getConfig(event.getGuild()).getGreetMessage(event.getGuild(), event.getUser()));
         }
 
-        if (orangePeel.getAutoRole().containsKey(event.getGuild().getStringID())) {
-            event.getUser().addRole(event.getGuild().getRoleByID(Long.parseLong(orangePeel.getAutoRole().get(event.getGuild().getStringID()))));
+        if (orangePeel.getConfig(event.getGuild()).hasAutoRole()) {
+            RequestBuffer.request(() -> {
+                try {
+                    event.getUser().addRole(orangePeel.getConfig(event.getGuild()).getAutoRole());
+                } catch (MissingPermissionsException e) {
+                    e.printStackTrace();
+                } catch (RateLimitException e) {
+                    throw e;
+                }
+            });
         }
 
         if (event.getUser().getStringID().equals(orangePeel.getClient().getOurUser().getStringID())) {

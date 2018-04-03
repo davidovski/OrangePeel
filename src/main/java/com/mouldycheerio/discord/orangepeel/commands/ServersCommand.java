@@ -110,21 +110,74 @@ public class ServersCommand extends OrangePeelCommand {
 
             String message = "```           Servers         \n(" + guilds.size() + " in total)\n\n";
 
+            int a = 0;
+            int ommitted = 0;
+            boolean ommittedThis = false;
+            int place = 1;
             for (IGuild g : guilds) {
-                String members = "" + g.getUsers().size();
-                for (int i = members.length(); i < 8; i++) {
-                    members = " " + members;
-                }
-                if (g.equals(commandMessage.getGuild())) {
-                    members = "!" + members + "! ";
-                    message = message + "\n" + members + g.getName();
-                } else {
+                a++;
+                if (a <= 25) {
+                    String p = "" + place;
+                    int length = p.length();
+                    for (int i = length; i < 3; i++) {
+                        p =  p + " ";
+                    }
+                    String members = "" + g.getUsers().size();
+                    length = members.length();
+                    for (int i = length; i < 8; i++) {
+                        if (g.equals(commandMessage.getGuild())) {
+                            if (i == length) {
+                                members = ">" + members;
+                            } else {
+                                members = "-" + members;
+
+                            }
+                        } else {
+                            members = " " + members;
+                        }
+                    }
+
                     members = "|" + members + "| ";
-                    message = message + "\n" + members + g.getName();
+                    message = message + "\n" + "|" + p + members + g.getName();
+                    if (ids) {
+                        message = message + " (" + g.getStringID() + ")";
+                    }
+                } else {
+                    if (g.equals(commandMessage.getGuild())) {
+                        ommittedThis = true;
+                    } else {
+                        ommitted++;
+                    }
                 }
+                place++;
+            }
+
+            if (ommittedThis) {
+                String members = "" + commandMessage.getGuild().getUsers().size();
+                int length = members.length();
+                for (int i = length; i < 8; i++) {
+                    if (commandMessage.getGuild().equals(commandMessage.getGuild())) {
+                        if (i == length) {
+                            members = ">" + members;
+                        } else {
+                            members = "-" + members;
+
+                        }
+                    } else {
+                        members = " " + members;
+                    }
+                }
+
+                members = "|" + members + "| ";
+                message = message + "\n...\n";
+                message = message + "\n" + members + commandMessage.getGuild().getName();
                 if (ids) {
-                    message = message + " (" + g.getStringID() + ")";
+                    message = message + " (" + commandMessage.getGuild().getStringID() + ")";
                 }
+            }
+
+            if (ommitted > 0) {
+                message = message + "\nAnd " + ommitted + " more...";
             }
 
             message = message + "```";

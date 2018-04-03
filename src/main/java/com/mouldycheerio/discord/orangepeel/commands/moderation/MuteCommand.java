@@ -5,6 +5,7 @@ import com.mouldycheerio.discord.orangepeel.PeelingUtils;
 import com.mouldycheerio.discord.orangepeel.commands.CommandCatagory;
 import com.mouldycheerio.discord.orangepeel.commands.CommandDescription;
 import com.mouldycheerio.discord.orangepeel.commands.OrangePeelCommand;
+import com.mouldycheerio.discord.web.ServerConfig;
 
 import sx.blah.discord.api.IDiscordClient;
 import sx.blah.discord.handle.obj.IGuild;
@@ -21,20 +22,23 @@ public class MuteCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.MODERATION);
     }
 
+    @Override
     public void onCommand(OrangePeel bot, IDiscordClient client, IMessage commandMessage, String[] args) {
         IUser punisher = commandMessage.getAuthor();
         IGuild guild = commandMessage.getGuild();
         if (commandMessage.getAuthor().getPermissionsForGuild(commandMessage.getGuild()).contains(Permissions.VOICE_MUTE_MEMBERS)) {
 
             IUser user = PeelingUtils.mentionToUser(args[1], commandMessage.getGuild());
-            if (bot.getMuted().containsKey(guild.getStringID())) {
-                String roleID = bot.getMuted().get(guild.getStringID());
-                IRole r = guild.getRoleByID(Long.parseLong(roleID));
+            ServerConfig config = bot.getConfig(commandMessage.getGuild());
+            if (config.hasMutedRole()) {
+                IRole r = config.getMutedRole();
                 user.addRole(r);
 
                 IPrivateChannel pm = client.getOrCreatePMChannel(user);
                 pm.sendMessage("Zip it! You have been muted on " + guild.getName() + " by " + punisher.getName() + "");
                 commandMessage.getChannel().sendMessage(args[1] + " will not speak again");
+            } else {
+                commandMessage.reply("This functionallity has not yet been setup, please configure it with >setupMute");
             }
 
         } else {

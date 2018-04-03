@@ -4,7 +4,84 @@
 
 <head>
   <meta charset="utf-8">
-  {{head}}
+  <script>
+    window.onload = function () {
+
+      var chart = new CanvasJS.Chart("chartContainer1", {
+        animationEnabled: true,
+        theme: "light2",
+        title: {
+          text: "Ping"
+        },
+        axisY: {
+          includeZero: true,
+          title: "Ping",
+          suffix: "ms"
+        },
+        axisX: {
+          title: "Time",
+        },
+        data: [{
+          yValueFormatString: "#,### Units",
+          xValueFormatString: "DD HH",
+          type: "line",
+          dataPoints: [
+            {{pingData}}
+        ]
+      }]
+      });
+    chart.render();
+
+    var chart2 = new CanvasJS.Chart("chartContainer2", {
+        animationEnabled: true,
+        theme: "light2",
+        title: {
+          text: "Guild Count"
+        },
+        axisY: {
+          includeZero: true,
+          title: "Guilds"
+        },
+        axisX: {
+          title: "Time",
+        },
+        data: [{
+          yValueFormatString: "#,### Units",
+          xValueFormatString: "DD/MM",
+          type: "spline",
+          dataPoints: [
+            {{guildData}}
+        ]
+      }]
+      });
+    chart2.render();
+
+
+    var chart3 = new CanvasJS.Chart("chartContainer3", {
+        animationEnabled: true,
+        theme: "light2",
+        title: {
+          text: "Average users per guild"
+        },
+        axisY: {
+          includeZero: true,
+          title: "Users",
+        },
+        axisX: {
+          title: "Time",
+        },
+        data: [{
+          yValueFormatString: "#,### Units",
+          xValueFormatString: "DD HH",
+          type: "spline",
+          dataPoints: [
+            {{avgData}}
+        ]
+      }]
+      });
+    chart3.render();
+    }
+  </script> {{head}}
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -16,7 +93,14 @@
     <div class="section title">
       <h1>Peely Metrics</h1>
     </div>
-  
+
+    <div class="section fullwidth">
+      <h4>Servers: {{guildcount}}</h4>
+      <h4>Users: {{usercount}}</h4>
+      <h3>Average User Count: {{guildaverageusercount}}</h3>
+
+    </div>
+
     <div class="section left">
       <h4>Servers</h4>
       <ol>{{servers}}</ol>
@@ -30,57 +114,73 @@
     <div class="section fullwidth">
       <h4>Command Usage</h4>
       <canvas id="graph1" width="1000"></canvas>
-      <script src="barGraph.js" ></script>
+      <script src="barGraph.js"></script>
       <script>
         var canvas = document.getElementById("graph1");
-                        
-                        var graph = new BarGraph(canvas);
-                        graph.margin = 2;
-                        graph.xAxisLabelArr = {{commandKeys}} ;
-                        graph.update({{commandValues}});
+
+        var graph = new BarGraph(canvas);
+        graph.margin = 2;
+        graph.xAxisLabelArr = {{commandKeys}};
+        graph.update({{commandValues}});
       </script>
     </div>
-    
+
+
+
     <div class="section fullwidth codebox">
 
       <dt style="height:22px; text-align: center;">
-          <strong>Command Usage</strong>
-<input type="button" value="Show" onclick="var spoiler = $(this).parents('.codebox').find('.content').toggle('slow');
+        <strong>Command Usage</strong>
+        <input type="button" value="Show" onclick="var spoiler = $(this).parents('.codebox').find('.content').toggle('slow');
 if ( this.value == 'Hide' ) { this.value = 'Show'; } else { this.value = 'Hide'; };
-return false;"></dt>
-<dd><div class="content" name="spoiler" style="display: none;">
-  <ol>{{commands.list}}</ol>
-  
-</div></dd>
-</div>
+return false;">
+      </dt>
+      <dd>
+        <div class="content" name="spoiler" style="display: none;">
+          <ol>{{commands.list}}</ol>
+
+        </div>
+      </dd>
+    </div>
 
     <div class="section fullwidth">
       <h4>Bot Usage Times</h4>
 
       <canvas id="graph2" width="1000"></canvas>
-      <script src="barGraph.js" ></script>
+      <script src="barGraph.js"></script>
       <script>
         var canvas = document.getElementById("graph2");
-                        
-                        var graph = new BarGraph(canvas);
-                        graph.margin = 2;
-                        graph.xAxisLabelArr = ["0000", "0100", "0200", "0300", "0400", "0500", "0600", "0700", "0800", "0900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300"];
-                        graph.update({{times}});
+
+        var graph = new BarGraph(canvas);
+        graph.margin = 2;
+        graph.xAxisLabelArr = ["0000", "0100", "0200", "0300", "0400", "0500", "0600", "0700", "0800", "0900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300"];
+        graph.update({{times}});
       </script>
 
-        <canvas id="graph3" width="1000"></canvas>
-        <script src="barGraph.js" ></script>
-        <script>
-          var canvas = document.getElementById("graph3");
-                          
-                          var graph = new BarGraph(canvas);
-                          graph.margin = 2;
-                          graph.xAxisLabelArr = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat","Sun"];
-                          graph.update({{days}});
-        </script>
-      </div>
+      <canvas id="graph3" width="1000"></canvas>
+      <script src="barGraph.js"></script>
+      <script>
+        var canvas = document.getElementById("graph3");
 
+        var graph = new BarGraph(canvas);
+        graph.margin = 2;
+        graph.xAxisLabelArr = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+        graph.update({{days}});
+      </script>
+    </div>
 
+    <div class="section fullwidth">
+      <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
+      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+      <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </div>
+
+    <div class="section fullwidth">
+      <div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </div>
+    
 
   </div>
   {{footer}}

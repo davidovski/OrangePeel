@@ -59,7 +59,15 @@ body {
 
     }
 
-
+    .panel {
+      padding: 1%;
+      margin: 1%;
+      background: rgba(255, 100, 00, 0.9);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      color: #fff;
+      transition: background 0.5s;
+      display: block;
+    }
 
     .section:hover {
       margin: 1%;
@@ -146,14 +154,15 @@ body {
     }
 
 
-  /* navbar */
+  
 .navbar-default {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   position: fixed;
+  top: 0;
+  width: 100%;
   background-color: rgba(255, 100, 00, 1.0);
   border-color: rgba(255, 100, 00, 1.0);
 }
-/* Title */
 .navbar-default .navbar-brand {
   color: rgb(214, 214, 214);
 }
@@ -161,7 +170,6 @@ body {
 .navbar-default .navbar-brand:focus {
   color: rgb(158, 157, 157);
 }
-/* Link */
 .navbar-default .navbar-nav > li > a {
   color: rgb(255, 255, 255);
 }
@@ -181,8 +189,238 @@ body {
   color: rgb(255, 255, 255);
   background-color: rgba(255, 100, 00, 1.0);
 }
-/* Caret */
 .navbar-default .navbar-nav > .dropdown > a .caret {
   border-top-color: rgb(255, 255, 255);
   border-bottom-color: rgb(255, 255, 255);
+}
+
+li {
+  list-style-type: none;
+}
+
+.right-side {
+  float: right;
+  text-align: right;
+  margin-left:auto;
+  margin-right:0;
+  display: flex; justify-content: flex-end
+}
+
+.loginbtn {
+  height: 1.8em;
+  color: rgb(35, 104, 35);
+  border: 2px solid rgb(35, 104, 35);
+  border-radius: 10em;
+  background-color: #fff;
+
+}
+
+.servericon {
+  border-radius: 100%;
+  margin: 1em;
+  width: 6em;
+  border: 2px solid black;
+  transition: width 0.25s ease-in, margin 0.25s ease-in;
+}
+.servericon:hover {
+  border-radius: 100%;
+  margin: 0em;
+  width: 8em;
+  border: 3px solid blue;
+  transition: width 0.25s ease-in,  margin 0.25s ease-in;
+
+}
+
+
+.hidden {
+  display: none;
+}
+
+select {
+  position: relative;
+  display: inline-block;
+  width: 6em;
+  height: 3.4em;
+  color: #000;
+}
+/* The switch - the box around the slider */
+.minus {
+  position: relative;
+  display: inline-block;
+  width: 6em;
+  height: 3.4em;
+  transform: translatey(1.8em);
+  background-color: #f12e2b;
+  height: 2.6em;
+  width: 2.6em;
+  left: 0.4em;
+  cursor: pointer;
+  bottom: 0.4em;
+  font-weight: 200%;
+  border: none;
+}
+
+.add {
+  position: relative;
+  display: inline-block;
+  width: 6em;
+  height: 3.4em;
+  transform: translatey(1.8em);
+  background-color: #229228;
+  height: 2.6em;
+  width: 2.6em;
+  left: 0.4em;
+  cursor: pointer;
+  bottom: 0.4em;
+  font-weight: 200%;
+  border: none;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 6em;
+  height: 3.4em;
+  transform: translatey(1.8em);
+
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  box-shadow: 0 0 1px #2196F3;
+ 
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 2.6em;
+  width: 2.6em;
+  left: 0.4em;
+  bottom: 0.4em;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(2.6em);
+  -ms-transform: translateX(2.6em);
+  transform: translateX(2.6em);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 3.4em;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.circle {
+  border-radius: 100%;
+}
+input, select, textarea {
+  display:inline-block;
+  position: relative;
+  font-family: Arial;
+  width: 50%;
+  height: 3.4em;
+  color: #000;
+  background-color: #fff  
+
+}
+
+.post {
+  margin-top: 4em;
+  display:inline-block;
+  position: relative;
+  font-family: Arial;
+  width: 6em;
+  height: 3.4em;
+  color: #fff;
+  background-color: #22aa11
+}
+
+.custom-select {
+  position: relative;
+  display: inline-block;
+  font-family: Arial;
+  width: 50%;
+}
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+.select-selected {
+  background-color: #2196F3;
+}
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 1.4em;
+  right: 1em;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 0.7em;
+}
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 0.8em 1.6em;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: rgb(125, 194, 252);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+.select-items div:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.options {
+  margin-left:3em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 1em;
+  padding: 2em;
 }

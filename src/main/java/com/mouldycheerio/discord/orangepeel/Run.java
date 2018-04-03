@@ -21,6 +21,11 @@ public class Run {
             OrangePeel orangepeel = null;
             try {
                 orangepeel = new OrangePeel(config.getString("token"), config.getString("prefix"));
+                String auth = config.getString("listAuth");
+                String dbl = config.getString("dblToken");
+                orangepeel.setDbltoken(dbl);
+                System.out.println("bot list auth: " + auth);
+                orangepeel.setBotListToken(auth);
             } catch (Exception e1) {
                 // TODO Auto-generated catch block
 

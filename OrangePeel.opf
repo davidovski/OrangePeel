@@ -1,6 +1,32 @@
 {
+ "connected": [],
+ "logchannel": 404730227051462657,
+ "stream_link": "",
+ "stats": {
+  "art": 3,
+  "saves": 15,
+  "loads": 13,
+  "boots": 6,
+  "messages": 151,
+  "pings": 64,
+  "commands": 99
+ },
+ "bug_reports": 404732553132507147,
+ "votes": {},
  "playing": "321",
- "admins": {
-  "253275397444206594": 5,
- }
+ "suggestions": 404733327992422410,
+ "banned": [],
+ "admins": {"253275397444206594": 5},
+ "commands": [
+  {
+   "description": "<<-->>",
+   "text": "<<<",
+   "command": ">>"
+  },
+  {
+   "description": "Invite me!!",
+   "text": "Add me to your own server! https://goo.gl/ZcLxNJ",
+   "command": "invite"
+  }
+ ]
 }

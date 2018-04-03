@@ -67,7 +67,6 @@ public class SetupCommand extends OrangePeelCommand {
             lastMessages.put(mg.getChannel(), mg.getLongID());
 
         }
-        orangepeel.saveAll();
     }
 
     @EventSubscriber
@@ -101,7 +100,7 @@ public class SetupCommand extends OrangePeelCommand {
                         break;
                     } else if (m.equals(autoroleMessage)) {
                         String roleID = PeelingUtils.mentionToIdEz(message);
-                        orangepeel.getAutoRole().put(event.getGuild().getStringID(), roleID);
+                        orangepeel.getConfig(server).setAutoRole(event.getGuild().getRoleByID(Long.parseLong(roleID)));
                         IMessage mg = event.getMessage().getChannel().sendMessage(thirdMessage);
                         lastMessages.put(mg.getChannel(), mg.getLongID());
                         break;
@@ -118,7 +117,7 @@ public class SetupCommand extends OrangePeelCommand {
 
                     } else if (m.equals(greetchannelMessage)) {
                         String channelID = PeelingUtils.mentionToIdEz(message);
-                        orangepeel.getGreet().put(event.getGuild().getStringID(), channelID);
+                        orangepeel.getConfig(server).setGreetChannel(event.getGuild().getChannelByID(Long.parseLong(channelID)));
                         IMessage mg = event.getMessage().getChannel().sendMessage(fourthMessage);
                         lastMessages.put(mg.getChannel(), mg.getLongID());
                         break;
@@ -133,12 +132,12 @@ public class SetupCommand extends OrangePeelCommand {
                                 EnumSet<Permissions> toadd = EnumSet.noneOf(Permissions.class);
                                 iChannel.overrideRolePermissions(role, toadd, toremove);
                             }
-                            orangepeel.getMuted().put(event.getGuild().getStringID(), role.getStringID());
+                            orangepeel.getConfig(server).setMutedRole(role);
                         }
                         IMessage mg = event.getMessage().getChannel().sendMessage(done);
                         lastMessages.put(mg.getChannel(), mg.getLongID());
                         it.remove();
-                        orangepeel.saveAll();
+                        orangepeel.getConfig(server).save();
                         break;
 
                     }

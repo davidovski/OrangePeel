@@ -15,6 +15,7 @@ import com.mouldycheerio.discord.orangepeel.commands.ChopperCommand;
 import com.mouldycheerio.discord.orangepeel.commands.Command;
 import com.mouldycheerio.discord.orangepeel.commands.CommandCatagory;
 import com.mouldycheerio.discord.orangepeel.commands.CpuCommand;
+import com.mouldycheerio.discord.orangepeel.commands.DabCommand;
 import com.mouldycheerio.discord.orangepeel.commands.DownVoteCommand;
 import com.mouldycheerio.discord.orangepeel.commands.EmbedCommand;
 import com.mouldycheerio.discord.orangepeel.commands.EndGamesCommand;
@@ -30,6 +31,7 @@ import com.mouldycheerio.discord.orangepeel.commands.LoadAllCommand;
 import com.mouldycheerio.discord.orangepeel.commands.LogCommand;
 import com.mouldycheerio.discord.orangepeel.commands.MirrorMirrorCommand;
 import com.mouldycheerio.discord.orangepeel.commands.NicknameCommand;
+import com.mouldycheerio.discord.orangepeel.commands.NsfwCommand;
 import com.mouldycheerio.discord.orangepeel.commands.OrangePeelAdminCommand;
 import com.mouldycheerio.discord.orangepeel.commands.PerServerCustomCmd;
 import com.mouldycheerio.discord.orangepeel.commands.QuickPlayCommand;
@@ -40,6 +42,7 @@ import com.mouldycheerio.discord.orangepeel.commands.ReportBugCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ResponseTimeCommand;
 import com.mouldycheerio.discord.orangepeel.commands.SaveAllCommand;
 import com.mouldycheerio.discord.orangepeel.commands.SendFileCommand;
+import com.mouldycheerio.discord.orangepeel.commands.ServerAgeScoresCommand;
 import com.mouldycheerio.discord.orangepeel.commands.ServersCommand;
 import com.mouldycheerio.discord.orangepeel.commands.SetChannelCommand;
 import com.mouldycheerio.discord.orangepeel.commands.SetMusicCommand;
@@ -60,8 +63,10 @@ import com.mouldycheerio.discord.orangepeel.commands.WahCommand;
 import com.mouldycheerio.discord.orangepeel.commands.WaveCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.BalanceCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.JackieChan;
+import com.mouldycheerio.discord.orangepeel.commands.coin.NickCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.PayCommand;
 import com.mouldycheerio.discord.orangepeel.commands.coin.ShopCommand;
+import com.mouldycheerio.discord.orangepeel.commands.debug.ConfigListCommand;
 import com.mouldycheerio.discord.orangepeel.commands.debug.ReactCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.AutoRoleCommand;
 import com.mouldycheerio.discord.orangepeel.commands.moderation.BanCommand;
@@ -88,8 +93,11 @@ public class CommandController {
         this.orangePeel = orangePeel;
         commands = new ArrayList<Command>();
         commands.add(new EmbedCommand());
+        commands.add(new ServerAgeScoresCommand());
 
         commands.add(new HeyCommand());
+        commands.add(new ConfigListCommand());
+
         commands.add(new GetIDCommand());
 
         commands.add(new UpTimeCommand());
@@ -134,6 +142,8 @@ public class CommandController {
 
         commands.add(new ImageCommand());
         commands.add(new ArtCommand());
+        commands.add(new DabCommand());
+        commands.add(new NsfwCommand());
         commands.add(new JackieChan());
         commands.add(new ServersCommand());
         commands.add(new FakeUserCommand());
@@ -168,6 +178,7 @@ public class CommandController {
         commands.add(new BalanceCommand());
         commands.add(new PayCommand());
         commands.add(new ShopCommand());
+        commands.add(new NickCommand());
 
         commands.add(new ShutdownCommand());
         commands.add(new RebootCommand());

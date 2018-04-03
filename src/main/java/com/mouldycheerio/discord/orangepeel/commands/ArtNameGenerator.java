@@ -3,6 +3,7 @@ package com.mouldycheerio.discord.orangepeel.commands;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.mouldycheerio.discord.orangepeel.PeelingUtils;
 import com.mouldycheerio.discord.orangepeel.commands.ArtCommand.ArtType;
 
 public class ArtNameGenerator {
@@ -146,6 +147,16 @@ public class ArtNameGenerator {
             options2.add("Writings");
             options2.add("Crap");
             return options1.get(random.nextInt(options1.size())) + " " + options2.get(random.nextInt(options2.size()));
+
+        }
+        if (type == ArtType.PHOTO_NEW) {
+            try {
+                String words = PeelingUtils.getHTTP("http://www.desiquintans.com/downloads/nounlist/nounlist.txt");
+                String noun = words.split("\\n")[random.nextInt(words.split("\\n").length)];
+                return noun;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
         return "Artwork";

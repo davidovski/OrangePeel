@@ -7,6 +7,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -21,7 +22,7 @@ public class ArtCommand extends OrangePeelCommand {
     private static Random random;
 
     public static enum ArtType {
-        SQUARES, NOISE, CIRCLES, SCENE, PHOTO
+        SQUARES, NOISE, CIRCLES, SCENE, PHOTO, PHOTO_NEW
     }
 
     public ArtCommand() {
@@ -31,10 +32,11 @@ public class ArtCommand extends OrangePeelCommand {
         setCatagory(CommandCatagory.FUN);
     }
 
+    @Override
     public void onCommand(OrangePeel orangepeel, IDiscordClient client, IMessage commandMessage, String[] args) {
         IMessage m = commandMessage.getChannel().sendMessage("Drawing...");
         try {
-            int typen = random.nextInt(15);
+            int typen = random.nextInt(30);
             ArtType type = ArtType.SQUARES;
             if (typen < 3) {
                 type = ArtType.SQUARES;
@@ -42,9 +44,11 @@ public class ArtCommand extends OrangePeelCommand {
                 type = ArtType.CIRCLES;
             } else if (typen < 8) {
                 type = ArtType.SCENE;
-            } else if (typen < 15) {
+            } else if (typen < 30) {
                 type = ArtType.PHOTO;
             }
+
+            type = ArtType.PHOTO_NEW;
             String name = ArtNameGenerator.makename(type);
             BufferedImage bi = createArt(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)), type);
             if (bi != null) {
@@ -294,6 +298,67 @@ public class ArtCommand extends OrangePeelCommand {
                 return bufferedImage;
 
             }
+        }
+
+        if (type == ArtType.PHOTO_NEW) {
+
+//https://picsum.photos/200/300
+            String link = "http://lorempixel.com/400/200";
+            if (Math.random() < 0.3) {
+                link = "https://picsum.photos/200/?random";
+            }
+            URL url = new URL(link);
+//            URL url = new URL("https://picsum.photos/200/300");
+
+            BufferedImage img = ImageIO.read(url);
+            BufferedImage bufferedImage = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics2D gr = (Graphics2D) bufferedImage.getGraphics();
+            float  tint = (float) (random.nextInt(360) / 360.0);
+            int size = img.getWidth() / (16 + random.nextInt(64));
+
+            for (int x = 0; x < img.getWidth(); x += size) {
+                for (int y = 0; y < img.getHeight(); y += size) {
+                    int clr = img.getRGB(x, y);
+                    int r = (clr & 0x00ff0000) >> 16;
+                    int g = (clr & 0x0000ff00) >> 8;
+                    int b = clr & 0x000000ff;
+
+                    r = r + (random.nextInt(10) - 5);
+                    g = g + (random.nextInt(10) - 5);
+                    b = b + (random.nextInt(10) - 5);
+
+                    if (r > 255) {
+                        r = 255;
+                    }
+                    if (r < 0) {
+                        r = 0;
+                    }
+                    if (g > 255) {
+                        g = 255;
+                    }
+                    if (g < 0) {
+                        g = 0;
+                    }
+                    if (b > 255) {
+                        b = 255;
+                    }
+                    if (b < 0) {
+                        b = 0;
+                    }
+
+                    float[] hsv = new float[3];
+                    hsv = Color.RGBtoHSB(r,g,b, hsv);
+                    float h = hsv[0] + tint;
+                    Color c = new Color(Color.HSBtoRGB(h, hsv[1], hsv[2]));
+
+
+                    gr.setPaint(c);
+                    gr.fill(new Rectangle(x, y, size, size));
+                }
+            }
+            return bufferedImage;
+
+
         }
         return null;
     }
